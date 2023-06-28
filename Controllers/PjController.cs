@@ -56,6 +56,12 @@ namespace DouImp.Controllers
         public override DataManagerOptions GetDataManagerOptions()
         {
             DataManagerOptions opts = base.GetDataManagerOptions();
+            //20230628, add by markhong
+            opts.ctrlFieldAlign = "left";
+            opts.editformWindowStyle = "modal";
+            opts.editformWindowClasses = "modal-xl";
+            opts.editformSize.height = "fixed";
+            opts.editformSize.width = "auto";
 
             //全部欄位排序
             foreach (var field in opts.fields)

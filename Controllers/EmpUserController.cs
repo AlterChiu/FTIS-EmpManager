@@ -50,6 +50,11 @@ namespace DouImp.Controllers
             options.GetFiled("TEnddate").visibleEdit = false;
             options.GetFiled("IsQuit").visibleEdit = false;
             options.GetFiled("Quit").visibleEdit = false;
+            options.GetFiled("Name").editable = false;
+
+            options.GetFiled("DCode").visibleEdit = false;
+            options.GetFiled("TCode").visibleEdit = false;
+            options.GetFiled("GCode").visibleEdit = false;
 
             options.GetFiled("AD").visibleEdit = false;
             options.GetFiled("AgentNo").visibleEdit = false;
