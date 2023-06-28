@@ -13,51 +13,128 @@ namespace DouImp.Controllers
     [Dou.Misc.Attr.MenuDef(Name = "專案", MenuPath = "員工基本資料", Action = "Index", Index = 76, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     public class PjController : Dou.Controllers.APaginationModelController<F22cmmProjectData>
     {
-        // GET: Country
+        // GET: F22cmmProjectData
         public ActionResult Index()
         {
             return View();
         }
-        //protected override IEnumerable<F22cmmProjectData> GetDataDBObject(IModelEntity<F22cmmProjectData> dbEntity, params KeyValueParams[] paras)
-        //{
-        //    var iquery = base.GetDataDBObject(dbEntity, paras);
-        //    //if (string.IsNullOrEmpty(paras.FirstOrDefault(s => s.key == "sort").value + ""))
-        //    //    iquery = iquery.OrderBy(s => s.PrjID);
-        //    return iquery;
-        //}
+
+        internal static System.Data.Entity.DbContext _dbContext = FtisHelperV2.DB.FtisModelContext.Create();
+
+        protected override Dou.Models.DB.IModelEntity<F22cmmProjectData> GetModelEntity()
+        {
+            return new Dou.Models.DB.ModelEntity<F22cmmProjectData>(_dbContext);
+        }
+
         protected override IQueryable<F22cmmProjectData> BeforeIQueryToPagedList(IQueryable<F22cmmProjectData> iquery, params KeyValueParams[] paras)
         {
-            iquery = base.BeforeIQueryToPagedList(iquery, paras);
-            return iquery;
-        }
-        //public override DataManagerOptions GetDataManagerOptions()
-        //{
-        //    var options = base.GetDataManagerOptions();
-        //    options.editformWindowStyle = "modal";
-        //    return options;
-        //}
-        //protected override IQueryable<F22cmmEmpData> BeforeIQueryToPagedList(IQueryable<F22cmmEmpData> iquery, params KeyValueParams[] paras)
-        //{
-        //    iquery = base.BeforeIQueryToPagedList(iquery, paras);
-        //    var filters = paras.FirstOrDefault(s => s.key == "filter");
+            var result = base.BeforeIQueryToPagedList(iquery, paras);
 
-        //    var fno = Dou.Misc.HelperUtilities.GetFilterParaValue(paras, "Fno");
-        //    if (fno == null)//有選員編就不考慮部門
-        //    {
-        //        var dep = Dou.Misc.HelperUtilities.GetFilterParaValue(paras, "Dep");
-        //        if (dep != null)
-        //        {
-        //            var us = FtisHelperV2.DB.Helper.GetAllEmployee().Where(s => s.DCode == dep).Select(s => s.Fno);
-        //            iquery = iquery.Where(s => us.Contains(s.Fno));
-        //        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-        //    }
-        //    if (string.IsNullOrEmpty(paras.FirstOrDefault(s => s.key == "sort").value + ""))
-        //        iquery = iquery.OrderByDescending(s => s.UpdateTime);
-        //    return iquery;
-        //}
-        protected override IModelEntity<F22cmmProjectData> GetModelEntity()
+            var strFilterIsClosed = Dou.Misc.HelperUtilities.GetFilterParaValue(paras, "FilterIsClosed");
+            if (strFilterIsClosed != null)
+            {
+                string IsClosed = strFilterIsClosed;
+                result = result.Where(a => a.IsClosed == IsClosed);
+            }
+
+            return result.OrderByDescending(a => a.PrjYear);//.Take(3);
+        }
+
+        protected override void AddDBObject(IModelEntity<F22cmmProjectData> dbEntity, IEnumerable<F22cmmProjectData> objs)
         {
-            return new Dou.Models.DB.ModelEntity<F22cmmProjectData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            var f = objs.First();
+
+            int prjYear = 0;
+            if (int.TryParse(f.PrjID.Substring(0, 3), out prjYear))
+            {
+                f.PrjYear = prjYear;
+            }
+
+            base.AddDBObject(dbEntity, objs);
+        }
+
+        public override DataManagerOptions GetDataManagerOptions()
+        {
+            DataManagerOptions opts = base.GetDataManagerOptions();
+
+            //全部欄位排序
+            foreach (var field in opts.fields)
+                field.sortable = true;
+
+            opts.GetFiled("CkNo1").filter = false;
+            opts.GetFiled("PjNo").filter = false;
+            opts.GetFiled("IsClosed").filter = false;
+            opts.GetFiled("PjNameM").editable = false;
+            opts.GetFiled("PrjYear").visibleEdit = false;
+            //opts.ctrlFieldAlign = "left";
+
+            return opts;
+        }
+
+        public virtual ActionResult importMap(IEnumerable<F22cmmProjectDataMap> objs)
+        {
+            var f = objs.First();
+
+            //設定對應財務專案編號
+            string mapPrjID = "";
+            string pjNameM = "";
+
+            try
+            {
+                System.Data.Entity.DbContext dbContext = FtisHelperV2.DB.FtisModelContext.Create();
+
+
+                Dou.Models.DB.IModelEntity<F22cmmProjectData> projects = new Dou.Models.DB.ModelEntity<F22cmmProjectData>(dbContext);
+                //保留數字，比對現有的專案編號
+                //string strPjNoM = String.Concat(f.PjNoM.Where(char.IsNumber));
+                string strPjNoM = String.Concat(f.PjNoM.Where(char.IsLetterOrDigit));
+                var project = projects.Get(a => a.PrjID == strPjNoM);
+                if (project != null)
+                {
+                    mapPrjID = project.PrjID;
+                    pjNameM = project.PrjName;
+                }
+
+                Dou.Models.DB.IModelEntity<F22cmmProjectDataMap> models = new Dou.Models.DB.ModelEntity<F22cmmProjectDataMap>(dbContext);
+                var model = models.Get(a => a.PrjID == f.PrjID);
+
+                if (model == null)
+                {
+                    F22cmmProjectDataMap projectDataMap = new F22cmmProjectDataMap();
+
+                    projectDataMap.PrjID = f.PrjID;
+                    projectDataMap.PjNoM = f.PjNoM;
+                    projectDataMap.MapPrjID = mapPrjID;
+
+                    models.Add(projectDataMap);
+                }
+                else
+                {
+                    //沒對應，不調整專案對應資料表
+                    if (mapPrjID != "")
+                    {
+                        model.PjNoM = f.PjNoM;
+                        model.MapPrjID = mapPrjID;
+
+                        models.Update(model);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = "執行失敗：" + ex.Message + " " + ex.InnerException;
+                return Json(new { result = false, errorMessage = errorMessage });
+            }
+
+            if (mapPrjID == "")
+            {
+                string errorMessage = "此財務專案編號查無對應資料：" + f.PjNoM;
+                return Json(new { result = false, errorMessage = errorMessage });
+            }
+            else
+            {
+                return Json(new { result = true, pjNameM = pjNameM });
+            }
         }
     }
 }

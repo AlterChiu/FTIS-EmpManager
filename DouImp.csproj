@@ -416,14 +416,13 @@
     <Content Include="Views\Emp\Index.cshtml" />
     <Content Include="Views\EmpUser\Index.cshtml" />
     <Content Include="Views\Dep\Index.cshtml" />
+    <Content Include="Views\Pj\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Country\" />
     <Folder Include="Views\Data\" />
     <Folder Include="Views\MP\" />
-    <Folder Include="Views\Pjm\" />
-    <Folder Include="Views\Pj\" />
     <Folder Include="Views\Title\" />
   </ItemGroup>
   <ItemGroup>

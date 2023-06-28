@@ -16,9 +16,72 @@ namespace DouImp.Controllers
         {
             return View();
         }
-        protected override IModelEntity<F22cmmProjectDataMap> GetModelEntity()
+
+        protected override Dou.Models.DB.IModelEntity<F22cmmProjectDataMap> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<F22cmmProjectDataMap>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            System.Data.Entity.DbContext dbContext = FtisHelperV2.DB.FtisModelContext.Create();
+
+            return new Dou.Models.DB.ModelEntity<F22cmmProjectDataMap>(dbContext);
+        }
+
+        protected override void AddDBObject(IModelEntity<F22cmmProjectDataMap> dbEntity, IEnumerable<F22cmmProjectDataMap> objs)
+        {
+            if (!ValidateSave(objs.First(), "Add"))
+                return;
+
+            base.AddDBObject(dbEntity, objs);
+        }
+
+        protected override void UpdateDBObject(IModelEntity<F22cmmProjectDataMap> dbEntity, IEnumerable<F22cmmProjectDataMap> objs)
+        {
+            if (!ValidateSave(objs.First(), "Update"))
+                return;
+
+            base.UpdateDBObject(dbEntity, objs);
+        }
+
+        private bool ValidateSave(F22cmmProjectDataMap f, string type)
+        {
+            bool result = false;
+
+            string prjID = f.PrjID;
+            string mapPrjID = f.MapPrjID;
+
+            using (var db = new FtisHelperV2.DB.FtisModelContext())
+            {
+                IEnumerable<F22cmmProjectDataMap> tmp;
+
+                if (type == "Update")
+                {
+                    tmp = db.F22cmmProjectDataMap.Where(a => a.PrjID != prjID);
+                }
+                else
+                {
+                    tmp = db.F22cmmProjectDataMap;
+                }
+
+                if (tmp.Where(a => a.PrjID == prjID).Count() > 0)
+                {
+                    string errorMessage = string.Format("此專案編號已設定對應財務資料，不可重複：{0}", prjID);
+                    throw new Exception(errorMessage);
+                }
+
+                if (db.F22cmmProjectData.Where(a => a.PrjID == prjID).Count() == 0)
+                {
+                    string errorMessage = string.Format("專案編號尚未建立：{0}", prjID);
+                    throw new Exception(errorMessage);
+                }
+
+                if (db.F22cmmProjectData.Where(a => a.PrjID == mapPrjID).Count() == 0)
+                {
+                    string errorMessage = string.Format("專案編號尚未建立：{0}", mapPrjID);
+                    throw new Exception(errorMessage);
+                }
+            }
+
+            result = true;
+
+            return result;
         }
     }
 }
