@@ -67,7 +67,7 @@
                     data: { "objs": $.isArray(urow) ? urow : [urow]},
                     success: function (data) {
                         if (data.result) {
-                            $('.modal-content').find('div[data-field=PjNameM] input').val(data.pjNameM);
+                            $('.modal-content').find('div[data-field=PjNameM] textarea').val(data.pjNameM);
                             alert("對照表更新成功");
                         } else {
                             alert("對照表更新失敗：" + data.errorMessage);
