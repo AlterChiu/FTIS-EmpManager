@@ -67,7 +67,9 @@
                     data: { "objs": $.isArray(urow) ? urow : [urow]},
                     success: function (data) {
                         if (data.result) {
-                            $('.modal-content').find('div[data-field=PjNameM] textarea').val(data.pjNameM);
+                            //找不到物件,Model.EditType(input => textarea)
+                            //$('.modal-content').find('div[data-field=PjNameM] textarea').val(data.pjNameM);                            
+                            $('.modal-content').find('[data-fn=PjNameM]').val(data.pjNameM);
                             alert("對照表更新成功");
                         } else {
                             alert("對照表更新失敗：" + data.errorMessage);
