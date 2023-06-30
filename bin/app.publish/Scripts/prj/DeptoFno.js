@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    douoptions.tableOptions.pageList = [10, 25, 50, 100, 'All'];
     //Master編輯容器加入Detail
     douoptions.afterCreateEditDataForm = function ($container, row) {
         DeptoFno($container, "CkNo1", "CkNo1_Dep", row);
