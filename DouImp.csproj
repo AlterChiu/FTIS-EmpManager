@@ -199,6 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\EmpController.cs" />
+    <Compile Include="Controllers\Emp\EmpBasicController.cs" />
     <Compile Include="Controllers\Emp\EmpUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
@@ -420,6 +421,7 @@
     <Content Include="Views\EmpUser\Index.cshtml" />
     <Content Include="Views\Dep\Index.cshtml" />
     <Content Include="Views\Pj\Index.cshtml" />
+    <Content Include="Views\EmpBasic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
