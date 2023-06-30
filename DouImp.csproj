@@ -199,12 +199,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\EmpController.cs" />
-    <Compile Include="Controllers\EmpUserController.cs" />
+    <Compile Include="Controllers\Emp\EmpUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\LoggerController.cs" />
     <Compile Include="Controllers\DepController.cs" />
     <Compile Include="Controllers\MPController.cs" />
+    <Compile Include="Controllers\Path\EmpPathController.cs" />
+    <Compile Include="Controllers\Path\HrPathController.cs" />
+    <Compile Include="Controllers\Path\SysPathController.cs" />
     <Compile Include="Controllers\PjController.cs" />
     <Compile Include="Controllers\PjmController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -420,6 +423,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Hr\" />
+    <Folder Include="Docs\" />
     <Folder Include="Views\Country\" />
     <Folder Include="Views\Data\" />
     <Folder Include="Views\MP\" />
