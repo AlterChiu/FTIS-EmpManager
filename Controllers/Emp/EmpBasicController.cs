@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace DouImp.Controllers.Emp
 {
-    [Dou.Misc.Attr.MenuDef(Id = "EmpBasic", Name = "員工基本資料(頁簽版)", MenuPath = "個人資訊", Action = "Index", Index = 2, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+    [Dou.Misc.Attr.MenuDef(Id = "EmpBasic", Name = "員工基本資料(頁簽版)", MenuPath = "員工資料", Action = "Index", Index = 2, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     public class EmpBasicController : Dou.Controllers.AGenericModelController<F22cmmEmpData>
     {
         // GET: EmpBasic

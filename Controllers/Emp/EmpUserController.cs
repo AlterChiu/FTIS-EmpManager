@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace DouImp.Controllers
 {
-    [Dou.Misc.Attr.MenuDef(Id = "EmpUser", Name = "員工個人資料", MenuPath = "個人資訊", Action = "Index", Index = 1, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]   
+    [Dou.Misc.Attr.MenuDef(Id = "EmpUser", Name = "員工個人資料", MenuPath = "員工資料", Action = "Index", Index = 1, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]   
     public class EmpUserController : Dou.Controllers.APaginationModelController<F22cmmEmpData>
     {
         //string userid = Dou.Context.CurrentUser<User>().Id;
