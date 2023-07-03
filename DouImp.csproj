@@ -200,6 +200,8 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\EmpController.cs" />
     <Compile Include="Controllers\Emp\EmpBasicController.cs" />
+    <Compile Include="Controllers\Emp\EmpDa1Controller.cs" />
+    <Compile Include="Controllers\Emp\EmpDa4Controller.cs" />
     <Compile Include="Controllers\Emp\EmpUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
@@ -429,6 +431,8 @@
     <Folder Include="Docs\" />
     <Folder Include="Views\Country\" />
     <Folder Include="Views\Data\" />
+    <Folder Include="Views\EmpDa1\" />
+    <Folder Include="Views\EmpDa4\" />
     <Folder Include="Views\MP\" />
     <Folder Include="Views\Title\" />
   </ItemGroup>
