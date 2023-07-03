@@ -1,5 +1,6 @@
-﻿@using Dou.Misc.Extension
+﻿<script src="~/Scripts/prj/EmpBasic.js"></script>
+@using Dou.Misc.Extension
 @Html.MenuMap()
-@*@Html.Partial("EditStyleSelectPartial")*@
-@Html.DataManagerTable()
+@Html.DataManagerOptionsJavascript(null, "douoptions")
 
+<table id="_table"></table>
