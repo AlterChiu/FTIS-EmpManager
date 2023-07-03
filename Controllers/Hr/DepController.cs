@@ -10,8 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{
-    [Dou.Misc.Attr.MenuDef(Name = "部門", MenuPath = "員工基本資料", Action = "Index", Index = 72, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+{    
+    [Dou.Misc.Attr.MenuDef(Id = "Dep", Name = "部門", MenuPath = "人資專區", Action = "Index", Index = 3, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
 
     public class DepController : Dou.Controllers.AGenericModelController<F22cmmDep>
     {

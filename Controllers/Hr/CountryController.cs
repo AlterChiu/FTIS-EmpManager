@@ -9,20 +9,21 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{
-    [Dou.Misc.Attr.MenuDef(Name = "職等", MenuPath = "員工基本資料", Action = "Index", Index = 73, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
-    public class TitleController : Dou.Controllers.AGenericModelController<F22cmmTitle>
+{    
+    [Dou.Misc.Attr.MenuDef(Id = "Country", Name = "縣市", MenuPath = "人資專區", Action = "Index", Index = 5, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+
+    public class CountryController : Dou.Controllers.AGenericModelController<F22cmmCounty>
     {
         // GET: Country
         public ActionResult Index()
         {
             return View();
         }
-        protected override IEnumerable<F22cmmTitle> GetDataDBObject(IModelEntity<F22cmmTitle> dbEntity, params KeyValueParams[] paras)
+        protected override IEnumerable<F22cmmCounty> GetDataDBObject(IModelEntity<F22cmmCounty> dbEntity, params KeyValueParams[] paras)
         {
             var iquery = base.GetDataDBObject(dbEntity, paras);
             if (string.IsNullOrEmpty(paras.FirstOrDefault(s => s.key == "sort").value + ""))
-                iquery = iquery.OrderBy(s => s.TCode);
+                iquery = iquery.OrderBy(s => s.CID);
             return iquery;
         }
         public override DataManagerOptions GetDataManagerOptions()
@@ -31,9 +32,9 @@ namespace DouImp.Controllers
             options.editformWindowStyle = "modal";
             return options;
         }
-        protected override IModelEntity<F22cmmTitle> GetModelEntity()
+        protected override IModelEntity<F22cmmCounty> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<F22cmmTitle>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            return new Dou.Models.DB.ModelEntity<F22cmmCounty>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
         }
     }
 }

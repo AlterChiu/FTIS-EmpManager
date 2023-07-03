@@ -197,24 +197,24 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CountryController.cs" />
-    <Compile Include="Controllers\EmpController.cs" />
+    <Compile Include="Controllers\Hr\CountryController.cs" />
+    <Compile Include="Controllers\Hr\EmpController.cs" />
     <Compile Include="Controllers\Emp\EmpBasicController.cs" />
     <Compile Include="Controllers\Emp\EmpDa1Controller.cs" />
     <Compile Include="Controllers\Emp\EmpDa4Controller.cs" />
     <Compile Include="Controllers\Emp\EmpUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\Hr\GradeController.cs" />
     <Compile Include="Controllers\LoggerController.cs" />
-    <Compile Include="Controllers\DepController.cs" />
-    <Compile Include="Controllers\MPController.cs" />
+    <Compile Include="Controllers\Hr\DepController.cs" />
+    <Compile Include="Controllers\Hr\MPController.cs" />
     <Compile Include="Controllers\Path\EmpPathController.cs" />
     <Compile Include="Controllers\Path\HrPathController.cs" />
     <Compile Include="Controllers\Path\SysPathController.cs" />
-    <Compile Include="Controllers\PjController.cs" />
-    <Compile Include="Controllers\PjmController.cs" />
+    <Compile Include="Controllers\Hr\PjController.cs" />
+    <Compile Include="Controllers\Hr\PjmController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Controllers\TitleController.cs" />
+    <Compile Include="Controllers\Hr\TitleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -428,7 +428,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Hr\" />
     <Folder Include="Docs\" />
     <Folder Include="Views\Country\" />
     <Folder Include="Views\Data\" />

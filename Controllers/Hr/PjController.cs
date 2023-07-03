@@ -9,8 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{
-    [Dou.Misc.Attr.MenuDef(Name = "專案", MenuPath = "員工基本資料", Action = "Index", Index = 76, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+{    
+    [Dou.Misc.Attr.MenuDef(Id = "Pj", Name = "專案", MenuPath = "人資專區", Action = "Index", Index = 7, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     public class PjController : Dou.Controllers.APaginationModelController<F22cmmProjectData>
     {
         // GET: F22cmmProjectData

@@ -9,8 +9,9 @@ using Dou.Models.DB;
 using FtisHelperV2.DB.Model;
 
 namespace DouImp.Controllers
-{
-    [Dou.Misc.Attr.MenuDef(Name = "人力分布", MenuPath = "員工基本資料", Action = "Index", Index = 75, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+{    
+    [Dou.Misc.Attr.MenuDef(Id = "MP", Name = "人力分布", MenuPath = "人資專區", Action = "Index", Index = 6, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+
     public class MPController : Dou.Controllers.AGenericModelController<F22cmmMP>
     {
         // GET: Country

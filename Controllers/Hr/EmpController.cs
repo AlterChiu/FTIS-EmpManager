@@ -9,9 +9,8 @@ using FtisHelperV2.DB.Model;
 using Dou.Misc;
 
 namespace DouImp.Controllers
-{
-    [Dou.Misc.Attr.MenuDef(Name = "總表", MenuPath = "員工基本資料", Action = "Index", Index = 70, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
-
+{   
+    [Dou.Misc.Attr.MenuDef(Id = "EmpAll", Name = "員工資料總表", MenuPath = "人資專區", Action = "Index", Index = 1, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     public class EmpController : Dou.Controllers.APaginationModelController<F22cmmEmpData>
     {
         // GET: Disposals
