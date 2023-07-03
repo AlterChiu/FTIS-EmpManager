@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DouImp.Controllers.Path
 {
-    [Dou.Misc.Attr.MenuDef(Name = "人資專區", Index = 2, IsOnlyPath = true)]
+    [Dou.Misc.Attr.MenuDef(Id = "HrPath", Name = "人資專區", Index = 2, IsOnlyPath = true)]
     public class HrPathController : Controller
     {
         // GET: HrPath

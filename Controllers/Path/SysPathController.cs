@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DouImp.Controllers.Path
 {
-    [Dou.Misc.Attr.MenuDef(Name = "系統管理", Index = int.MaxValue, IsOnlyPath = true)]
+    [Dou.Misc.Attr.MenuDef(Id = "SysPath", Name = "系統管理", Index = int.MaxValue, IsOnlyPath = true)]
     public class SysPathController : Controller
     {        
         // GET: SysPath
