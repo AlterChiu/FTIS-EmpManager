@@ -17,6 +17,19 @@
 
     //    //取Detail1 dou option 並產編輯Dom
         $.getJSON($.AppConfigOptions.baseurl + 'EmpDa4/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            _opt.datas = row.Da4s;
+            
+            ////初始options預設值
+            douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+          
+            //實體Dou js                                
+            $_d1EditDataContainer.DouEditableTable(_opt);
+            
+
             ////d1options = _opt;
             ////var da4s = row.Da4s;
             //////初始options預設值
