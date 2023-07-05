@@ -5,6 +5,7 @@ using FtisHelperV2.DB.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,6 +18,11 @@ namespace DouImp.Controllers.Emp
         public ActionResult Index()
         {
             return View();
+        }
+
+        protected override void UpdateDBObject(IModelEntity<F22cmmEmpData> dbEntity, IEnumerable<F22cmmEmpData> objs)
+        {
+            base.UpdateDBObject(dbEntity, objs);
         }
 
         public override DataManagerOptions GetDataManagerOptions()
@@ -88,6 +94,8 @@ namespace DouImp.Controllers.Emp
             options.GetFiled("kpino3_Dep").visibleEdit = false;
             options.GetFiled("kpino4_Dep").visibleEdit = false;
             options.GetFiled("kpino5_Dep").visibleEdit = false;
+
+            options.GetFiled("Da1s").visibleEdit = false;
 
             options.singleDataEdit = true;
             options.singleDataEditCompletedReturnUrl = System.Web.HttpContext.Current.Request.UrlReferrer == null ?
