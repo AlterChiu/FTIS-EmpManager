@@ -10,10 +10,16 @@
     var oFno;   //主表員編
     var oRow;   //主表Row
 
+    douoptions.title = '員工資料';
+
     //Master(EmpData) 員工資料
     douoptions.afterCreateEditDataForm = function ($container, row) {
         oRow = row;
         oFno = row.Fno;
+
+        //保留確定按鈕
+        $container.find('.modal-footer button').hide();
+        $container.find('.modal-footer').find('.btn-primary').show();
 
         //因為F22cmmEmpData(主表)和F22cmmEmpDa1(子表)沒有建關聯，(Model：不可用set，否則找不到欄位)，因此不能用下方寫法
         //取Da1s dou option 並產編輯Dom
@@ -29,10 +35,23 @@
         ////    })
         ////});
     }
-    var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
 
+    douoptions.afterUpdateServerData = function (row, callback) {
+        //錨點
+        jspAlertMsg($("body"), { autoclose: 2000, content: '員工資料更新成功!!', classes: 'modal-sm' },
+            function () {
+                $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
+            });
+
+        ////callback();
+    }
+
+    $("#_table").DouEditableTable(douoptions); //初始dou table
+   
     //1-1 Detail(EmpDa1) 通訊方式
     $.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+        _opt.title = '通訊方式';
 
         //取消自動抓後端資料
         _opt.tableOptions.url = undefined;
@@ -43,13 +62,17 @@
         //初始options預設值
         douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
+        _opt.afterCreateEditDataForm = function ($container, row) {
+            //保留確定按鈕
+            $container.find('.modal-footer button').hide();
+            $container.find('.modal-footer').find('.btn-primary').show();
+        }
+
         _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
             //錨點
-            $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
-            //return false;
-            jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新完成!!', classes: 'modal-sm' },
+            jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },
                 function () {
-                    $('html,body').animate({ scrollTop: $container.find('a[data-toggle="tab"]').offset().top }, "show");
+                    $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
                 });
 
             ////callback();
@@ -61,6 +84,8 @@
 
     //1-n Detail(EmpDa4) 學歷
     $.getJSON($.AppConfigOptions.baseurl + 'EmpDa4/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+        _opt.title = '學歷';
 
         //取消自動抓後端資料
         _opt.tableOptions.url = undefined;

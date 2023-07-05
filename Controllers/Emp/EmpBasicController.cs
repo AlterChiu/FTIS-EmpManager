@@ -98,8 +98,8 @@ namespace DouImp.Controllers.Emp
             options.GetFiled("Da1s").visibleEdit = false;
 
             options.singleDataEdit = true;
-            options.singleDataEditCompletedReturnUrl = System.Web.HttpContext.Current.Request.UrlReferrer == null ?
-                Dou.Context.CurrentUser<User>().DefaultPage : System.Web.HttpContext.Current.Request.UrlReferrer.ToString();
+            //options.singleDataEditCompletedReturnUrl = System.Web.HttpContext.Current.Request.UrlReferrer == null ?
+            //    Dou.Context.CurrentUser<User>().DefaultPage : System.Web.HttpContext.Current.Request.UrlReferrer.ToString();
             //options.datas = new User[] { Dou.Context.CurrentUser<User>() };
             string userid = Dou.Context.CurrentUser<User>().Id;
             var dbe = GetModelEntity();
