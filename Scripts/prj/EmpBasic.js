@@ -17,19 +17,44 @@
         var $_oform = $container.find(".data-edit-form-group");
         $_d1EditDataContainer = $('<div>').appendTo($_oform.parent());
         $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());
+        
+        //因為F22cmmEmpData(主表)和F22cmmEmpDa1(子表)沒有建關聯，(Model：不可用set，否則找不到欄位)，因此不能用下方寫法
+        //取Da1s dou option 並產編輯Dom
+        ////$.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', function (_opt) { //取model option
+        ////    d1options = _opt;
+        ////    var Da1s = row.Da1s;
+        ////    //初始options預設值
+        ////    douHelper.setFieldsDefaultAttribute(_opt.fields);
+        ////    //產欄位Dom
+        ////    $.each(_opt.fields, function () {
+        ////        if (this.visibleEdit == false)
+        ////            return;
+        ////        douHelper.createDataEditContent($_d1EditDataContainer, this, Da1s, 3);
+        ////    })
+        ////});
 
         //取Da1s dou option 並產編輯Dom
         $.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', function (_opt) { //取model option
-            d1options = _opt;
-            var Da1s = row.Da1s;
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+            ////_opt.datas = [row.Da1s];
+            ////_opt.singleDataEdit = true;
+            ////_opt.editformWindowStyle = $.editformWindowStyle.showEditformOnly;
+
             //初始options預設值
-            douHelper.setFieldsDefaultAttribute(_opt.fields);
-            //產欄位Dom
-            $.each(_opt.fields, function () {
-                if (this.visibleEdit == false)
-                    return;
-                douHelper.createDataEditContent($_d1EditDataContainer, this, Da1s, 3);
-            })
+            douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
+                $.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', row, function (_opt) {
+                    $_d1Table.DouEditableTable('setOptions', _opt);
+                });
+
+                callback();
+            }
+
+            //實體Dou js                                
+            var $_d1Table = $_d1EditDataContainer.douTable(_opt);
         });
 
         //取Da4s dou option 並產編輯Dom
@@ -57,7 +82,19 @@
     
         //產tab                
         helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '聯絡方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
+
+        ////$container.find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        ////    //1-1 Tab切換需要儲存異動資料(執行確定功能)
+        ////    var actTab = $(e.target).html();
+        ////    if (actTab == "員工資料" || actTab == "聯絡方式") {
+        ////        $('.modal-footer').find('.btn-primary').trigger("click");
+        ////    }
+        ////});
     }
+
+    //////douoptions.afterUpdateServerData = function (row, callback) {
+    //////}
+
     //douoptions.afterEditDataConfirm = function (row, callback) {
     //    row.Da4s = row.Da4s || {};
     //    row.Da1s = row.Da1s || {};

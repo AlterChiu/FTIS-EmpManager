@@ -1,4 +1,6 @@
-﻿using Dou.Models.DB;
+﻿using Dou.Misc;
+using Dou.Models.DB;
+using DouImp.Models;
 using FtisHelperV2.DB.Model;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,46 @@ namespace DouImp.Controllers.Emp
         }
         protected override IModelEntity<F22cmmEmpDa1> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(new DouImp.Models.DouModelContextExt());
+            return new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+        }
+
+        protected override void AddDBObject(IModelEntity<F22cmmEmpDa1> dbEntity, IEnumerable<F22cmmEmpDa1> objs)
+        {
+            var f = objs.First();            
+            f.mno = f.Fno;
+            f.UpdateTime = DateTime.Now;
+            f.Updateman = Dou.Context.CurrentUserBase.Name;
+
+            base.AddDBObject(dbEntity, objs);
+            FtisHelperV2.DB.Helpe.Employee.ResetGetF22cmmEmpDa1();
+        }
+
+        protected override void UpdateDBObject(IModelEntity<F22cmmEmpDa1> dbEntity, IEnumerable<F22cmmEmpDa1> objs)
+        {
+            var f = objs.First();
+            f.mno = f.Fno;
+            f.UpdateTime = DateTime.Now;
+            f.Updateman = Dou.Context.CurrentUserBase.Name;
+
+            base.UpdateDBObject(dbEntity, objs);
+            FtisHelperV2.DB.Helpe.Employee.ResetGetF22cmmEmpDa1();
+        }
+
+        public override DataManagerOptions GetDataManagerOptions()
+        {
+            var opts = base.GetDataManagerOptions();
+
+            opts.GetFiled("mno").visibleEdit = false;            
+            opts.GetFiled("UpdateTime").visibleEdit = false;
+            opts.GetFiled("Updateman").visibleEdit = false;
+
+            opts.singleDataEdit = true;
+            string userid = Dou.Context.CurrentUser<User>().Id;
+            var dbe = GetModelEntity();
+            opts.datas = new F22cmmEmpDa1[] { dbe.FirstOrDefault(s => s.Fno == userid) };
+            opts.editformWindowStyle = "showEditformOnly";
+
+            return opts;
         }
     }
 }
