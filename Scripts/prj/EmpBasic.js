@@ -38,19 +38,23 @@
 
             //取消自動抓後端資料
             _opt.tableOptions.url = undefined;
-            ////_opt.datas = [row.Da1s];
-            ////_opt.singleDataEdit = true;
-            ////_opt.editformWindowStyle = $.editformWindowStyle.showEditformOnly;
+            _opt.datas = [row.Da1s];
+            _opt.singleDataEdit = true;
+            _opt.editformWindowStyle = $.editformWindowStyle.showEditformOnly;
 
             //初始options預設值
             douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
             _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
-                $.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', row, function (_opt) {
-                    $_d1Table.DouEditableTable('setOptions', _opt);
-                });
+                //錨點
+                $('html,body').animate({ scrollTop: $container.offset().top }, "show");
+                //return false;
+                jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新完成!!', classes: 'modal-sm' },
+                    function () {
+                        $('html,body').animate({ scrollTop: $container.find('a[data-toggle="tab"]').offset().top }, "show");
+                    });
 
-                callback();
+                ////callback();
             }
 
             //實體Dou js                                
@@ -81,12 +85,12 @@
         });
     
         //產tab                
-        helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '聯絡方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
+        helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
 
         ////$container.find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         ////    //1-1 Tab切換需要儲存異動資料(執行確定功能)
         ////    var actTab = $(e.target).html();
-        ////    if (actTab == "員工資料" || actTab == "聯絡方式") {
+        ////    if (actTab == "員工資料" || actTab == "通訊方式") {
         ////        $('.modal-footer').find('.btn-primary').trigger("click");
         ////    }
         ////});

@@ -30,7 +30,7 @@ namespace DouImp.Controllers.Emp
             f.Updateman = Dou.Context.CurrentUserBase.Name;
 
             base.AddDBObject(dbEntity, objs);
-            FtisHelperV2.DB.Helpe.Employee.ResetGetF22cmmEmpDa1();
+            FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
         }
 
         protected override void UpdateDBObject(IModelEntity<F22cmmEmpDa1> dbEntity, IEnumerable<F22cmmEmpDa1> objs)
@@ -41,7 +41,7 @@ namespace DouImp.Controllers.Emp
             f.Updateman = Dou.Context.CurrentUserBase.Name;
 
             base.UpdateDBObject(dbEntity, objs);
-            FtisHelperV2.DB.Helpe.Employee.ResetGetF22cmmEmpDa1();
+            FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
         }
 
         public override DataManagerOptions GetDataManagerOptions()
@@ -52,11 +52,11 @@ namespace DouImp.Controllers.Emp
             opts.GetFiled("UpdateTime").visibleEdit = false;
             opts.GetFiled("Updateman").visibleEdit = false;
 
-            opts.singleDataEdit = true;
-            string userid = Dou.Context.CurrentUser<User>().Id;
-            var dbe = GetModelEntity();
-            opts.datas = new F22cmmEmpDa1[] { dbe.FirstOrDefault(s => s.Fno == userid) };
-            opts.editformWindowStyle = "showEditformOnly";
+            ////opts.singleDataEdit = true;
+            ////string userid = Dou.Context.CurrentUser<User>().Id;
+            ////var dbe = GetModelEntity();
+            ////opts.datas = new F22cmmEmpDa1[] { dbe.FirstOrDefault(s => s.Fno == userid) };
+            ////opts.editformWindowStyle = "showEditformOnly";
 
             return opts;
         }
