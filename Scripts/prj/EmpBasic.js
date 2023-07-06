@@ -3,6 +3,9 @@
     var $_d1EditDataContainer = undefined;  //Da1s編輯的容器
     var $_d4EditDataContainer = undefined;  //Da4s編輯的容器
 
+    var $_d1Table = undefined;  //Da1s Dou實體
+    var $_d4Table = undefined;  //Da4s Dou實體
+
     douoptions.title = '員工資料';
 
     //Master(EmpData) 員工資料
@@ -50,7 +53,7 @@
             }
 
             //實體Dou js                                
-            var $_d1Table = $_d1EditDataContainer.douTable(_opt);
+            $_d1Table = $_d1EditDataContainer.douTable(_opt);
         });
 
         //1-n Detail(EmpDa4) 學歷
@@ -75,11 +78,21 @@
             };
 
             //實體Dou js                                
-            var $_d4Table = $_d4EditDataContainer.douTable(_opt);
+            $_d4Table = $_d4EditDataContainer.douTable(_opt);
         });
 
         //產tab
         helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
+
+        //$("#_tabs").parents().closest('div[class=tab-content]').siblings()
+        $_oform.parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            //1-1 Tab切換需要儲存異動資料(執行確定功能)
+            var actTab = $(e.target).html();
+            if (actTab == $_masterTable.instance.settings.title || actTab == $_d1Table.instance.settings.title) {
+                alert(actTab);
+                //$('.modal-footer').find('.btn-primary').trigger("click");
+            }
+        });
     }
 
     douoptions.afterUpdateServerData = function (row, callback) {
@@ -91,5 +104,5 @@
         ////callback();
     }
 
-    $("#_table").DouEditableTable(douoptions); //初始dou table
+    var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
 });
