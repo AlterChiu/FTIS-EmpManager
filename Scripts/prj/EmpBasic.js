@@ -6,6 +6,9 @@
     var $_d1Table = undefined;  //Da1s Dou實體
     var $_d4Table = undefined;  //Da4s Dou實體
 
+    var $_tabUINow = undefined;            //當下切換的tab;
+    var $_tabContainerNow = undefined;    //當下切換的tab容器;
+
     douoptions.title = '員工資料';
 
     //Master(EmpData) 員工資料
@@ -84,14 +87,68 @@
         //產tab
         helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
 
-        //$("#_tabs").parents().closest('div[class=tab-content]').siblings()
-        $_oform.parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        //預設的tab;        
+        $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
+        
+        $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             //1-1 Tab切換需要儲存異動資料(執行確定功能)
-            var actTab = $(e.target).html();
-            if (actTab == $_masterTable.instance.settings.title || actTab == $_d1Table.instance.settings.title) {
-                alert(actTab);
-                //$('.modal-footer').find('.btn-primary').trigger("click");
+            if ($_tabContainerNow != null) {
+                //驗證資料是否有異動
+                $_tabUINow.find('.field-content [data-fn]').each(function (index) {
+                    var fn = $(this).attr('data-fn');
+                    var datatype = douHelper.getField($_tabContainerNow.instance.settings.fields, fn).datatype;
+                    //"/Date(" + Date.parse(this.Wdate).toString() + ")/"
+
+                    //UI輸入值
+                    var value = "";
+                    if (datatype == 'datetime') {
+                        value = $(this).find('input').val();
+                    }
+                    else {
+                        value = $(this).val();
+                    }
+
+                    var conValue = $_tabContainerNow.instance.settings.datas[0][fn];
+                    if (conValue != null) {
+
+                        //要轉日期格式比對(value(時：分) conValue：秒)
+                        if (datatype == 'datetime') {
+                            value = 1;//'/Date(' + value.toString() + ')/';
+                            conValue = 1; '/Date(' + conValue.toString() + ')/';
+                        }
+
+                        if (value != conValue) {
+                            alert('資料有改過');
+                            return false;
+                        }
+                    }
+                    else {
+                        //alert('$_tabContainerNow無欄位資料' + fn);
+                        if (value != conValue) {
+                            alert('資料有改過');
+                            return false;
+                        }
+
+                        return false;
+                    }
+
+                });
             }
+
+            //當下切換的tab;
+            var actTab = $(e.target).html();
+            if (actTab == $_masterTable.instance.settings.title) {
+                $_tabContainerNow = $_masterTable;
+            }
+            else if (actTab == $_d1Table.instance.settings.title) {
+                $_tabContainerNow = $_d1Table;
+            }
+            else {
+                $_tabUINow = null;
+                $_tabContainerNow = null;
+                return false;
+            }                            
+            $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
         });
     }
 
@@ -105,4 +162,7 @@
     }
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
+
+    //預設的tab;
+    $_tabContainerNow = $_masterTable;
 });
