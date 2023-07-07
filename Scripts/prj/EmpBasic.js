@@ -9,6 +9,7 @@
     var $_tabUINow = undefined;            //當下切換的tab;
     var $_tabContainerNow = undefined;    //當下切換的tab容器;
 
+    var isChange = false;
     douoptions.title = '員工資料';
 
     //Master(EmpData) 員工資料
@@ -91,8 +92,7 @@
 
         //預設的tab;        
         $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
-
-        var isChange = false;
+        
         var jTabList = $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]');
         //before tab-click
         jTabList.on('show.bs.tab', function (e) {
@@ -122,16 +122,11 @@
                         //日期格式比對(ui(1982-12-17), con(1982-12-17T00:00:00) => 取小統一長度)
                         if (datatype == 'datetime' || datatype == 'date') {
                             var minLength = Math.min(uiValue.length, conValue.length);
-                            if (uiValue.indexOf("Date") >= 0) {
-                                uiValue = JsonDateStr2Datetime(uiValue).toJSON().substring(0, minLength);
-                            }
-                            else {
-                                uiValue = uiValue.substring(0, minLength)
-                            }
-                
+                            uiValue = uiValue.substring(0, minLength)
+
+                            //容器(時間可能是物件) "/Date(1224043200000)/"
                             conValue = JsonDateStr2Datetime(conValue);
-                            conValue.setMinutes(conValue.getMinutes() - conValue.getTimezoneOffset());
-                            conValue = conValue.toJSON().substring(0, minLength);
+                            conValue = conValue.DateFormat("yyyy-MM-dd HH:mm:ss").substring(0, minLength);
                         }
 
                         if (uiValue != conValue) {
@@ -179,6 +174,7 @@
                     }
                     else {
                         //取消
+                        $_tabUINow.find('.modal-footer').find('.btn-default').trigger("click");
                     }
                     $_tabContainerNow = nextTabContainer;
                     $_tabUINow = nextTabUI;
@@ -201,6 +197,13 @@
         $_masterTable.instance.updateDatas(row);
 
         //callback();
+    }
+
+    //還原已變更Details資料
+    douoptions.afterEditDataCancel = function (r, callback) {
+        if (isChange) {
+            $_masterTable.instance.updateDatas(r);
+        }
     }
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
