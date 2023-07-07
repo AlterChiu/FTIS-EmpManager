@@ -90,7 +90,7 @@
         //預設的tab;        
         $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
         
-        $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]').on('shown.bs.tab', function (e,a,c,b) {
             //1-1 Tab切換需要儲存異動資料(執行確定功能)
             if ($_tabContainerNow != null) {
                 //驗證資料是否有異動
@@ -121,7 +121,13 @@
 
                         if (uiValue != conValue) {
                             alert('資料有改過');
-                            return false;
+                            //jspConfirmYesNo($_tabContainerNow, { content: "資料有異動，是否儲存" }, function (confrim) {
+                            //    if (confrim) {
+                            //        //確定(儲存)
+                            //        $_tabUINow.find('.modal-footer').find('.btn-primary').trigger("click");
+                            //        return false;
+                            //    }
+                            //});
                         }
                     }
                     else {
@@ -151,6 +157,15 @@
                 return false;
             }                            
             $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
+
+            ////before
+            ////jspConfirmYesNo($_tabUINow, { content: "資料有異動，是否儲存" }, function (confrim) {
+            ////    if (confrim) {
+            ////        //確定(儲存)
+            ////        $_tabUINow.find('.modal-footer').find('.btn-primary').trigger("click");
+            ////        return false;
+            ////    }
+            ////});
         });
     }
 
@@ -160,7 +175,10 @@
                 $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
             });
 
-        ////callback();
+        //(no callback)更新dou的rowdata
+        $_masterTable.instance.updateDatas(row);
+
+        //callback();
     }
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
