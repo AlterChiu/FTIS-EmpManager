@@ -95,36 +95,38 @@
             if ($_tabContainerNow != null) {
                 //驗證資料是否有異動
                 $_tabUINow.find('.field-content [data-fn]').each(function (index) {
+                    //欄位名稱
                     var fn = $(this).attr('data-fn');
                     var datatype = douHelper.getField($_tabContainerNow.instance.settings.fields, fn).datatype;
-                    //"/Date(" + Date.parse(this.Wdate).toString() + ")/"
+                    
 
                     //UI輸入值
-                    var value = "";
-                    if (datatype == 'datetime') {
-                        value = $(this).find('input').val();
+                    var uiValue = "";
+                    if (datatype == 'datetime' || datatype == 'date') {
+                        uiValue = $(this).find('input').val();
                     }
                     else {
-                        value = $(this).val();
+                        uiValue = $(this).val();
                     }
 
                     var conValue = $_tabContainerNow.instance.settings.datas[0][fn];
                     if (conValue != null) {
 
-                        //要轉日期格式比對(value(時：分) conValue：秒)
-                        if (datatype == 'datetime') {
-                            value = 1;//'/Date(' + value.toString() + ')/';
-                            conValue = 1; '/Date(' + conValue.toString() + ')/';
+                        //日期格式比對(ui(1982-12-17), con(1982-12-17T00:00:00) => 取小統一長度)
+                        if (datatype == 'datetime' || datatype == 'date') {                            
+                            var minLength = Math.min(uiValue.length, conValue.length);
+                            uiValue = uiValue.substring(0, minLength)
+                            conValue = conValue.substring(0, minLength)
                         }
 
-                        if (value != conValue) {
+                        if (uiValue != conValue) {
                             alert('資料有改過');
                             return false;
                         }
                     }
                     else {
-                        //alert('$_tabContainerNow無欄位資料' + fn);
-                        if (value != conValue) {
+                        //(UI資料空值且DB為Null)或($_tabContainerNow無欄位資料)
+                        if (uiValue != conValue) {
                             alert('資料有改過');
                             return false;
                         }
@@ -135,7 +137,7 @@
                 });
             }
 
-            //當下切換的tab;
+            //當下切換的tab(1-1需要記錄)
             var actTab = $(e.target).html();
             if (actTab == $_masterTable.instance.settings.title) {
                 $_tabContainerNow = $_masterTable;
