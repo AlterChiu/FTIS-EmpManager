@@ -45,12 +45,14 @@
                 $container.find('.modal-footer').find('.btn-primary').show();
             }
 
-            _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
-                //錨點
+            _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {                
                 jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },
                     function () {
                         $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
                     });
+
+                //(no callback)更新dou的rowdata
+                $_d1Table.instance.updateDatas(row);
 
                 ////callback();
             }
@@ -89,8 +91,13 @@
 
         //預設的tab;        
         $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
-        
-        $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]').on('shown.bs.tab', function (e,a,c,b) {
+
+        var isChange = false;
+        var jTabList = $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]');
+        //before tab-click
+        jTabList.on('show.bs.tab', function (e) {
+            isChange = false;
+
             //1-1 Tab切換需要儲存異動資料(執行確定功能)
             if ($_tabContainerNow != null) {
                 //驗證資料是否有異動
@@ -98,7 +105,7 @@
                     //欄位名稱
                     var fn = $(this).attr('data-fn');
                     var datatype = douHelper.getField($_tabContainerNow.instance.settings.fields, fn).datatype;
-                    
+
 
                     //UI輸入值
                     var uiValue = "";
@@ -113,27 +120,23 @@
                     if (conValue != null) {
 
                         //日期格式比對(ui(1982-12-17), con(1982-12-17T00:00:00) => 取小統一長度)
-                        if (datatype == 'datetime' || datatype == 'date') {                            
-                            var minLength = Math.min(uiValue.length, conValue.length);
-                            uiValue = uiValue.substring(0, minLength)
-                            conValue = conValue.substring(0, minLength)
+                        if (datatype == 'datetime' || datatype == 'date') {
+                            //var minLength = Math.min(uiValue.length, conValue.length);
+                            //uiValue = uiValue.substring(0, minLength)
+                            //conValue = conValue.substring(0, minLength)
+
+                            uiValue = conValue = 1;
                         }
 
                         if (uiValue != conValue) {
-                            alert('資料有改過');
-                            //jspConfirmYesNo($_tabContainerNow, { content: "資料有異動，是否儲存" }, function (confrim) {
-                            //    if (confrim) {
-                            //        //確定(儲存)
-                            //        $_tabUINow.find('.modal-footer').find('.btn-primary').trigger("click");
-                            //        return false;
-                            //    }
-                            //});
+                            isChange = true;
+                            return false;
                         }
                     }
                     else {
                         //(UI資料空值且DB為Null)或($_tabContainerNow無欄位資料)
                         if (uiValue != conValue) {
-                            alert('資料有改過');
+                            isChange = true;
                             return false;
                         }
 
@@ -142,30 +145,43 @@
 
                 });
             }
+        });
+
+        //after tab-click
+        jTabList.on('shown.bs.tab', function (e) {            
+            var nextTabContainer = null;
+            var nextTabUI = null;
 
             //當下切換的tab(1-1需要記錄)
             var actTab = $(e.target).html();
             if (actTab == $_masterTable.instance.settings.title) {
-                $_tabContainerNow = $_masterTable;
+                nextTabContainer = $_masterTable;
+                nextTabUI = $('#_tabs').closest('div[class=tab-content]').find('.active');
             }
             else if (actTab == $_d1Table.instance.settings.title) {
-                $_tabContainerNow = $_d1Table;
+                nextTabContainer = $_d1Table;
+                nextTabUI = $('#_tabs').closest('div[class=tab-content]').find('.active');
+            }                         
+
+
+            //1-1判斷是否有異動更新
+            if (isChange && $_tabContainerNow != null) {
+                jspConfirmYesNo(nextTabUI, { content: "資料有異動，是否儲存" }, function (confrim) {
+                    if (confrim) {
+                        //確定
+                        $_tabUINow.find('.modal-footer').find('.btn-primary').trigger("click");
+                    }
+                    else {
+                        //取消
+                    }
+                    $_tabContainerNow = nextTabContainer;
+                    $_tabUINow = nextTabUI;
+                });
             }
             else {
-                $_tabUINow = null;
-                $_tabContainerNow = null;
-                return false;
-            }                            
-            $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
-
-            ////before
-            ////jspConfirmYesNo($_tabUINow, { content: "資料有異動，是否儲存" }, function (confrim) {
-            ////    if (confrim) {
-            ////        //確定(儲存)
-            ////        $_tabUINow.find('.modal-footer').find('.btn-primary').trigger("click");
-            ////        return false;
-            ////    }
-            ////});
+                $_tabContainerNow = nextTabContainer;
+                $_tabUINow = nextTabUI;
+            }
         });
     }
 
