@@ -2,6 +2,9 @@
 
     douoptions.title = '員工資料';
 
+    var $_nowTabUI = undefined;    //當下Tab 使用的UI;
+    var $_nowTable = undefined;    //當下Tab 使用的Dou實體;
+
     //Master(EmpData) 員工資料
     douoptions.afterCreateEditDataForm = function ($container, row) {
 
@@ -11,9 +14,6 @@
 
         var $_d1Table = undefined;  //Da1s Dou實體
         var $_d4Table = undefined;  //Da4s Dou實體
-
-        var $_nowTabUI = undefined;    //當下Tab 使用的UI;
-        var $_nowTable = undefined;    //當下Tab 使用的Dou實體;
 
         var isChange = false;
         var oRow = row;         //主表員編
