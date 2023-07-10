@@ -1,24 +1,21 @@
 ﻿$(document).ready(function () {
 
-    var $_d1EditDataContainer = undefined;  //Da1s編輯的容器
-    var $_d4EditDataContainer = undefined;  //Da4s編輯的容器
-
-    var $_d1Table = undefined;  //Da1s Dou實體
-    var $_d4Table = undefined;  //Da4s Dou實體
-
-    var $_nowTabUI = undefined;    //當下Tab 使用的UI;
-    var $_nowTable = undefined;    //當下Tab 使用的Dou實體;
-
-    var isChange = false;
     douoptions.title = '員工資料';
 
     //Master(EmpData) 員工資料
     douoptions.afterCreateEditDataForm = function ($container, row) {
 
         var $_oform = $("#_tabs");
-        $_d1EditDataContainer = $('<div>').appendTo($_oform.parent());
-        $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());
+        var $_d1EditDataContainer = $('<div>').appendTo($_oform.parent());      //Da1s編輯的容器
+        var $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());    //Da4s編輯的容器
 
+        var $_d1Table = undefined;  //Da1s Dou實體
+        var $_d4Table = undefined;  //Da4s Dou實體
+
+        var $_nowTabUI = undefined;    //當下Tab 使用的UI;
+        var $_nowTable = undefined;    //當下Tab 使用的Dou實體;
+
+        var isChange = false;
         var oRow = row;         //主表員編
         var oFno = row.Fno;     //主表Row
 
@@ -49,7 +46,7 @@
             _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {                
                 jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },
                     function () {
-                        $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
+                        $('html,body').animate({ scrollTop: $_d1Table.offset().top }, "show");
                     });
 
                 //(no callback)更新dou的rowdata
@@ -189,7 +186,7 @@
     douoptions.afterUpdateServerData = function (row, callback) {
         jspAlertMsg($("body"), { autoclose: 2000, content: '員工資料更新成功!!', classes: 'modal-sm' },
             function () {
-                $('html,body').animate({ scrollTop: $_d1EditDataContainer.offset().top }, "show");
+                $('html,body').animate({ scrollTop: $_masterTable.offset().top }, "show");
             });
 
         //(no callback)更新dou的rowdata
