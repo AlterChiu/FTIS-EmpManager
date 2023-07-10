@@ -169,8 +169,15 @@
                         $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
                     }
                     else {
-                        //取消
-                        $_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
+                        //取消(會重新dou到清單)
+                        //$_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
+
+                        $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
+                            //欄位名稱
+                            var fn = $(this).attr('data-fn');
+                            var conValue = $_nowTable.instance.settings.datas[0][fn];
+                            $(this).val(conValue);
+                        });
                     }
                     $_nowTable = nextTable;
                     $_nowTabUI = nextTabUI;
