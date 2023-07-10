@@ -149,17 +149,17 @@
 
         //after tab-click
         jTabList.on('shown.bs.tab', function (e) {            
-            var nextTabContainer = null;
+            var nextTable = null;
             var nextTabUI = null;
 
             //當下切換的tab(1-1需要記錄)
             var actTab = $(e.target).html();
             if (actTab == $_masterTable.instance.settings.title) {
-                nextTabContainer = $_masterTable;
+                nextTable = $_masterTable;
                 nextTabUI = $('#_tabs').closest('div[class=tab-content]').find('.active');
             }
             else if (actTab == $_d1Table.instance.settings.title) {
-                nextTabContainer = $_d1Table;
+                nextTable = $_d1Table;
                 nextTabUI = $('#_tabs').closest('div[class=tab-content]').find('.active');
             }                         
 
@@ -175,12 +175,12 @@
                         //取消
                         $_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
                     }
-                    $_nowTable = nextTabContainer;
+                    $_nowTable = nextTable;
                     $_nowTabUI = nextTabUI;
                 });
             }
             else {
-                $_nowTable = nextTabContainer;
+                $_nowTable = nextTable;
                 $_nowTabUI = nextTabUI;
             }
         });
