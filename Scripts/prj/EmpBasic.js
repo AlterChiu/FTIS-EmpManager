@@ -6,8 +6,8 @@
     var $_d1Table = undefined;  //Da1s Dou實體
     var $_d4Table = undefined;  //Da4s Dou實體
 
-    var $_tabUINow = undefined;            //當下切換的tab;
-    var $_tabContainerNow = undefined;    //當下切換的tab容器;
+    var $_nowTabUI = undefined;    //當下Tab 使用的UI;
+    var $_nowTable = undefined;    //當下Tab 使用的Dou實體;
 
     var isChange = false;
     douoptions.title = '員工資料';
@@ -91,20 +91,20 @@
         helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
 
         //預設的tab;        
-        $_tabUINow = $('#_tabs').closest('div[class=tab-content]').find('.active');
+        $_nowTabUI = $('#_tabs').closest('div[class=tab-content]').find('.active');
         
-        var jTabList = $('#_tabs').parents().closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]');
+        var jTabList = $('#_tabs').closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]');
         //before tab-click
         jTabList.on('show.bs.tab', function (e) {
             isChange = false;
 
             //1-1 Tab切換需要儲存異動資料(執行確定功能)
-            if ($_tabContainerNow != null) {
+            if ($_nowTable != null) {
                 //驗證資料是否有異動
-                $_tabUINow.find('.field-content [data-fn]').each(function (index) {
+                $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
                     //欄位名稱
                     var fn = $(this).attr('data-fn');
-                    var datatype = douHelper.getField($_tabContainerNow.instance.settings.fields, fn).datatype;
+                    var datatype = douHelper.getField($_nowTable.instance.settings.fields, fn).datatype;
 
 
                     //UI輸入值
@@ -116,7 +116,7 @@
                         uiValue = $(this).val();
                     }
 
-                    var conValue = $_tabContainerNow.instance.settings.datas[0][fn];
+                    var conValue = $_nowTable.instance.settings.datas[0][fn];
                     if (conValue != null) {
 
                         //日期格式比對(ui(1982-12-17), con(1982-12-17T00:00:00) => 取小統一長度)
@@ -135,13 +135,12 @@
                         }
                     }
                     else {
-                        //(UI資料空值且DB為Null)或($_tabContainerNow無欄位資料)
-                        if (uiValue != conValue) {
+                        //(UI資料空值且DB為Null)或()
+                        //UI有正常輸入值就是異動($_nowTable無欄位資料)
+                        if (uiValue != "") {
                             isChange = true;
                             return false;
                         }
-
-                        return false;
                     }
 
                 });
@@ -166,23 +165,23 @@
 
 
             //1-1判斷是否有異動更新
-            if (isChange && $_tabContainerNow != null) {
+            if (isChange && $_nowTable != null) {
                 jspConfirmYesNo(nextTabUI, { content: "資料有異動，是否儲存" }, function (confrim) {
                     if (confrim) {
                         //確定
-                        $_tabUINow.find('.modal-footer').find('.btn-primary').trigger("click");
+                        $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
                     }
                     else {
                         //取消
-                        $_tabUINow.find('.modal-footer').find('.btn-default').trigger("click");
+                        $_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
                     }
-                    $_tabContainerNow = nextTabContainer;
-                    $_tabUINow = nextTabUI;
+                    $_nowTable = nextTabContainer;
+                    $_nowTabUI = nextTabUI;
                 });
             }
             else {
-                $_tabContainerNow = nextTabContainer;
-                $_tabUINow = nextTabUI;
+                $_nowTable = nextTabContainer;
+                $_nowTabUI = nextTabUI;
             }
         });
     }
@@ -199,15 +198,15 @@
         //callback();
     }
 
-    //還原已變更Details資料
-    douoptions.afterEditDataCancel = function (r, callback) {
-        if (isChange) {
-            $_masterTable.instance.updateDatas(r);
-        }
-    }
+    //////還原已變更Details資料
+    ////douoptions.afterEditDataCancel = function (r, callback) {
+    ////    if (isChange) {
+    ////        $_masterTable.instance.updateDatas(r);
+    ////    }
+    ////}
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
 
     //預設的tab;
-    $_tabContainerNow = $_masterTable;
+    $_nowTable = $_masterTable;
 });
