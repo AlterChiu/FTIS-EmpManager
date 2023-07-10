@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using FtisHelperV2.DB.Model;
 using Dou.Misc;
+using System.Threading.Tasks;
+using Dou.Controllers;
 
 namespace DouImp.Controllers
 {   
@@ -17,6 +19,15 @@ namespace DouImp.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public override Task<ActionResult> GetData(params KeyValueParams[] paras)
+        {
+            //Mvc MaxJsonLength序列化長度問題
+            var datas = base.GetData(paras);
+            (datas.Result as JsonResult).MaxJsonLength = Int32.MaxValue;
+            
+            return datas;
         }
 
         public override DataManagerOptions GetDataManagerOptions()
