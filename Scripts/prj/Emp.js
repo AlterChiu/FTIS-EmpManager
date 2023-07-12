@@ -101,8 +101,10 @@
             isChange = false;
             isChangeText = [];
 
-            //1-1 Tab切換需要儲存異動資料(執行確定功能)
-            if ($_nowTable != null) {
+            //1-1 Tab切換需要儲存異動資料(trigger確定功能)
+            //判斷(上一個Tab非Null且有資料)
+            if ($_nowTable != null
+                && $_nowTable.instance.settings.datas.find(obj => obj.Fno == oFno) != null) {
                 //隱藏Bootstrap Table(多筆)找使用者挑選的Index
                 var n = -1;
                 $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
@@ -221,6 +223,7 @@
                         //隱藏Bootstrap Table(多筆)找Index表
                         var jBootstrapTable = $($('.bootstrap-table #_table').find('.dou-field-Fno')[n]).closest("tr");
 
+                        //還原資料異動
                         $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
                             //欄位名稱
                             var fn = $(this).attr('data-fn');                            
