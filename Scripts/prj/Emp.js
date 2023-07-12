@@ -103,7 +103,7 @@
 
             //1-1 Tab切換需要儲存異動資料(執行確定功能)
             if ($_nowTable != null) {
-                //驗證資料是否有異動
+                //隱藏Bootstrap Table(多筆)找使用者挑選的Index
                 var n = -1;
                 $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
                     if ($(this).text() == oFno) {
@@ -112,16 +112,16 @@
                     }
                 });
 
-                //隱藏Table(多筆)找出使用者挑選的Fno
+                //隱藏Bootstrap Table(多筆)找Index表
                 var jBootstrapTable = $($('.bootstrap-table #_table').find('.dou-field-Fno')[n]).closest("tr");
 
+                //驗證資料異動
                 $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
                     //欄位名稱
                     var fn = $(this).attr('data-fn');
                     var datatype = douHelper.getField($_nowTable.instance.settings.fields, fn).datatype;
 
-
-                    //UI輸入值
+                    //輸入值(UI)
                     var uiValue = "";
                     if (datatype == 'datetime' || datatype == 'date') {
                         uiValue = $(this).find('input').val();
@@ -129,10 +129,11 @@
                     else {
                         uiValue = $(this).val();
                     }
-                                        
+
+                    //輸入值(Bootstrap Table + dou實體)
                     var conValue = '';
                     if (datatype == 'textlist') {
-                        //UI(人名)，bootstrapTable(人名)，X容器(員編)
+                        //UI(人名)，Bootstrap Table(人名)，X容器(員工編號)
                         conValue = jBootstrapTable.find('.dou-field-' + fn).text();
                     }
                     else {
@@ -160,7 +161,7 @@
                         }
                     }
                     else {
-                        //有正常輸入值就是異動 => UI資料空值且DB為Null($_nowTable無欄位資料)                        
+                        //(異動說明)DB為Null($_nowTable無欄位資料),但UI有值
                         if (uiValue != "") {
                             isChange = true;
                             isChangeText.push(douHelper.getField($_nowTable.instance.settings.fields, fn).title);
@@ -187,29 +188,28 @@
                 nextTable = $_d1Table;
                 nextTabUI = $('#_tabs').closest('div[class=tab-content]').find('.show');
             }
-
-
-            //1-1判斷是否有異動更新
+            
             if (isChange && $_nowTable != null) {
+                //異動訊息
                 var content = '資料異動(' + $_nowTable.instance.settings.title + ')項目：' + '</br>'
                     + isChangeText.join(', ') + '</br>'
                     + "是否儲存";
 
-                var isDoing = false;//是否已執行取消(重複執行，不知原因)
+                var isDoing = false;//confirm挑選取消(重複執行，不知原因)
                 jspConfirmYesNo(nextTabUI, { content: content }, function (confrim) {
                     if (confrim) {
                         //確定
                         $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
                     }
                     else {
-
+                        //取消，還原上一個Tab編輯資料
                         if (isDoing)
                             return;
 
-                        //取消(會重新dou到清單)
+                        //取消會轉回清單，不可用
                         //$_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
 
-                        //驗證資料是否有異動
+                        //隱藏Bootstrap Table(多筆)找使用者挑選的Index
                         var n = -1;
                         $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
                             if ($(this).text() == oFno) {
@@ -218,15 +218,16 @@
                             }
                         });
 
-                        //隱藏Table(多筆)找出使用者挑選的Fno
+                        //隱藏Bootstrap Table(多筆)找Index表
                         var jBootstrapTable = $($('.bootstrap-table #_table').find('.dou-field-Fno')[n]).closest("tr");
 
                         $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
                             //欄位名稱
                             var fn = $(this).attr('data-fn');                            
                             var datatype = douHelper.getField($_nowTable.instance.settings.fields, fn).datatype;
-                            var conValue = '';
 
+                            //輸入值(Bootstrap Table + dou實體)
+                            var conValue = '';
                             if (datatype == 'textlist') {
                                 //UI(人名)，bootstrapTable(人名)，X容器(員編)
                                 conValue = jBootstrapTable.find('.dou-field-' + fn).text();
@@ -250,13 +251,6 @@
                             else {
                                 $(this).val(conValue);
                             }
-
-                            ////if (conValue == null) {
-                            ////    $(this).val('');
-                            ////}
-                            ////else {
-                            ////    $(this).val(conValue);
-                            ////}
                         });
                     }
                     $_nowTable = nextTable;
