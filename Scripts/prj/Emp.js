@@ -97,7 +97,8 @@
         //預設的tab;        
         $_nowTabUI = $('#_tabs').closest('div[class=tab-content]').find('.show');
 
-        var jTabList = $('#_tabs').closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]');
+        //點選的Tab
+        var jTabToggle = $('#_tabs').closest('div[class=tab-content]').siblings().find('a[data-toggle="tab"]');
 
         if (isAdd) {
             //tablist隱藏
@@ -105,7 +106,7 @@
         }
 
         //before tab-click
-        jTabList.on('show.bs.tab', function (e) {
+        jTabToggle.on('show.bs.tab', function (e) {
             isChange = false;
             isChangeText = [];
 
@@ -188,7 +189,7 @@
         });
 
         //after tab-click
-        jTabList.on('shown.bs.tab', function (e) {
+        jTabToggle.on('shown.bs.tab', function (e) {
             var nextTable = null;
             var nextTabUI = null;
 
