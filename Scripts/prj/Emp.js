@@ -195,12 +195,17 @@
                     + isChangeText.join(', ') + '</br>'
                     + "是否儲存";
 
+                var isDoing = false;//是否已執行取消(重複執行，不知原因)
                 jspConfirmYesNo(nextTabUI, { content: content }, function (confrim) {
                     if (confrim) {
                         //確定
                         $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
                     }
                     else {
+
+                        if (isDoing)
+                            return;
+
                         //取消(會重新dou到清單)
                         //$_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
 
@@ -256,6 +261,8 @@
                     }
                     $_nowTable = nextTable;
                     $_nowTabUI = nextTabUI;
+
+                    isDoing = true;
                 });
             }
             else {
