@@ -307,6 +307,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\prj\DeptoFno.js" />
+    <Content Include="Scripts\prj\Emp.js" />
     <Content Include="Scripts\prj\EmpBasic.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />

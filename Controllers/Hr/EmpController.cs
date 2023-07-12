@@ -9,6 +9,9 @@ using FtisHelperV2.DB.Model;
 using Dou.Misc;
 using System.Threading.Tasks;
 using Dou.Controllers;
+using System.Data.Entity;
+using System.Collections;
+using System.Threading;
 
 namespace DouImp.Controllers
 {   
@@ -21,13 +24,30 @@ namespace DouImp.Controllers
             return View();
         }
 
-        public override Task<ActionResult> GetData(params KeyValueParams[] paras)
+        ////public override Task<ActionResult> GetData(params KeyValueParams[] paras)
+        ////{
+        ////    //Mvc MaxJsonLength序列化長度問題
+        ////    var datas = base.GetData(paras);
+        ////    (datas.Result as JsonResult).MaxJsonLength = Int32.MaxValue;
+
+        ////    return datas;
+        ////}
+
+        protected override IQueryable<F22cmmEmpData> BeforeIQueryToPagedList(IQueryable<F22cmmEmpData> iquery, params KeyValueParams[] paras)
         {
-            //Mvc MaxJsonLength序列化長度問題
-            var datas = base.GetData(paras);
-            (datas.Result as JsonResult).MaxJsonLength = Int32.MaxValue;
-            
-            return datas;
+            ////////Test Left Join
+            ////Dou.Models.DB.IModelEntity<F22cmmEmpData> data = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            ////Dou.Models.DB.IModelEntity<F22cmmEmpDa1> da1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            //////( e1 ) . GroupJoin( e2 , x1 => k1 , x2 => k2 , ( x1 , g ) => v )
+            ////var z = data.GetAll().GroupJoin(da1s.GetAll(), a => a.Fno, b => b.Fno, (a, b) => new { a, b });
+
+            ////foreach (var item in z)
+            ////{
+            ////    string ss = "Abc";
+            ////}
+
+            ////return iquery;
+            return base.BeforeIQueryToPagedList(iquery, paras);
         }
 
         public override DataManagerOptions GetDataManagerOptions()
@@ -43,6 +63,12 @@ namespace DouImp.Controllers
             options.GetFiled("UpdateTime").visibleEdit = false;
             options.GetFiled("UpdateMan").visibleEdit = false;
             options.GetFiled("SeatNo").visibleEdit = false;
+
+            options.GetFiled("Da1s").visibleEdit = false;
+
+            //共用頁面
+            options.editformWindowStyle = "showEditformOnly";
+
             return options;
         }
 

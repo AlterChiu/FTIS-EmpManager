@@ -90,6 +90,8 @@ namespace DouImp.Controllers
             options.GetFiled("kpino4_Dep").visibleEdit = false;
             options.GetFiled("kpino5_Dep").visibleEdit = false;
 
+            options.GetFiled("Da1s").visibleEdit = false;
+
             options.singleDataEdit = true;
             options.singleDataEditCompletedReturnUrl = System.Web.HttpContext.Current.Request.UrlReferrer == null ?
                 Dou.Context.CurrentUser<User>().DefaultPage : System.Web.HttpContext.Current.Request.UrlReferrer.ToString();
