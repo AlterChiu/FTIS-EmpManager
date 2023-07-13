@@ -5,65 +5,37 @@
     var $_nowTabUI = undefined;    //當下Tab 使用的UI;
     var $_nowTable = undefined;    //當下Tab 使用的Dou實體;
 
+    var $_d1EditDataContainer = undefined;      //Da1s編輯的容器
+    var $_d4EditDataContainer = undefined;    //Da4s編輯的容器
+
+    var $_d1Table = undefined;  //Da1s Dou實體
+    var $_d4Table = undefined;  //Da4s Dou實體
+
+    var oRow = undefined;     //主表員編
+    var oFno = undefined;     //主表Row
+
     //Master(EmpData) 員工資料
     douoptions.afterCreateEditDataForm = function ($container, row) {
 
         var isAdd = JSON.stringify(row) == '{}';
 
         var $_oform = $("#_tabs");
-        var $_d1EditDataContainer = $('<div>').appendTo($_oform.parent());      //Da1s編輯的容器
-        var $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());    //Da4s編輯的容器
-
-        var $_d1Table = undefined;  //Da1s Dou實體
-        var $_d4Table = undefined;  //Da4s Dou實體
+        $_d1EditDataContainer = $('<div>').appendTo($_oform.parent());
+        $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());
 
         var isChange = false;
         var isChangeText = [];
-        var oRow = row;         //主表員編
-        var oFno = row.Fno;     //主表Row
 
         //保留確定按鈕
         $container.find('.modal-footer button').hide();
         $container.find('.modal-footer').find('.btn-primary').show();
 
         //1-1 Detail(EmpDa1) 通訊方式
-        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', function (_opt) { //取model option
-
-            _opt.title = '通訊方式';
-
-            //取消自動抓後端資料
-            _opt.tableOptions.url = undefined;
-
-            oRow.Da1s = oRow.Da1s ? [oRow.Da1s] : [{}];
-            _opt.datas = oRow.Da1s;
-
-            _opt.singleDataEdit = true;
-            _opt.editformWindowStyle = $.editformWindowStyle.showEditformOnly;
-
-            //////初始options預設值
-            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
-
-            _opt.afterCreateEditDataForm = function ($container, row) {
-                //保留確定按鈕
-                $container.find('.modal-footer button').hide();
-                $container.find('.modal-footer').find('.btn-primary').show();
-            }
-
-            _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
-                jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },
-                    function () {
-                        $('html,body').animate({ scrollTop: $_d1Table.offset().top }, "show");
-                    });
-
-                //(no callback)更新dou的rowdata
-                $_d1Table.instance.updateDatas(row);
-
-                ////callback();
-            }
-
-            //實體Dou js                                
-            $_d1Table = $_d1EditDataContainer.douTable(_opt);
-        });
+        if (!isAdd) {
+            oRow = row;
+            oFno = row.Fno;
+            SetDouEmpDa1(oRow.Da1s);
+        }
 
         //1-n Detail(EmpDa4) 學歷
         $.getJSON($.AppConfigOptions.baseurl + 'EmpDa4/GetDataManagerOptionsJson', function (_opt) { //取model option
@@ -72,8 +44,11 @@
 
             //取消自動抓後端資料
             _opt.tableOptions.url = undefined;
-            oRow.Da4s = oRow.Da4s || [];
-            _opt.datas = oRow.Da4s;
+
+            if (!isAdd) {
+                oRow.Da4s = oRow.Da4s || [];
+                _opt.datas = oRow.Da4s;
+            }
 
             //初始options預設值
             douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
@@ -310,10 +285,59 @@
                 $('#_tabs').closest('div[class=tab-content]').siblings().show();
                 $('html,body').animate({ scrollTop: $_masterTable.offset().top }, "show");
             });
+
+        oRow = row;
+        oFno = row.Fno;
+
+        var datas = {};
+        datas.Fno = row.Fno;
+
+        SetDouEmpDa1(datas);
     }
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
 
     //預設的tab;
     $_nowTable = $_masterTable;
+
+
+    function SetDouEmpDa1(datas) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa1/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '通訊方式';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? [datas] : [{}];
+            _opt.datas = datas;            
+
+            _opt.singleDataEdit = true;
+            _opt.editformWindowStyle = $.editformWindowStyle.showEditformOnly;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //保留確定按鈕
+                $container.find('.modal-footer button').hide();
+                $container.find('.modal-footer').find('.btn-primary').show();
+            }
+
+            _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
+                jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },
+                    function () {
+                        $('html,body').animate({ scrollTop: $_d1Table.offset().top }, "show");
+                    });
+
+                //(no callback)更新dou的rowdata
+                $_d1Table.instance.updateDatas(row);
+
+                ////callback();
+            }
+
+            //實體Dou js                                
+            $_d1Table = $_d1EditDataContainer.douTable(_opt);
+        });
+    }
 });
