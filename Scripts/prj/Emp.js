@@ -49,6 +49,24 @@
                 $container.find('.modal-footer').find('.btn-primary').show();
             }
 
+            //主表編輯才顯示，觸發皆為update(不存在add)
+            _opt.updateServerData =
+                function (row, callback) {
+                    if (oRow.Da1s == (0)) {
+                        //新增(row:{0} [Fno:xx, mno:xxx,....])
+                        var myObj = {};
+                        for (var key in row) {
+                            myObj[key] = row[key];
+                        }
+
+                        transactionDouClientDataToServer(myObj, $.AppConfigOptions.baseurl + 'EmpDa1/AddDB2', callback);
+                    }
+                    else {
+                        //修改
+                        transactionDouClientDataToServer(row, $.AppConfigOptions.baseurl + 'EmpDa1/UpdateDB2', callback);
+                    }
+                };
+
             _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
                 jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },
                     function () {

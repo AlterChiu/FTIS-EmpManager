@@ -1,10 +1,12 @@
 ﻿using Dou.Misc;
 using Dou.Models.DB;
 using DouImp.Models;
+using FtisHelperV2.DB;
 using FtisHelperV2.DB.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 
@@ -59,6 +61,58 @@ namespace DouImp.Controllers.Emp
             ////opts.editformWindowStyle = "showEditformOnly";
 
             return opts;
+        }
+
+        public virtual ActionResult AddDB2(List<F22cmmEmpDa1> objs)
+        {
+            bool success = false;
+            string desc = "";
+
+            try
+            {
+                var f = objs.First();
+                f.mno = f.Fno;
+                f.UpdateTime = DateTime.Now;
+                f.Updateman = Dou.Context.CurrentUserBase.Name;
+
+                base.AddDBObject(GetModelEntity(), objs);
+                FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
+
+                success = true;
+                desc = "新增成功";
+            }
+            catch (Exception ex)
+            {
+                desc = "新增失敗：" + ex.Message + " " + ex.InnerException;
+            }
+
+            return Json(new { Success = success, Desc = desc, data = objs }, JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult UpdateDB2(List<F22cmmEmpDa1> objs)
+        {
+            bool success = false;
+            string desc = "";
+
+            try
+            {
+                var f = objs.First();
+                f.mno = f.Fno;
+                f.UpdateTime = DateTime.Now;
+                f.Updateman = Dou.Context.CurrentUserBase.Name;
+
+                base.UpdateDBObject(GetModelEntity(), objs);
+                FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
+
+                success = true;
+                desc = "修改成功";
+            }
+            catch (Exception ex)
+            {
+                desc = "修改失敗：" + ex.Message + " " + ex.InnerException;
+            }
+
+            return Json(new { Success = success, Desc = desc, data = objs }, JsonRequestBehavior.AllowGet);
         }
     }
 }
