@@ -52,18 +52,29 @@
             //主表編輯才顯示，觸發皆為update(不存在add)
             _opt.updateServerData =
                 function (row, callback) {
-                    if (oRow.Da1s == (0)) {
-                        //新增(row:{0} [Fno:xx, mno:xxx,....])
-                        var myObj = {};
-                        for (var key in row) {
-                            myObj[key] = row[key];
-                        }
+                    //若是先新增主表後，再新增通訊方式，資料提供為(row:{0} [Fno:xx, mno:xxx,....])
+                    var myRow = {};
+                    for (var key in row) {
+                        myRow[key] = row[key];
+                    }
 
-                        transactionDouClientDataToServer(myObj, $.AppConfigOptions.baseurl + 'EmpDa1/AddDB2', callback);
+                    if (oRow.Da1s == (0)) {
+                        //新增                        
+                        transactionDouClientDataToServer(myRow, $.AppConfigOptions.baseurl + 'EmpDa1/AddDB2', function (result) {
+                            oRow.Da1s = myRow;
+                            $_d1Table.instance.settings.datas[0] = myRow;                            
+                            oFno = myRow.Fno;
+                            { callback(result) }
+                        });
                     }
                     else {
                         //修改
-                        transactionDouClientDataToServer(row, $.AppConfigOptions.baseurl + 'EmpDa1/UpdateDB2', callback);
+                        transactionDouClientDataToServer(myRow, $.AppConfigOptions.baseurl + 'EmpDa1/UpdateDB2', function (result) {
+                            oRow.Da1s = myRow;
+                            $_d1Table.instance.settings.datas[0] = myRow;
+                            oFno = myRow.Fno;
+                            { callback(result) }
+                        });
                     }
                 };
 
