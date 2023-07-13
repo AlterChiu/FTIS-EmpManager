@@ -34,49 +34,20 @@
             //取消自動抓後端資料
             _opt.tableOptions.url = undefined;
 
-            oRow.Da1s = oRow.Da1s || [];
-            _opt.datas = [oRow.Da1s];
+            oRow.Da1s = oRow.Da1s ? [oRow.Da1s] : [{}];
+            _opt.datas = oRow.Da1s;
 
             _opt.singleDataEdit = true;
             _opt.editformWindowStyle = $.editformWindowStyle.showEditformOnly;
 
-            //初始options預設值
-            douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
             _opt.afterCreateEditDataForm = function ($container, row) {
                 //保留確定按鈕
                 $container.find('.modal-footer button').hide();
                 $container.find('.modal-footer').find('.btn-primary').show();
             }
-
-            //主表編輯才顯示，觸發皆為update(不存在add)
-            _opt.updateServerData =
-                function (row, callback) {
-                    //若是先新增主表後，再新增通訊方式，資料提供為(row:{0} [Fno:xx, mno:xxx,....])
-                    var myRow = {};
-                    for (var key in row) {
-                        myRow[key] = row[key];
-                    }
-
-                    if (oRow.Da1s == (0)) {
-                        //新增                        
-                        transactionDouClientDataToServer(myRow, $.AppConfigOptions.baseurl + 'EmpDa1/AddDB2', function (result) {
-                            oRow.Da1s = myRow;
-                            $_d1Table.instance.settings.datas[0] = myRow;                            
-                            oFno = myRow.Fno;
-                            { callback(result) }
-                        });
-                    }
-                    else {
-                        //修改
-                        transactionDouClientDataToServer(myRow, $.AppConfigOptions.baseurl + 'EmpDa1/UpdateDB2', function (result) {
-                            oRow.Da1s = myRow;
-                            $_d1Table.instance.settings.datas[0] = myRow;
-                            oFno = myRow.Fno;
-                            { callback(result) }
-                        });
-                    }
-                };
 
             _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
                 jspAlertMsg($("body"), { autoclose: 2000, content: '通訊方式更新成功!!', classes: 'modal-sm' },

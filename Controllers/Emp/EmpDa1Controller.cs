@@ -24,26 +24,34 @@ namespace DouImp.Controllers.Emp
             return new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
         }
 
-        protected override void AddDBObject(IModelEntity<F22cmmEmpDa1> dbEntity, IEnumerable<F22cmmEmpDa1> objs)
-        {
-            var f = objs.First();            
-            f.mno = f.Fno;
-            f.UpdateTime = DateTime.Now;
-            f.Updateman = Dou.Context.CurrentUserBase.Name;
+        ////protected override void AddDBObject(IModelEntity<F22cmmEmpDa1> dbEntity, IEnumerable<F22cmmEmpDa1> objs)
+        ////{
+        ////    var f = objs.First();            
+        ////    f.mno = f.Fno;
+        ////    f.UpdateTime = DateTime.Now;
+        ////    f.Updateman = Dou.Context.CurrentUserBase.Name;
 
-            base.AddDBObject(dbEntity, objs);
-            FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
-        }
+        ////    base.AddDBObject(dbEntity, objs);
+        ////    FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
+        ////}
 
         protected override void UpdateDBObject(IModelEntity<F22cmmEmpDa1> dbEntity, IEnumerable<F22cmmEmpDa1> objs)
         {
             var f = objs.First();
-            f.mno = f.Fno;
-            f.UpdateTime = DateTime.Now;
-            f.Updateman = Dou.Context.CurrentUserBase.Name;
 
-            base.UpdateDBObject(dbEntity, objs);
-            FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
+            if (dbEntity.GetAll().Where(a => a.Fno == f.Fno).Count() == 0)
+            {
+                AddDBObject(dbEntity, objs);
+            }
+            else
+            {
+                f.mno = f.Fno;
+                f.UpdateTime = DateTime.Now;
+                f.Updateman = Dou.Context.CurrentUserBase.Name;
+
+                base.UpdateDBObject(dbEntity, objs);
+                FtisHelperV2.DB.Helpe.Employee.ResetGetAllF22cmmEmpDa1();
+            }
         }
 
         public override DataManagerOptions GetDataManagerOptions()
