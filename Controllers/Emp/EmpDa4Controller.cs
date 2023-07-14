@@ -32,7 +32,12 @@ namespace DouImp.Controllers.Emp
             int max = 100;
             byte sno = 1;
             for (; sno < max; sno++)
-                if (!snos.Contains(sno)) break;
+                if (!snos.Contains(sno))
+                {
+                    sno++;
+                    break;
+                }
+
 
             f.mno = f.Fno;
             f.sno = sno;

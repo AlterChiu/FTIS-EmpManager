@@ -29,53 +29,30 @@
         //保留確定按鈕
         $container.find('.modal-footer button').hide();
         $container.find('.modal-footer').find('.btn-primary').show();
-        
+
         if (!isAdd) {
             oRow = row;
             oFno = row.Fno;
 
+            //主表新增集合沒資料(預設集合)
+            var iniObj = { Fno: row.Fno };
+
             //1-1 Detail(EmpDa1) 通訊方式            
             if (oRow.Da1s == undefined) {
-                //主表新增但無資料
-                var da1s = { Fno: row.Fno };
-                oRow.Da1s = da1s;
+                oRow.Da1s = iniObj;
             }
-
             SetDouEmpDa1(oRow.Da1s);
+
+            //1-n Detail(EmpDa4) 學歷
+            ////if (oRow.Da4s == undefined) {
+            ////    oRow.Da4s = iniObj;
+            ////}
+            SetDouEmpDa4(oRow.Da4s);
         }
 
-        //1-n Detail(EmpDa4) 學歷
-        ////$.getJSON($.AppConfigOptions.baseurl + 'EmpDa4/GetDataManagerOptionsJson', function (_opt) { //取model option
-
-        ////    _opt.title = '學歷';
-
-        ////    //取消自動抓後端資料
-        ////    _opt.tableOptions.url = undefined;
-
-        ////    if (!isAdd) {
-        ////        oRow.Da4s = oRow.Da4s || [];
-        ////        _opt.datas = oRow.Da4s;
-        ////    }
-
-        ////    //初始options預設值
-        ////    douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
-
-        ////    _opt.beforeCreateEditDataForm = function (row, callback) {
-        ////        var isAdd = JSON.stringify(row) == '{}';
-        ////        if (isAdd) {
-        ////            row.Fno = oFno;
-        ////        }
-
-        ////        callback();
-        ////    };
-
-        ////    //實體Dou js
-        ////    $_d4Table = $_d4EditDataContainer.douTable(_opt);
-        ////});
-
         //產tab
-        helper.bootstrap.genBootstrapTabpanel($_d1EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式'], [$_oform, $_d1EditDataContainer]);
-        ////helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
+        ////helper.bootstrap.genBootstrapTabpanel($_d1EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式'], [$_oform, $_d1EditDataContainer]);
+        helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
 
         //預設的tab;        
         $_nowTabUI = $('#_tabs').closest('div[class=tab-content]').find('.show');
@@ -279,48 +256,10 @@
         //callback();
     }
 
-    //////還原已變更Details資料
-    ////douoptions.afterEditDataCancel = function (r, callback) {
-    ////    if (isChange) {
-    ////        $_masterTable.instance.updateDatas(r);
-    ////    }
-    ////}
-
-    //////douoptions.afterAddServerData = function (row, callback) {
-    //////    jspAlertMsg($("body"), { autoclose: 2000, content: '員工資料新增資料成功!!', classes: 'modal-sm' },
-    //////        function () {
-    //////            //tablist顯示
-    //////            $('#_tabs').closest('div[class=tab-content]').siblings().show();
-    //////            $('html,body').animate({ scrollTop: $_masterTable.offset().top }, "show");
-    //////        });
-
-    //////    oRow = row;
-    //////    oFno = row.Fno;
-
-    //////    var datas = {};
-    //////    datas.Fno = row.Fno;
-
-    //////    SetDouEmpDa1(datas);
-    //////}
-
-    //////var $_masterTable = $("#_table").DouEditableTable(douoptions); //初始dou table
-
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
 
         //trigger清單(新增row)編輯按鈕的，
         $_masterTable.DouEditableTable("editSpecificData", row);
-
-        ////jspAlertMsg($("body"), { autoclose: 2000, content: '員工資料新增資料成功!!', classes: 'modal-sm' },
-        ////    function () {
-        ////        //tablist顯示
-        ////        $('#_tabs').closest('div[class=tab-content]').siblings().show();
-        ////        $('html,body').animate({ scrollTop: $_masterTable.offset().top }, "show");
-
-        ////        //trigger清單(新增row)編輯按鈕的，
-        ////        $_masterTable.DouEditableTable("editSpecificData", row);
-
-        ////        $("#_tabs").destory();
-        ////    });
 
     }); //初始dou table
 
@@ -367,4 +306,30 @@
             $_d1Table = $_d1EditDataContainer.douTable(_opt);
         });
     }
+
+    function SetDouEmpDa4(datas) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa4/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '學歷';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? datas : [{}];
+            _opt.datas = datas;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.beforeCreateEditDataForm = function (row, callback) {
+                row.Fno = oFno;
+
+                callback();
+            };
+
+            //實體Dou js
+            $_d4Table = $_d4EditDataContainer.douTable(_opt);
+        });
+    };
+
 });
