@@ -28,16 +28,11 @@ namespace DouImp.Controllers.Emp
             var f = objs.First();
 
             Dou.Models.DB.IModelEntity<FtisHelperV2.DB.Model.F22cmmEmpDa4> models = new Dou.Models.DB.ModelEntity<FtisHelperV2.DB.Model.F22cmmEmpDa4>(new FtisHelperV2.DB.FtisModelContext());
-            var snos = models.GetAll(a => a.Fno == Dou.Context.CurrentUserBase.Id).Select(a => a.sno).ToList();
+            var snos = models.GetAll(a => a.Fno == f.Fno).Select(a => a.sno).ToList();
             int max = 100;
             byte sno = 1;
             for (; sno < max; sno++)
-                if (!snos.Contains(sno))
-                {
-                    sno++;
-                    break;
-                }
-
+                if (!snos.Contains(sno)) break;
 
             f.mno = f.Fno;
             f.sno = sno;

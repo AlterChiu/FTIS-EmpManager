@@ -12,6 +12,8 @@ using Dou.Controllers;
 using System.Data.Entity;
 using System.Collections;
 using System.Threading;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
+using FtisHelperV2.DB.Helpe;
 
 namespace DouImp.Controllers
 {   
@@ -101,6 +103,40 @@ namespace DouImp.Controllers
             }
             dbEntity.Update(objs);
         }
+
+        protected override void DeleteDBObject(IModelEntity<F22cmmEmpData> dbEntity, IEnumerable<F22cmmEmpData> objs)
+        {
+            var obj = objs.FirstOrDefault();
+
+            //DB有關聯
+            ////if (obj.Da1s != null)
+            ////    dbEntity.SetEntityState<F22cmmEmpDa1>(obj.Da1s, System.Data.Entity.EntityState.Deleted);
+            ////if (obj.Da4s != null)
+            ////    dbEntity.SetEntityState<F22cmmEmpDa4>(obj.Da4s, System.Data.Entity.EntityState.Deleted);
+
+            //DB沒關聯
+            var dbContext = FtisHelperV2.DB.Helper.CreateFtisModelContext();
+
+            ////Employee.ResetGetAllF22cmmEmpDa1();
+            ////Employee.ResetGetAllF22cmmEmpDa4();
+
+            if (obj.Da1s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa1> da1 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(dbContext);
+                da1.Delete(obj.Da1s);
+            }
+            if (obj.Da4s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa4> da4 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(dbContext);
+                da4.Delete(obj.Da4s);
+            }
+
+            Employee.ResetGetAllF22cmmEmpDa1();
+            Employee.ResetGetAllF22cmmEmpDa4();
+
+            base.DeleteDBObject(dbEntity, objs);
+        }
+
         protected override IModelEntity<F22cmmEmpData> GetModelEntity()
         {
             return new Dou.Models.DB.ModelEntity<F22cmmEmpData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
