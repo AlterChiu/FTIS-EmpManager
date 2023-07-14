@@ -87,6 +87,7 @@
                 var jBootstrapTable = $($('.bootstrap-table #_table').find('.dou-field-Fno')[n]).closest("tr");
 
                 //驗證資料異動
+                var tabStop = false;
                 $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
                     //欄位名稱
                     var fn = $(this).attr('data-fn');
@@ -99,6 +100,13 @@
                     }
                     else {
                         uiValue = $(this).val();
+                    }
+
+                    if (!douHelper.getField($_nowTable.instance.settings.fields, fn).allowNull) {
+                        if (uiValue == '') {
+                            tabStop = true;
+                            return false;
+                        }
                     }
 
                     //輸入值(Bootstrap Table + dou實體)
@@ -145,6 +153,12 @@
                     }
 
                 });
+
+                //tab停止切換(原因：必填欄位....等問題)
+                if (tabStop) {
+                    $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
+                    return false;
+                }
             }
         });
 
