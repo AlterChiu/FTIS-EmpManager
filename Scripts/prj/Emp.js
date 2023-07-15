@@ -271,6 +271,10 @@
     }
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
+        
+        //錨點
+        var aPoint = $_masterTable.instance.settings.rootParentContainer;
+        $('html,body').animate({ scrollTop: $(aPoint).offset().top }, "show");
 
         //trigger清單(新增row)編輯按鈕的，
         $_masterTable.DouEditableTable("editSpecificData", row);
