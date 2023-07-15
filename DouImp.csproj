@@ -200,8 +200,8 @@
     <Compile Include="Controllers\Hr\CountryController.cs" />
     <Compile Include="Controllers\Hr\EmpController.cs" />
     <Compile Include="Controllers\Emp\EmpBasicController.cs" />
-    <Compile Include="Controllers\Emp\EmpDa1Controller.cs" />
-    <Compile Include="Controllers\Emp\EmpDa4Controller.cs" />
+    <Compile Include="Controllers\Hr\EmpDa1Controller.cs" />
+    <Compile Include="Controllers\Hr\EmpDa4Controller.cs" />
     <Compile Include="Controllers\Emp\EmpUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Hr\GradeController.cs" />
