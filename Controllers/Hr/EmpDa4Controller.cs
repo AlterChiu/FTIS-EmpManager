@@ -77,6 +77,19 @@ namespace DouImp.Controllers.Emp
             opts.GetFiled("UpdateTime").visible = false;
             opts.GetFiled("UpdateMan").visible = false;
 
+            opts.GetFiled("Fno").colsize = 3;
+            opts.GetFiled("mno").colsize = 3;
+            opts.GetFiled("sno").colsize = 3;
+            opts.GetFiled("da401").colsize = 3;
+            opts.GetFiled("da402").colsize = 3;
+            opts.GetFiled("da403").colsize = 3;
+            opts.GetFiled("da404").colsize = 3;
+            opts.GetFiled("da405").colsize = 3;
+            opts.GetFiled("da406").colsize = 3;
+            opts.GetFiled("da407").colsize = 3;
+            opts.GetFiled("UpdateTime").colsize = 3;
+            opts.GetFiled("UpdateMan").colsize = 3;
+
             return opts;
         }
     }

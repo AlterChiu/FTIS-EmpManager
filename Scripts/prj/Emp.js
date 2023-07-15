@@ -346,6 +346,7 @@
             //////初始options預設值
             ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
+            _opt.editformSize = { minWidth: 700 };
             _opt.beforeCreateEditDataForm = function (row, callback) {
                 row.Fno = Fno;
 
@@ -371,6 +372,7 @@
             //////初始options預設值
             ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
+            _opt.editformSize = { minWidth: 700 };
             _opt.beforeCreateEditDataForm = function (row, callback) {
                 row.Fno = Fno;
 
@@ -396,6 +398,7 @@
             //////初始options預設值
             ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
+            _opt.editformSize = { minWidth: 700 };
             _opt.beforeCreateEditDataForm = function (row, callback) {
                 row.Fno = Fno;
 
