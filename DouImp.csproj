@@ -310,7 +310,6 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\prj\DeptoFno.js" />
     <Content Include="Scripts\prj\Emp.js" />
-    <Content Include="Scripts\prj\EmpBasic.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -431,6 +430,7 @@
     <Content Include="Views\Dep\Index.cshtml" />
     <Content Include="Views\Pj\Index.cshtml" />
     <Content Include="Views\EmpBasic\Index.cshtml" />
+    <Content Include="Views\Shared\EmpPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
