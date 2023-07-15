@@ -68,6 +68,9 @@ namespace DouImp.Controllers
 
             options.GetFiled("Da1s").visibleEdit = false;
 
+            //正祥
+            options.GetFiled("IsOT2V").defaultvalue = "";  //資料轉入(null)，預設'N',視為有異動
+
             //共用頁面
             options.editformWindowStyle = "showEditformOnly";
 

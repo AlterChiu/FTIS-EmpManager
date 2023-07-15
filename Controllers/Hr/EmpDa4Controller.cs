@@ -69,6 +69,14 @@ namespace DouImp.Controllers.Emp
             opts.GetFiled("UpdateTime").visibleEdit = false;
             opts.GetFiled("UpdateMan").visibleEdit = false;
 
+            //正祥
+            opts.GetFiled("Fno").visibleEdit = false;            
+            opts.GetFiled("Fno").visible = false;
+            opts.GetFiled("mno").visible = false;
+            opts.GetFiled("sno").visible = false;
+            opts.GetFiled("UpdateTime").visible = false;
+            opts.GetFiled("UpdateMan").visible = false;
+
             return opts;
         }
     }
