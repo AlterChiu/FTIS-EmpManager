@@ -430,7 +430,7 @@
     <Content Include="Views\Dep\Index.cshtml" />
     <Content Include="Views\Pj\Index.cshtml" />
     <Content Include="Views\EmpBasic\Index.cshtml" />
-    <Content Include="Views\Shared\EmpPartial.cshtml" />
+    <Content Include="Views\Shared\PartialEmp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
