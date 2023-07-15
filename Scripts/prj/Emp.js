@@ -7,9 +7,13 @@
 
     var $_d1EditDataContainer = undefined;      //Da1s編輯的容器
     var $_d4EditDataContainer = undefined;    //Da4s編輯的容器
+    var $_d5EditDataContainer = undefined;    //Da5s編輯的容器
+    var $_d6EditDataContainer = undefined;    //Da6s編輯的容器
 
     var $_d1Table = undefined;  //Da1s Dou實體
     var $_d4Table = undefined;  //Da4s Dou實體
+    var $_d5Table = undefined;  //Da5s Dou實體
+    var $_d6Table = undefined;  //Da6s Dou實體
 
     var oRow = undefined;     //主表員編
     var oFno = undefined;     //主表Row
@@ -22,6 +26,8 @@
         var $_oform = $("#_tabs");
         $_d1EditDataContainer = $('<div>').appendTo($_oform.parent());
         $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());
+        $_d5EditDataContainer = $('<table>').appendTo($_oform.parent());
+        $_d6EditDataContainer = $('<table>').appendTo($_oform.parent());
 
         var isChange = false;
         var isChangeText = [];
@@ -44,15 +50,20 @@
             SetDouEmpDa1(oRow.Da1s);
 
             //1-n Detail(EmpDa4) 學歷
-            ////if (oRow.Da4s == undefined) {
-            ////    oRow.Da4s = iniObj;
-            ////}
             SetDouEmpDa4(oRow.Da4s);
+
+            //1-n Detail(EmpDa5) 經歷
+            SetDouEmpDa5(oRow.Da5s);
+
+            //1-n Detail(EmpDa6) 家庭狀況
+            SetDouEmpDa6(oRow.Da6s);
         }
 
         //產tab
         ////helper.bootstrap.genBootstrapTabpanel($_d1EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式'], [$_oform, $_d1EditDataContainer]);
-        helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式', '學歷'], [$_oform, $_d1EditDataContainer, $_d4EditDataContainer]);
+        helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined,
+            ['員工資料', '通訊方式', '學歷', '經歷', '家庭狀況'],
+            [$_oform, $_d1EditDataContainer, $_d4EditDataContainer, $_d5EditDataContainer, $_d6EditDataContainer]);
 
         //預設的tab;        
         $_nowTabUI = $('#_tabs').closest('div[class=tab-content]').find('.show');
@@ -350,4 +361,53 @@
         });
     };
 
+    function SetDouEmpDa5(datas) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa5/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '經歷';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? datas : [{}];
+            _opt.datas = datas;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.beforeCreateEditDataForm = function (row, callback) {
+                row.Fno = oFno;
+
+                callback();
+            };
+
+            //實體Dou js
+            $_d5Table = $_d5EditDataContainer.douTable(_opt);
+        });
+    };
+
+    function SetDouEmpDa6(datas) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa6/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '家庭狀況';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? datas : [{}];
+            _opt.datas = datas;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.beforeCreateEditDataForm = function (row, callback) {
+                row.Fno = oFno;
+
+                callback();
+            };
+
+            //實體Dou js
+            $_d6Table = $_d6EditDataContainer.douTable(_opt);
+        });
+    };
 });

@@ -124,15 +124,26 @@ namespace DouImp.Controllers
             {
                 Dou.Models.DB.IModelEntity<F22cmmEmpDa1> da1 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(dbContext);
                 da1.Delete(obj.Da1s);
+                Employee.ResetGetAllF22cmmEmpDa1();
             }
             if (obj.Da4s != null)
             {
                 Dou.Models.DB.IModelEntity<F22cmmEmpDa4> da4 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(dbContext);
                 da4.Delete(obj.Da4s);
+                Employee.ResetGetAllF22cmmEmpDa4();
             }
-
-            Employee.ResetGetAllF22cmmEmpDa1();
-            Employee.ResetGetAllF22cmmEmpDa4();
+            if (obj.Da5s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa5> da5 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(dbContext);
+                da5.Delete(obj.Da5s);
+                Employee.ResetGetAllF22cmmEmpDa5();
+            }
+            if (obj.Da6s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa6> da6 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa6>(dbContext);
+                da6.Delete(obj.Da6s);
+                Employee.ResetGetAllF22cmmEmpDa6();
+            }
 
             base.DeleteDBObject(dbEntity, objs);
         }
