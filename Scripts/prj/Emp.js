@@ -15,10 +15,8 @@
     var $_d5Table = undefined;  //Da5s Dou實體
     var $_d6Table = undefined;  //Da6s Dou實體
 
-    var oRow = undefined;     //主表員編
-    var oFno = undefined;     //主表Row
 
-    //Master(EmpData) 員工資料
+    //主表(EmpData) 員工資料
     douoptions.afterCreateEditDataForm = function ($container, row) {
 
         var isAdd = JSON.stringify(row) == '{}';
@@ -29,6 +27,7 @@
         $_d5EditDataContainer = $('<table>').appendTo($_oform.parent());
         $_d6EditDataContainer = $('<table>').appendTo($_oform.parent());
 
+        var oFno = row.Fno;
         var isChange = false;
         var isChangeText = [];
 
@@ -36,27 +35,24 @@
         $container.find('.modal-footer button').hide();
         $container.find('.modal-footer').find('.btn-primary').show();
 
-        if (!isAdd) {
-            oRow = row;
-            oFno = row.Fno;
-
+        if (!isAdd) {            
             //主表新增集合沒資料(預設集合)
             var iniObj = { Fno: row.Fno };
 
             //1-1 Detail(EmpDa1) 通訊方式            
-            if (oRow.Da1s == undefined) {
-                oRow.Da1s = iniObj;
+            if (row.Da1s == undefined) {
+                row.Da1s = iniObj;
             }
-            SetDouEmpDa1(oRow.Da1s);
+            SetDouEmpDa1(row.Da1s);
 
             //1-n Detail(EmpDa4) 學歷
-            SetDouEmpDa4(oRow.Da4s);
+            SetDouEmpDa4(row.Da4s, oFno);
 
             //1-n Detail(EmpDa5) 經歷
-            SetDouEmpDa5(oRow.Da5s);
+            SetDouEmpDa5(row.Da5s, oFno);
 
             //1-n Detail(EmpDa6) 家庭狀況
-            SetDouEmpDa6(oRow.Da6s);
+            SetDouEmpDa6(row.Da6s, oFno);
         }
 
         //產tab
@@ -336,7 +332,7 @@
         });
     }
 
-    function SetDouEmpDa4(datas) {
+    function SetDouEmpDa4(datas, Fno) {
         $.getJSON($.AppConfigOptions.baseurl + 'EmpDa4/GetDataManagerOptionsJson', function (_opt) { //取model option
 
             _opt.title = '學歷';
@@ -351,7 +347,7 @@
             ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
             _opt.beforeCreateEditDataForm = function (row, callback) {
-                row.Fno = oFno;
+                row.Fno = Fno;
 
                 callback();
             };
@@ -361,7 +357,7 @@
         });
     };
 
-    function SetDouEmpDa5(datas) {
+    function SetDouEmpDa5(datas, Fno) {
         $.getJSON($.AppConfigOptions.baseurl + 'EmpDa5/GetDataManagerOptionsJson', function (_opt) { //取model option
 
             _opt.title = '經歷';
@@ -376,7 +372,7 @@
             ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
             _opt.beforeCreateEditDataForm = function (row, callback) {
-                row.Fno = oFno;
+                row.Fno = Fno;
 
                 callback();
             };
@@ -386,7 +382,7 @@
         });
     };
 
-    function SetDouEmpDa6(datas) {
+    function SetDouEmpDa6(datas, Fno) {
         $.getJSON($.AppConfigOptions.baseurl + 'EmpDa6/GetDataManagerOptionsJson', function (_opt) { //取model option
 
             _opt.title = '家庭狀況';
@@ -401,7 +397,7 @@
             ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
 
             _opt.beforeCreateEditDataForm = function (row, callback) {
-                row.Fno = oFno;
+                row.Fno = Fno;
 
                 callback();
             };
