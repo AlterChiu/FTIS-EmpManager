@@ -81,72 +81,60 @@
             //判斷(上一個Tab非Null且有資料)
             if ($_nowTable != null
                 && $_nowTable.instance.getData().find(obj => obj.Fno == oFno) != null) {
-                //隱藏Bootstrap Table(多筆)找使用者挑選的Index
-                var n = -1;
-                $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
-                    if ($(this).text() == oFno) {
-                        n = index;
-                        return false;
-                    }
-                });
-
-                //隱藏Bootstrap Table(多筆)找Index表
-                var jBootstrapTable = $($('.bootstrap-table #_table').find('.dou-field-Fno')[n]).closest("tr");
 
                 //驗證資料異動
                 var tabStop = false;
-                $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
+
+                $.each($_nowTable.instance.settings.fields, function () {                    
                     //欄位名稱
-                    var fn = $(this).attr('data-fn');
-                    var datatype = douHelper.getField($_nowTable.instance.settings.fields, fn).datatype;
+                    var fn = this.field;                    
 
-                    //輸入值(UI)
-                    var uiValue = "";
-                    if (datatype == 'datetime' || datatype == 'date') {
-                        uiValue = $(this).find('input').val();
-                    }
-                    else {
-                        uiValue = $(this).val();
-                    }
+                    //input:輸入值(UI)
+                    var uiValue = douHelper.getDataEditContentValue($_nowTabUI.children(":first").toggleClass("data-edit-form-group"), this);
 
-                    if (!douHelper.getField($_nowTable.instance.settings.fields, fn).allowNull) {
+                    //不需輸入值(UI)
+                    if (uiValue == null)
+                        return; // 等於continue
+
+                    //驗證：必填欄位
+                    if (!this.allowNull) {
                         if (uiValue == '') {
                             tabStop = true;
                             return false;
                         }
                     }
 
-                    //輸入值(Bootstrap Table + dou實體)
-                    var conValue = '';
-                    if (datatype == 'textlist') {
-                        //輸入提示字：UI(人名)，Bootstrap Table(人名)，X容器(員工編號)
-                        conValue = jBootstrapTable.find('.dou-field-' + fn).text();
+                    //tab停止切換(原因：必填欄位....等問題)
+                    if (tabStop) {
+                        $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
+                        return false;
                     }
-                    else {
-                        //var conValue = $_nowTable.instance.getData()[0][fn];
-                        conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
-                    }
+
+                    //input:輸入值(dou實體)
+                    var conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
+
                     if (conValue != null) {
 
-                        //輸入提示字：-(沒值)
-                        if (uiValue == "" && conValue == "-")
-                            return;
+                        //////輸入提示字：-(沒值)
+                        ////if (uiValue == "" && conValue == "-")
+                        ////    return;
 
-                        if (uiValue != "" && conValue != "") {
+                        if (conValue != "") {
                             //日期格式比對(ui(1982-12-17), con(1982-12-17T00:00:00) => 取小統一長度)
-                            if (datatype == 'datetime' || datatype == 'date') {
+                            if (this.datatype == 'datetime' || this.datatype == 'date') {
+                                conValue = JsonDateStr2Datetime(conValue).DateFormat("yyyy/MM/dd HH:mm:ss");
                                 var minLength = Math.min(uiValue.length, conValue.length);
+
                                 uiValue = uiValue.substring(0, minLength)
 
-                                //容器(時間可能是物件) "/Date(1224043200000)/"
-                                conValue = JsonDateStr2Datetime(conValue);
-                                conValue = conValue.DateFormat("yyyy-MM-dd HH:mm:ss").substring(0, minLength);
+                                //容器(時間可能是物件) "/Date(1224043200000)/"                                
+                                conValue = conValue.substring(0, minLength);
                             }
                         }
 
                         if (uiValue != conValue) {
                             isChange = true;
-                            isChangeText.push(douHelper.getField($_nowTable.instance.settings.fields, fn).title);
+                            isChangeText.push(this.title);
                             //return false;
                         }
                     }
@@ -154,18 +142,12 @@
                         //(異動說明)DB為Null($_nowTable無欄位資料),但UI有值
                         if (uiValue != "") {
                             isChange = true;
-                            isChangeText.push(douHelper.getField($_nowTable.instance.settings.fields, fn).title);
+                            isChangeText.push(this.title);
                             //return false;
                         }
                     }
 
                 });
-
-                //tab停止切換(原因：必填欄位....等問題)
-                if (tabStop) {
-                    $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
-                    return false;
-                }
             }
         });
 
