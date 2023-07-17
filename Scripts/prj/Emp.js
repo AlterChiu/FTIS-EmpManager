@@ -80,7 +80,7 @@
             //1-1 Tab切換需要儲存異動資料(trigger確定功能)
             //判斷(上一個Tab非Null且有資料)
             if ($_nowTable != null
-                && $_nowTable.instance.settings.datas.find(obj => obj.Fno == oFno) != null) {
+                && $_nowTable.instance.getData().find(obj => obj.Fno == oFno) != null) {
                 //隱藏Bootstrap Table(多筆)找使用者挑選的Index
                 var n = -1;
                 $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
@@ -123,8 +123,8 @@
                         conValue = jBootstrapTable.find('.dou-field-' + fn).text();
                     }
                     else {
-                        //var conValue = $_nowTable.instance.settings.datas[0][fn];
-                        conValue = $_nowTable.instance.settings.datas.find(obj => obj.Fno == oFno)[fn];
+                        //var conValue = $_nowTable.instance.getData()[0][fn];
+                        conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
                     }
                     if (conValue != null) {
 
@@ -230,8 +230,8 @@
                                 conValue = jBootstrapTable.find('.dou-field-' + fn).text();
                             }
                             else {
-                                //var conValue = $_nowTable.instance.settings.datas[0][fn];
-                                conValue = $_nowTable.instance.settings.datas.find(obj => obj.Fno == oFno)[fn];
+                                //var conValue = $_nowTable.instance.getData()[0][fn];
+                                conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
                             }
 
                             //conValue(null => DB欄位值Null) ("-" => 輸入提示字：-(沒值))
