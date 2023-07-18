@@ -90,7 +90,8 @@
                     var fn = this.field;                    
 
                     //input:輸入值(UI)
-                    var uiValue = douHelper.getDataEditContentValue($_nowTabUI.children(":first").toggleClass("data-edit-form-group"), this);
+                    var $_nowContainer = $_nowTabUI.children(":first").toggleClass("data-edit-form-group");
+                    var uiValue = douHelper.getDataEditContentValue($_nowContainer, this);
 
                     //不需輸入值(UI)
                     if (uiValue == null)
@@ -187,17 +188,14 @@
                         //取消會轉回清單，不可用
                         //$_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
 
-                        //隱藏Bootstrap Table(多筆)找使用者挑選的Index
-                        var n = -1;
+                        //Bootstrap Table(多筆)找編輯資料
+                        var jBootstrapTable;
                         $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
                             if ($(this).text() == oFno) {
-                                n = index;
+                                jBootstrapTable = $(this).closest("tr");                                
                                 return false;
                             }
                         });
-
-                        //隱藏Bootstrap Table(多筆)找Index表
-                        var jBootstrapTable = $($('.bootstrap-table #_table').find('.dou-field-Fno')[n]).closest("tr");
 
                         //還原資料異動
                         $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
@@ -231,6 +229,30 @@
                                 $(this).val(conValue);
                             }
                         });
+
+                        //////////BootstrapRow(DB) 下拉錯誤(ex：虛擬欄位..)
+                        ////////var $bootstrapTable = $_nowTabUI.find('.bootstrap-table .fixed-table-container').find('table.table-bordered');
+                        ////////var $_nowBootstrapRow;
+                        ////////$bootstrapTable.find('tbody tr .dou-field-Fno').each(function (index) {
+                        ////////    if ($(this).html() == oFno) {
+                        ////////        $_nowBootstrapRow = $(this).closest("tr");
+                        ////////        return false;
+                        ////////    }
+                        ////////});
+
+                        ////////$_nowTabUI.find('.field-content [data-fn]').each(function (index) {
+                        ////////    //欄位名稱
+                        ////////    var fn = $(this).attr('data-fn');
+
+                        ////////    //input:輸入值(BootstrapRow) DB
+                        ////////    var conValue = $_nowBootstrapRow.find('.dou-field-' + fn + '').html();
+
+                        ////////    //不需輸入值(UI)
+                        ////////    if (conValue == null)
+                        ////////        return; // 等於continue
+
+                        ////////    $(this).val(conValue);
+                        ////////});
                     }
                     $_nowTable = nextTable;
                     $_nowTabUI = nextTabUI;
