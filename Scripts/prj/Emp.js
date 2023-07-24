@@ -9,11 +9,17 @@
     var $_d4EditDataContainer = undefined;    //Da4s編輯的容器
     var $_d5EditDataContainer = undefined;    //Da5s編輯的容器
     var $_d6EditDataContainer = undefined;    //Da6s編輯的容器
+    var $_d7EditDataContainer = undefined;    //Da7s編輯的容器
+    var $_d8EditDataContainer = undefined;    //Da8s編輯的容器
+    var $_d9EditDataContainer = undefined;    //Da9s編輯的容器
 
     var $_d1Table = undefined;  //Da1s Dou實體
     var $_d4Table = undefined;  //Da4s Dou實體
     var $_d5Table = undefined;  //Da5s Dou實體
     var $_d6Table = undefined;  //Da6s Dou實體
+    var $_d7Table = undefined;  //Da7s Dou實體
+    var $_d8Table = undefined;  //Da8s Dou實體
+    var $_d9Table = undefined;  //Da9s Dou實體
 
 
     //主表(EmpData) 員工資料
@@ -26,6 +32,9 @@
         $_d4EditDataContainer = $('<table>').appendTo($_oform.parent());
         $_d5EditDataContainer = $('<table>').appendTo($_oform.parent());
         $_d6EditDataContainer = $('<table>').appendTo($_oform.parent());
+        $_d7EditDataContainer = $('<table>').appendTo($_oform.parent());
+        $_d8EditDataContainer = $('<table>').appendTo($_oform.parent());
+        $_d9EditDataContainer = $('<table>').appendTo($_oform.parent());
 
         var oFno = row.Fno;
         var isChange = false;
@@ -53,13 +62,22 @@
 
             //1-n Detail(EmpDa6) 家庭狀況
             SetDouEmpDa6(row.Da6s, oFno);
+
+            //1-n Detail(EmpDa7) 外語檢定
+            SetDouEmpDa7(row.Da7s, oFno);
+
+            //1-n Detail(EmpDa8) 專業資格
+            SetDouEmpDa8(row.Da8s, oFno);
+
+            //1-n Detail(EmpDa9) 著作
+            SetDouEmpDa9(row.Da9s, oFno);
         }
 
         //產tab
         ////helper.bootstrap.genBootstrapTabpanel($_d1EditDataContainer.parent(), undefined, undefined, ['員工資料', '通訊方式'], [$_oform, $_d1EditDataContainer]);
         helper.bootstrap.genBootstrapTabpanel($_d4EditDataContainer.parent(), undefined, undefined,
-            ['員工資料', '通訊方式', '學歷', '經歷', '家庭狀況'],
-            [$_oform, $_d1EditDataContainer, $_d4EditDataContainer, $_d5EditDataContainer, $_d6EditDataContainer]);
+            ['員工資料', '通訊方式', '學歷', '經歷', '家庭狀況', '外語檢定', '專業資格', '著作'],
+            [$_oform, $_d1EditDataContainer, $_d4EditDataContainer, $_d5EditDataContainer, $_d6EditDataContainer, $_d7EditDataContainer, $_d8EditDataContainer, $_d9EditDataContainer]);
 
         //預設的tab;        
         $_nowTabUI = $('#_tabs').closest('div[class=tab-content]').find('.show');
@@ -411,6 +429,84 @@
 
             //實體Dou js
             $_d6Table = $_d6EditDataContainer.douTable(_opt);
+        });
+    };
+
+    function SetDouEmpDa7(datas, Fno) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa7/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '外語檢定';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? datas : [{}];
+            _opt.datas = datas;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.editformSize = { minWidth: 700 };
+            _opt.beforeCreateEditDataForm = function (row, callback) {
+                row.Fno = Fno;
+
+                callback();
+            };
+
+            //實體Dou js
+            $_d7Table = $_d7EditDataContainer.douTable(_opt);
+        });
+    };
+
+    function SetDouEmpDa8(datas, Fno) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa8/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '專業資格';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? datas : [{}];
+            _opt.datas = datas;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.editformSize = { minWidth: 700 };
+            _opt.beforeCreateEditDataForm = function (row, callback) {
+                row.Fno = Fno;
+
+                callback();
+            };
+
+            //實體Dou js
+            $_d8Table = $_d8EditDataContainer.douTable(_opt);
+        });
+    };
+
+    function SetDouEmpDa9(datas, Fno) {
+        $.getJSON($.AppConfigOptions.baseurl + 'EmpDa9/GetDataManagerOptionsJson', function (_opt) { //取model option
+
+            _opt.title = '著作';
+
+            //取消自動抓後端資料
+            _opt.tableOptions.url = undefined;
+
+            datas = datas ? datas : [{}];
+            _opt.datas = datas;
+
+            //////初始options預設值
+            ////douHelper.setFieldsDefaultAttribute(_opt.fields);//給預設屬性
+
+            _opt.editformSize = { minWidth: 700 };
+            _opt.beforeCreateEditDataForm = function (row, callback) {
+                row.Fno = Fno;
+
+                callback();
+            };
+
+            //實體Dou js
+            $_d9Table = $_d9EditDataContainer.douTable(_opt);
         });
     };
 });

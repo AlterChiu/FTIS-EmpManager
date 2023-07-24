@@ -206,6 +206,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Hr\EmpDa5Controller.cs" />
     <Compile Include="Controllers\Hr\EmpDa6Controller.cs" />
+    <Compile Include="Controllers\Hr\EmpDa7Controller.cs" />
+    <Compile Include="Controllers\Hr\EmpDa8Controller.cs" />
+    <Compile Include="Controllers\Hr\EmpDa9Controller.cs" />
     <Compile Include="Controllers\Hr\GradeController.cs" />
     <Compile Include="Controllers\LoggerController.cs" />
     <Compile Include="Controllers\Hr\DepController.cs" />
@@ -441,6 +444,9 @@
     <Folder Include="Views\EmpDa4\" />
     <Folder Include="Views\EmpDa5\" />
     <Folder Include="Views\EmpDa6\" />
+    <Folder Include="Views\EmpDa7\" />
+    <Folder Include="Views\EmpDa8\" />
+    <Folder Include="Views\EmpDa9\" />
     <Folder Include="Views\MP\" />
     <Folder Include="Views\Title\" />
   </ItemGroup>

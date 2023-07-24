@@ -147,6 +147,24 @@ namespace DouImp.Controllers
                 da6.Delete(obj.Da6s);
                 Employee.ResetGetAllF22cmmEmpDa6();
             }
+            if (obj.Da7s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa7> da7 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa7>(dbContext);
+                da7.Delete(obj.Da7s);
+                Employee.ResetGetAllF22cmmEmpDa7();
+            }
+            if (obj.Da8s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa8> da8 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa8>(dbContext);
+                da8.Delete(obj.Da8s);
+                Employee.ResetGetAllF22cmmEmpDa8();
+            }
+            if (obj.Da9s != null)
+            {
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa9> da9 = new Dou.Models.DB.ModelEntity<F22cmmEmpDa9>(dbContext);
+                da9.Delete(obj.Da9s);
+                Employee.ResetGetAllF22cmmEmpDa9();
+            }
 
             base.DeleteDBObject(dbEntity, objs);
         }
