@@ -79,12 +79,6 @@
             ['員工資料', '通訊方式', '學歷', '經歷', '家庭狀況', '外語檢定', '專業資格', '著作'],
             [$_oform, $_d1EditDataContainer, $_d4EditDataContainer, $_d5EditDataContainer, $_d6EditDataContainer, $_d7EditDataContainer, $_d8EditDataContainer, $_d9EditDataContainer]);
 
-        var btnBack = '<li class="ms-auto"><button id="btnBack" class="btn btn-secondary">返回會員資料總表</button></li>';
-        $(btnBack).appendTo($('#_tabs').closest('div[class=tab-content]').siblings());
-        $('#btnBack').click(function () {
-            location.reload();
-        });
-
         //預設的tab;        
         $_nowTabUI = $('#_tabs').closest('div[class=tab-content]').find('.show');
 
@@ -94,6 +88,23 @@
         if (isAdd) {
             //tablist隱藏
             $('#_tabs').closest('div[class=tab-content]').siblings().hide();
+        }
+
+        //返回會員資料總表
+        if ($_masterTable != undefined) {
+            if (isAdd) {
+                //長在footer右邊
+                var btnBack = '<button id="btnBack" class="btn btn-secondary">返回會員資料總表</button>';
+                $(btnBack).appendTo($container.find('.modal-footer'));
+            }
+            else {
+                //長在Tab右邊
+                var btnBack = '<li class="ms-auto"><button id="btnBack" class="btn btn-secondary">返回會員資料總表</button></li>';
+                $(btnBack).appendTo($('#_tabs').closest('div[class=tab-content]').siblings());
+            }
+            $('#btnBack').click(function () {
+                location.reload();
+            });
         }
 
         //before tab-click
