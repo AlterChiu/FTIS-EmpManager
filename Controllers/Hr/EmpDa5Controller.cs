@@ -76,7 +76,13 @@ namespace DouImp.Controllers.Hr
             opts.GetFiled("UpdateTime").visible = false;
             opts.GetFiled("UpdateMan").visible = false;
 
-            opts.GetFiled("da507").colsize = 6;
+            opts.GetFiled("da501").colsize = 12;
+            opts.GetFiled("da502").colsize = 6;
+            opts.GetFiled("da503").colsize = 6;
+            opts.GetFiled("da504").colsize = 6;
+            opts.GetFiled("da505").colsize = 6;
+            opts.GetFiled("da506").colsize = 12;
+            opts.GetFiled("da507").colsize = 12;
 
             return opts;
         }
