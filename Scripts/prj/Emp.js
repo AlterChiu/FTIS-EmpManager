@@ -245,6 +245,8 @@
                             }
                         });
 
+                        var rdata = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
+
                         //還原資料異動
                         $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
                             //欄位名稱
@@ -259,7 +261,7 @@
                             }
                             else {
                                 //var conValue = $_nowTable.instance.getData()[0][fn];
-                                conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
+                                conValue = rdata[fn];
                             }
 
                             //conValue(null => DB欄位值Null) ("-" => 輸入提示字：-(沒值))
