@@ -139,6 +139,8 @@
             //停止Tab切換
             var tabStop = false;
 
+            var rdataDou = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
+
             //異動比對
             $.each($_nowTable.instance.settings.fields, function () {
                 //欄位名稱
@@ -149,16 +151,14 @@
 
                 //不需輸入值(UI)
                 if (uiValue == null)
-                    return; // 等於continue
-
-                var rdata = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
+                    return; // 等於continue                
 
                 //驗證：必填欄位
                 if (!this.allowNull) {
                     if (uiValue == '') {
                         var errors = [];
 
-                        errors.push(this.title + ":" + this.validate(uiValue, rdata));                        
+                        errors.push(this.title + ":" + this.validate(uiValue, rdataDou));                        
                         var _emsgs = $.isArray(errors) ? errors : [errors];
                         $_nowContainer.find('.modal-dialog').trigger("set-error-message", '<span class="' + $_nowTable.instance.settings.buttonClasses.error_message + '" aria-hidden="true"></span>&nbsp; ' + _emsgs.join('<br><span class="' + $_nowTable.instance.settings.buttonClasses.error_message + '" aria-hidden="true"></span>&nbsp; '));
                         $_nowContainer.find('.modal-dialog').show();
@@ -170,7 +170,7 @@
                 }
 
                 //input:輸入值(dou實體)
-                var conValue = rdata[fn];
+                var conValue = rdataDou[fn];
 
                 if (conValue != null) {
 
@@ -245,7 +245,7 @@
                             }
                         });
 
-                        var rdata = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
+                        var rdataDou = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
 
                         //還原資料異動
                         $_nowTabUI.find('.field-content [data-fn]').each(function (index) {
@@ -261,7 +261,7 @@
                             }
                             else {
                                 //var conValue = $_nowTable.instance.getData()[0][fn];
-                                conValue = rdata[fn];
+                                conValue = rdataDou[fn];
                             }
 
                             //conValue(null => DB欄位值Null) ("-" => 輸入提示字：-(沒值))
