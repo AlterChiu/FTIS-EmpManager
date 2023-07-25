@@ -124,6 +124,13 @@
                 return true;
             }
 
+            //input:輸入值(UI) 容器
+            var $_nowContainer = $_nowTabUI.children(":first").toggleClass("data-edit-form-group");
+
+            //欄位驗證成功，錯誤內容關閉
+            $(".errormsg", $_nowContainer.find('.modal-dialog')).hide().empty();
+
+
             if ($_nowTabUI == null || $_nowTable == null) {
                 alert('當下Tab資料取得失敗');
                 return false;
@@ -137,24 +144,33 @@
                 //欄位名稱
                 var fn = this.field;
 
-                //input:輸入值(UI)
-                var $_nowContainer = $_nowTabUI.children(":first").toggleClass("data-edit-form-group");
+                //input:輸入值(UI)                
                 var uiValue = douHelper.getDataEditContentValue($_nowContainer, this);
 
                 //不需輸入值(UI)
                 if (uiValue == null)
                     return; // 等於continue
 
+                var rdata = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
+
                 //驗證：必填欄位
                 if (!this.allowNull) {
                     if (uiValue == '') {
+                        var errors = [];
+
+                        errors.push(this.title + ":" + this.validate(uiValue, rdata));                        
+                        var _emsgs = $.isArray(errors) ? errors : [errors];
+                        $_nowContainer.find('.modal-dialog').trigger("set-error-message", '<span class="' + $_nowTable.instance.settings.buttonClasses.error_message + '" aria-hidden="true"></span>&nbsp; ' + _emsgs.join('<br><span class="' + $_nowTable.instance.settings.buttonClasses.error_message + '" aria-hidden="true"></span>&nbsp; '));
+                        $_nowContainer.find('.modal-dialog').show();
+                        $('html,body').animate({ scrollTop: $_masterTable.offset().top }, "show");
+
                         tabStop = true;
                         return false;
                     }
                 }
 
                 //input:輸入值(dou實體)
-                var conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
+                var conValue = rdata[fn];
 
                 if (conValue != null) {
 
@@ -194,7 +210,6 @@
 
             //停止Tab切換(原因：必填欄位....等問題)
             if (tabStop) {
-                $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
                 return false;
             }
 
