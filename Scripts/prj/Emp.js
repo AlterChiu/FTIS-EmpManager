@@ -117,7 +117,7 @@
             if ($_nowTable != null
                 && $_nowTable.instance.getData().find(obj => obj.Fno == oFno) != null) {
 
-                //驗證資料異動
+                //停止Tab切換
                 var tabStop = false;
 
                 $.each($_nowTable.instance.settings.fields, function () {                    
@@ -138,13 +138,7 @@
                             tabStop = true;
                             return false;
                         }
-                    }
-
-                    //tab停止切換(原因：必填欄位....等問題)
-                    if (tabStop) {
-                        $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
-                        return false;
-                    }
+                    }                    
 
                     //input:輸入值(dou實體)
                     var conValue = $_nowTable.instance.getData().find(obj => obj.Fno == oFno)[fn];
@@ -184,6 +178,12 @@
                     }
 
                 });
+
+                //tab停止切換(原因：必填欄位....等問題)
+                if (tabStop) {
+                    $_nowTabUI.find('.modal-footer').find('.btn-primary').trigger("click");
+                    return false;
+                }
             }
         });
 
