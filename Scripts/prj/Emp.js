@@ -149,7 +149,11 @@
                         ////if (uiValue == "" && conValue == "-")
                         ////    return;
 
-                        if (conValue != "") {
+                        //格式轉換
+                        if (uiValue == "") {
+                            //有異動不需轉換格式(執行:ui從有值改無值，切換tab)
+                        }
+                        else if (conValue != "") {
                             //日期格式比對(ui(1982-12-17), con(1982-12-17T00:00:00) => 取小統一長度)
                             if (this.datatype == 'datetime' || this.datatype == 'date') {
                                 conValue = JsonDateStr2Datetime(conValue).DateFormat("yyyy/MM/dd HH:mm:ss");
