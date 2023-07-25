@@ -222,7 +222,10 @@
                     + isChangeText.join(', ') + '</br>'
                     + "是否儲存";
 
-                var isDoing = false;//confirm挑選取消(重複執行，不知原因)
+                //confirm挑選取消(重複執行，不知原因)
+                var isDoing = false;
+
+                //comfirm(確定儲存,取消還原)
                 jspConfirmYesNo($("body"), { content: content }, function (confrim) {
                     if (confrim) {
                         //確定
