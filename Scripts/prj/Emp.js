@@ -139,6 +139,7 @@
             //停止Tab切換
             var tabStop = false;
 
+            //input:輸入值(dou實體)
             var rdataDou = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
 
             //異動比對
@@ -236,7 +237,7 @@
                         //$_nowTabUI.find('.modal-footer').find('.btn-default').trigger("click");
 
                         //還原上一個Tab編輯資料
-                        //Bootstrap Table(多筆)找編輯資料
+                        //input:輸入值(Bootstrap Table找編輯資料)
                         var $_bootstrapTable;
                         $('.bootstrap-table #_table').find('.dou-field-Fno').each(function (index) {
                             if ($(this).text() == oFno) {
@@ -245,6 +246,7 @@
                             }
                         });
 
+                        //input:輸入值(dou實體)
                         var rdataDou = $_nowTable.instance.getData().find(obj => obj.Fno == oFno);
 
                         //還原資料異動
