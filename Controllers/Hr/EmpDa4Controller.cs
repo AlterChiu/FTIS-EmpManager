@@ -69,6 +69,10 @@ namespace DouImp.Controllers.Emp
             opts.GetFiled("UpdateTime").visibleEdit = false;
             opts.GetFiled("UpdateMan").visibleEdit = false;
 
+            //全部欄位排序
+            foreach (var field in opts.fields)
+                field.sortable = true;
+
             //正祥
             opts.GetFiled("Fno").visibleEdit = false;            
             opts.GetFiled("Fno").visible = false;
