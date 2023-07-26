@@ -64,7 +64,8 @@ namespace DouImp.Controllers.Emp
             opts.GetFiled("Updateman").visibleEdit = false;
 
             opts.GetFiled("da24").colsize = 12;
-            opts.GetFiled("da24").datatype = "textarea";            
+            opts.GetFiled("da24").datatype = "textarea";
+            opts.GetFiled("da24").textareaheight = 9;
 
             ////opts.singleDataEdit = true;
             ////string userid = Dou.Context.CurrentUser<User>().Id;
