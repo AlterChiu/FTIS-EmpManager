@@ -66,6 +66,7 @@ namespace DouImp.Controllers
             options.GetFiled("UpdateMan").visibleEdit = false;
             options.GetFiled("SeatNo").visibleEdit = false;
 
+            options.GetFiled("Da1s").visible = false;
             options.GetFiled("Da1s").visibleEdit = false;
 
             //正祥
