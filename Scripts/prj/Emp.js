@@ -376,6 +376,9 @@
                 callback();
             };
 
+            _opt.tableOptions.sortName = 'da404';
+            _opt.tableOptions.sortOrder = 'desc';
+
             //實體Dou js
             $_d4Table = $_d4EditDataContainer.douTable(_opt);
         });
@@ -401,6 +404,9 @@
 
                 callback();
             };
+
+            _opt.tableOptions.sortName = 'da504';
+            _opt.tableOptions.sortOrder = 'desc';
 
             //實體Dou js
             $_d5Table = $_d5EditDataContainer.douTable(_opt);
@@ -454,6 +460,9 @@
                 callback();
             };
 
+            _opt.tableOptions.sortName = 'da702';
+            _opt.tableOptions.sortOrder = 'desc';
+
             //實體Dou js
             $_d7Table = $_d7EditDataContainer.douTable(_opt);
         });
@@ -479,6 +488,9 @@
 
                 callback();
             };
+
+            _opt.tableOptions.sortName = 'da802';
+            _opt.tableOptions.sortOrder = 'desc';
 
             //實體Dou js
             $_d8Table = $_d8EditDataContainer.douTable(_opt);
