@@ -101,6 +101,11 @@
             });
         }
 
+        //加提示字
+        var $p1 = $('div[data-field=En_Name]').find('label');
+        var remind = '<span class="text-danger fw-lighter pull-right">同護照英文姓名</span>';
+        $(remind).appendTo($p1);
+
         //(tab)切換前
         jTabToggle.on('hide.bs.tab', function (e) {
             isChange = false;
@@ -336,6 +341,31 @@
                 //保留確定按鈕
                 $container.find('.modal-footer button').hide();
                 $container.find('.modal-footer').find('.btn-primary').show();
+
+                //加提示字
+                var $p1 = $('div[data-field=da01]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">同護照英文姓名</span>';
+                $(remind).appendTo($p1);
+
+                var $p2 = $('div[data-field=da03]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月日(20160909)</span>';
+                $(remind).appendTo($p2);
+
+                var $p3 = $('div[data-field=da06]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">請取整數</span>';
+                $(remind).appendTo($p3);
+
+                var $p4 = $('div[data-field=da07]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">請取整數</span>';
+                $(remind).appendTo($p4);
+
+                var $p5 = $('div[data-field=da15]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">限填數字</span>';
+                $(remind).appendTo($p5);
+
+                var $p6 = $('div[data-field=da24]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">限500字(Ex: 空氣污染防制技術、廢棄物資源化、薄膜水處理技術…)</span>';
+                $(remind).appendTo($p6);
             }
 
             _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
