@@ -347,10 +347,6 @@
                 var remind = '<span class="text-danger fw-lighter pull-right">同護照英文姓名</span>';
                 $(remind).appendTo($p1);
 
-                var $p2 = $('div[data-field=da03]').find('label');
-                var remind = '<span class="text-danger fw-lighter pull-right">年月日(20160909)</span>';
-                $(remind).appendTo($p2);
-
                 var $p3 = $('div[data-field=da06]').find('label');
                 var remind = '<span class="text-danger fw-lighter pull-right">請取整數</span>';
                 $(remind).appendTo($p3);
