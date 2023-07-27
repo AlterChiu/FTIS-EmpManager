@@ -379,6 +379,17 @@
             _opt.tableOptions.sortName = 'da404';
             _opt.tableOptions.sortOrder = 'desc';
 
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //加提示字
+                var $p1 = $('div[data-field=da404]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月(201609)</span>';
+                $(remind).appendTo($p1);
+
+                var $p2 = $('div[data-field=da405]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月(20206)</span>';
+                $(remind).appendTo($p2);
+            };
+
             //實體Dou js
             $_d4Table = $_d4EditDataContainer.douTable(_opt);
         });
@@ -408,6 +419,29 @@
             _opt.tableOptions.sortName = 'da504';
             _opt.tableOptions.sortOrder = 'desc';
 
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //加提示字
+                var $p1 = $('div[data-field=da501]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">若會內職務填「部門名稱」</span>';
+                $(remind).appendTo($p1);
+
+                var $p2 = $('div[data-field=da504]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月(201609)</span>';
+                $(remind).appendTo($p2);
+
+                var $p3 = $('div[data-field=da505]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月(20206), 若現職填「迄今」</span>';
+                $(remind).appendTo($p3);
+
+                var $p4 = $('div[data-field=da506]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">若會內職務「不需填寫」</span>';
+                $(remind).appendTo($p4);
+
+                var $p5 = $('div[data-field=da507]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">(限1000字)</span>';
+                $(remind).appendTo($p5);
+            };
+
             //實體Dou js
             $_d5Table = $_d5EditDataContainer.douTable(_opt);
         });
@@ -433,6 +467,13 @@
 
                 callback();
             };
+
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //加提示字
+                var $p1 = $('div[data-field=da603]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月日(20160909)</span>';
+                $(remind).appendTo($p1);
+            }
 
             //實體Dou js
             $_d6Table = $_d6EditDataContainer.douTable(_opt);
@@ -463,6 +504,13 @@
             _opt.tableOptions.sortName = 'da702';
             _opt.tableOptions.sortOrder = 'desc';
 
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //加提示字
+                var $p1 = $('div[data-field=da702]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月(201609)</span>';
+                $(remind).appendTo($p1);
+            }
+
             //實體Dou js
             $_d7Table = $_d7EditDataContainer.douTable(_opt);
         });
@@ -492,6 +540,13 @@
             _opt.tableOptions.sortName = 'da802';
             _opt.tableOptions.sortOrder = 'desc';
 
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //加提示字
+                var $p1 = $('div[data-field=da802]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">年月(201609)</span>';
+                $(remind).appendTo($p1);
+            }
+
             //實體Dou js
             $_d8Table = $_d8EditDataContainer.douTable(_opt);
         });
@@ -517,6 +572,17 @@
 
                 callback();
             };
+
+            _opt.afterCreateEditDataForm = function ($container, row) {
+                //加提示字
+                var $p1 = $('div[data-field=da901]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">Ex:論文、碩士論文、研討會論文、期刊論文、手冊、叢書...</span>';
+                $(remind).appendTo($p1);
+
+                var $p2 = $('div[data-field=da902]').find('label');
+                var remind = '<span class="text-danger fw-lighter pull-right">(限1000字)</span>';
+                $(remind).appendTo($p2);
+            }
 
             //實體Dou js
             $_d9Table = $_d9EditDataContainer.douTable(_opt);

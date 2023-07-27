@@ -88,6 +88,9 @@ namespace DouImp.Controllers.Hr
             opts.GetFiled("da506").colsize = 12;
             opts.GetFiled("da507").colsize = 12;
 
+            opts.GetFiled("da507").datatype = "textarea";
+            opts.GetFiled("da507").textareaheight = 9;
+
             return opts;
         }
     }
