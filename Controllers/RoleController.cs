@@ -15,11 +15,12 @@ namespace DouImp.Controllers
         {
             return View();
         }
-
-        internal static System.Data.Entity.DbContext _dbContext = new DouModelContextExt();
+        
         protected override Dou.Models.DB.IModelEntity<Role> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<Role>(_dbContext);
+            System.Data.Entity.DbContext dbContext = new DouModelContextExt();
+
+            return new Dou.Models.DB.ModelEntity<Role>(dbContext);
         }
     }
 
