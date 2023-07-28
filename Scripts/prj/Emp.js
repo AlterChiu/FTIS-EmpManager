@@ -195,6 +195,10 @@
                             //容器(時間可能是物件) "/Date(1224043200000)/"                                
                             conValue = conValue.substring(0, minLength);
                         }
+                        else if (this.datatype == 'textarea') {
+                            //換行資料庫:\r\n (備:number型別replace錯誤)
+                            conValue = conValue.replaceAll('\r\n', '\n');
+                        }
                     }
 
                     if (uiValue != conValue) {
