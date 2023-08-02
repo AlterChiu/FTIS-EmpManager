@@ -115,7 +115,42 @@
         });
 
         $('#btnExportBasic').click(function () {
-            alert('zzzbtnExportBasic');
+            //alert('zzzbtnExportBasic');
+            helper.misc.showBusyIndicator();
+            $.ajax({
+                url: '/' + 'Emp/ExportBasicWord',
+                datatype: "json",
+                type: "Get",
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.result) {
+                        $("#lnkDownload").empty();
+
+                        ////var urls = [];
+                        ////var ppp = $("#lnkDownload");
+                        ////data.url.forEach(function (url) {
+
+                        ////    var pos = url.lastIndexOf('/');
+                        ////    var str = url.substring(pos + 1);
+                        ////    urls.push('<a target="_blank" href="' + app.siteRoot + url + '">' + str + '</a>');
+                        ////});
+                        ////$(urls.join('</br>')).appendTo(ppp);
+
+                        alert("產出統計表成功");
+                    } else {
+                        alert("產出統計表失敗：\n" + data.errorMessage);
+                    }
+                },
+                complete: function () {
+                    helper.misc.hideBusyIndicator();
+                },
+                error: function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err.Message);
+                    helper.misc.hideBusyIndicator();
+                }
+            });
         });
 
         $('#btnExportCV').click(function () {

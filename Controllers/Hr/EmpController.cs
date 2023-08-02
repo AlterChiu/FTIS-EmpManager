@@ -14,6 +14,7 @@ using System.Collections;
 using System.Threading;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using FtisHelperV2.DB.Helpe;
+using System.IO;
 
 namespace DouImp.Controllers
 {   
@@ -174,6 +175,36 @@ namespace DouImp.Controllers
         {
             return new Dou.Models.DB.ModelEntity<F22cmmEmpData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
             //return new Dou.Models.DB.ModelEntity<AssetDisposals>(new DouImp.Models.DouModelContextExt());
+        }
+
+        //匯出基本資料表
+        public ActionResult ExportBasicWord()
+        {
+            string folder = FileHelper.GetFileFolder(Code.TempUploadFile.個人員工基本資料表);
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            string download = "";
+            string fileName = "xxx" + "員工基本資料";
+            string path = folder + fileName;
+
+            try
+            {
+                //產出word
+                //downloads.Add(FtisHrSupport.Cm.PhysicalToUrl(path));
+
+                download = DouImp.Cm.PhysicalToUrl(path);
+            }
+            catch(Exception ex)
+            {
+                string errorMessage = "匯出員工基本資料失敗" + ex.Message + " " + ex.StackTrace;
+                return Json(new { result = false, errorMessage = errorMessage }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { result = true, url = download }, JsonRequestBehavior.AllowGet);
         }
     }
 }
