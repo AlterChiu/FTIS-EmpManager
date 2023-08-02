@@ -84,22 +84,43 @@
             $('#_tabs').closest('div[class=tab-content]').siblings().hide();
         }
 
-        //返回會員資料總表
+        //修改按鈕設定
+        var editBtn = '';
+
+        //按鈕「返回會員資料總表」
         if ($_masterTable != undefined) {
             if (isAdd) {
                 //長在footer右邊
-                var btnBack = '<button id="btnBack" class="btn btn-secondary">返回會員資料總表</button>';
-                $(btnBack).appendTo($container.find('.modal-footer'));
+                var back = '<button id="btnBack" class="btn btn-secondary">返回會員資料總表</button>';
+                $(back).appendTo($container.find('.modal-footer'));
             }
             else {
                 //長在Tab右邊
-                var btnBack = '<li class="ms-auto"><button id="btnBack" class="btn btn-secondary">返回會員資料總表</button></li>';
-                $(btnBack).appendTo($('#_tabs').closest('div[class=tab-content]').siblings());
-            }
-            $('#btnBack').click(function () {
-                location.reload();
-            });
+                var back = '<button id="btnBack" class="btn btn-secondary">返回會員資料總表</button>';
+                editBtn = back;                
+            }            
         }
+
+        if (!isAdd) {
+            var ExportBasic = '<button id="btnExportBasic" class="btn btn-primary ms-2">匯出基本資料表</button>';
+            var ExportCV = '<button id="btnExportCV" class="btn btn-primary ms-2">匯出履歷表</button>';
+            editBtn = editBtn + ExportBasic + ExportCV;
+
+            editBtn = '<li class="ms-auto">' + editBtn  + '</li>';
+            $(editBtn).appendTo($('#_tabs').closest('div[class=tab-content]').siblings());
+        }
+
+        $('#btnBack').click(function () {
+            location.reload();
+        });
+
+        $('#btnExportBasic').click(function () {
+            alert('zzzbtnExportBasic');
+        });
+
+        $('#btnExportCV').click(function () {
+            alert('zzzbtnExportCV');
+        });
 
         //加提示字
         var $p1 = $('div[data-field=En_Name]').find('label');
