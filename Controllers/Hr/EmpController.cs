@@ -15,6 +15,12 @@ using System.Threading;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using FtisHelperV2.DB.Helpe;
 using System.IO;
+using Microsoft.Reporting.WebForms;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using Microsoft.Reporting;
+using Microsoft.Reporting.WinForms;
+using Newtonsoft.Json;
 
 namespace DouImp.Controllers
 {   
@@ -187,16 +193,45 @@ namespace DouImp.Controllers
                 Directory.CreateDirectory(folder);
             }
 
-            string download = "";
-            string fileName = "xxx" + "員工基本資料";
+            string fileName = "員工基本資料_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
             string path = folder + fileName;
 
+            //產出檔案
             try
-            {
-                //產出word
-                //downloads.Add(FtisHrSupport.Cm.PhysicalToUrl(path));
+            {                
+                ReportViewer reportViewer = new ReportViewer();
+                reportViewer.ProcessingMode = ProcessingMode.Local;
 
-                download = DouImp.Cm.PhysicalToUrl(path);
+                // 設定報表 iFrame Full Width
+                reportViewer.SizeToReportContent = true;
+                reportViewer.Width = Unit.Percentage(100);
+                reportViewer.Height = Unit.Percentage(100);
+
+                // Load Report File From Local Path
+                reportViewer.LocalReport.ReportPath =
+                   "Report\\RptEmpBasic.rdlc";
+
+                var datas = GetModelEntity().GetAll().Where(a => a.Fno == "J11149");
+
+                reportViewer.LocalReport.DataSources.Add(
+                    new ReportDataSource("DataSet_Emp", datas)
+                );
+
+                Microsoft.Reporting.WebForms.Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string extension;
+                
+                byte[] bytes = reportViewer.LocalReport.Render(
+                   "Word", null, out mimeType, out encoding,
+                    out extension,
+                   out streamids, out warnings);
+
+                FileStream fs = new FileStream(path,
+                   FileMode.Create);
+                fs.Write(bytes, 0, bytes.Length);
+                fs.Close();               
             }
             catch(Exception ex)
             {
@@ -204,7 +239,9 @@ namespace DouImp.Controllers
                 return Json(new { result = false, errorMessage = errorMessage }, JsonRequestBehavior.AllowGet);
             }
 
-            return Json(new { result = true, url = download }, JsonRequestBehavior.AllowGet);
+            string url = DouImp.Cm.PhysicalToUrl(path);
+
+            return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
         }
     }
 }
