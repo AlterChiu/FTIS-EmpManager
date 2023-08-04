@@ -23,6 +23,7 @@ using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
 using System.Dynamic;
 using System.Data;
+using DouImp._core;
 
 namespace DouImp.Controllers
 {   
@@ -217,14 +218,62 @@ namespace DouImp.Controllers
 
                 var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno).First();
 
-                //主表
+                //主表                
                 DataTable dtData = new DataTable();
-                dtData.Columns.Add(new DataColumn("Name"));
-                dtData.Columns.Add(new DataColumn("DCode"));
+                //dtData.Columns.Add(new DataColumn("xxxx"));
+                dtData.Columns.Add(new DataColumn("姓名中"));
+                dtData.Columns.Add(new DataColumn("姓名英"));
+                dtData.Columns.Add(new DataColumn("部門"));
+                dtData.Columns.Add(new DataColumn("職稱"));
+                dtData.Columns.Add(new DataColumn("到職日期"));
+                dtData.Columns.Add(new DataColumn("出生日期"));
+                dtData.Columns.Add(new DataColumn("性別"));
+                dtData.Columns.Add(new DataColumn("出生地"));
+                dtData.Columns.Add(new DataColumn("身分證字號"));
+                dtData.Columns.Add(new DataColumn("婚姻"));
+                dtData.Columns.Add(new DataColumn("身高"));
+                dtData.Columns.Add(new DataColumn("體重"));
+                dtData.Columns.Add(new DataColumn("血型"));
+                dtData.Columns.Add(new DataColumn("戶籍地址"));
+                dtData.Columns.Add(new DataColumn("戶籍電話"));
+                dtData.Columns.Add(new DataColumn("通訊地址"));
+                dtData.Columns.Add(new DataColumn("住家電話"));
+                dtData.Columns.Add(new DataColumn("行動電話"));
+                dtData.Columns.Add(new DataColumn("Email"));
+                dtData.Columns.Add(new DataColumn("緊急聯絡人1姓名"));
+                dtData.Columns.Add(new DataColumn("緊急聯絡人1關係"));
+                dtData.Columns.Add(new DataColumn("緊急聯絡人1電話"));
+                dtData.Columns.Add(new DataColumn("緊急聯絡人2姓名"));
+                dtData.Columns.Add(new DataColumn("緊急聯絡人2關係"));
+                dtData.Columns.Add(new DataColumn("緊急聯絡人2電話"));
 
                 DataRow dr = dtData.NewRow();
-                dr["Name"] = datas.Name;
-                dr["DCode"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(datas.DCode).DName;
+                //dr["xxxx"] = "oooooo";
+                dr["姓名中"] = datas.Name;
+                dr["姓名英"] = datas.En_Name;
+                dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(datas.DCode).DName;
+                dr["職稱"] = "ooo職稱"; //FtisHelperV2.DB.Helper.GetEmployeeTitle(datas.TCode).Title;
+                dr["到職日期"] = DateFormat.ToDate4(datas.AD);
+                dr["出生日期"] = "ooo出生日期";
+                dr["性別"] = "ooo性別";
+                dr["出生地"] = "ooo出生地";
+                dr["身分證字號"] = "ooo身分證字號";
+                dr["婚姻"] = "ooo婚姻";
+                dr["身高"] = "ooo身高";
+                dr["體重"] = "ooo體重";
+                dr["血型"] = "ooo血型";
+                dr["戶籍地址"] = "ooo戶籍地址";
+                dr["戶籍電話"] = "ooo戶籍電話";
+                dr["通訊地址"] = "ooo通訊地址";
+                dr["住家電話"] = "ooo住家電話";
+                dr["行動電話"] = "ooo行動電話";
+                dr["Email"] = "oooEmail";
+                dr["緊急聯絡人1姓名"] = "ooo緊急聯絡人1姓名";
+                dr["緊急聯絡人1關係"] = "ooo緊急聯絡人1關係";
+                dr["緊急聯絡人1電話"] = "ooo緊急聯絡人1電話";
+                dr["緊急聯絡人2姓名"] = "ooo緊急聯絡人2姓名";
+                dr["緊急聯絡人2關係"] = "ooo緊急聯絡人2關係";
+                dr["緊急聯絡人2電話"] = "ooo緊急聯絡人2電話";
                 dtData.Rows.Add(dr);
 
                 reportViewer.LocalReport.DataSources.Add(

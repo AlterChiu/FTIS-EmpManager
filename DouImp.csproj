@@ -267,6 +267,7 @@
     <Compile Include="_core\Cm.cs" />
     <Compile Include="_core\Code.cs" />
     <Compile Include="_core\Constant.cs" />
+    <Compile Include="_core\DateFormat.cs" />
     <Compile Include="_core\FileHelper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,23 +2,23 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Textbox Name="Name">
+      <Textbox Name="姓名中">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Name.Value, "DataSet_Emp")</Value>
+                <Value>=First(Fields!姓名中.Value, "DataSet_Emp")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Name</rd:DefaultName>
-        <Top>2.82787cm</Top>
-        <Left>3.90384cm</Left>
+        <rd:DefaultName>姓名中</rd:DefaultName>
+        <Top>1.59314cm</Top>
+        <Left>1.9812cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <Style>
@@ -31,23 +31,23 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="DCode">
+      <Textbox Name="姓名英">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!DCode.Value, "DataSet_Emp")</Value>
+                <Value>=First(Fields!姓名英.Value, "DataSet_Emp")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>DCode</rd:DefaultName>
-        <Top>3.44523cm</Top>
-        <Left>10.14801cm</Left>
+        <rd:DefaultName>姓名英</rd:DefaultName>
+        <Top>4.78578cm</Top>
+        <Left>3.09245cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>1</ZIndex>
@@ -61,8 +61,38 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="部門">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!部門.Value, "DataSet_Emp")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>部門</rd:DefaultName>
+        <Top>4.15078cm</Top>
+        <Left>7.55509cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>3.20139in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
@@ -93,12 +123,104 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Name">
-          <DataField>Name</DataField>
+        <Field Name="姓名中">
+          <DataField>姓名中</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DCode">
-          <DataField>DCode</DataField>
+        <Field Name="姓名英">
+          <DataField>姓名英</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="部門">
+          <DataField>部門</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="職稱">
+          <DataField>職稱</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="到職日期">
+          <DataField>到職日期</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="出生日期">
+          <DataField>出生日期</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="性別">
+          <DataField>性別</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="出生地">
+          <DataField>出生地</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="身分證字號">
+          <DataField>身分證字號</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="婚姻">
+          <DataField>婚姻</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="身高">
+          <DataField>身高</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="體重">
+          <DataField>體重</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="血型">
+          <DataField>血型</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="戶籍地址">
+          <DataField>戶籍地址</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="戶籍電話">
+          <DataField>戶籍電話</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="通訊地址">
+          <DataField>通訊地址</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="住家電話">
+          <DataField>住家電話</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="行動電話">
+          <DataField>行動電話</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="緊急聯絡人1姓名">
+          <DataField>緊急聯絡人1姓名</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="緊急聯絡人1關係">
+          <DataField>緊急聯絡人1關係</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="緊急聯絡人1電話">
+          <DataField>緊急聯絡人1電話</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="緊急聯絡人2姓名">
+          <DataField>緊急聯絡人2姓名</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="緊急聯絡人2關係">
+          <DataField>緊急聯絡人2關係</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="緊急聯絡人2電話">
+          <DataField>緊急聯絡人2電話</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
