@@ -250,6 +250,7 @@
     </Compile>
     <Compile Include="Models\API.cs" />
     <Compile Include="Models\DouModelContextExt.cs" />
+    <Compile Include="Models\ReportData.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\TestF22cmmEmpDa4.cs" />
     <Compile Include="Models\TestF22cmmEmpData.cs" />

@@ -21,6 +21,8 @@ using System.Data.SqlClient;
 using Microsoft.Reporting;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
+using System.Dynamic;
+using System.Data;
 
 namespace DouImp.Controllers
 {   
@@ -184,7 +186,7 @@ namespace DouImp.Controllers
         }
 
         //匯出基本資料表
-        public ActionResult ExportBasicWord()
+        public ActionResult ExportBasicExcel()
         {
             string Fno = "J11149";
 
@@ -213,10 +215,20 @@ namespace DouImp.Controllers
                 reportViewer.LocalReport.ReportPath =
                    "Report\\RptEmpBasic.rdlc";
 
-                var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno);
+                var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno).First();
+
+                //主表
+                DataTable dtData = new DataTable();
+                dtData.Columns.Add(new DataColumn("Name"));
+                dtData.Columns.Add(new DataColumn("DCode"));
+
+                DataRow dr = dtData.NewRow();
+                dr["Name"] = datas.Name;
+                dr["DCode"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(datas.DCode).DName;
+                dtData.Rows.Add(dr);
 
                 reportViewer.LocalReport.DataSources.Add(
-                    new ReportDataSource("DataSet_Emp", datas)
+                    new ReportDataSource("DataSet_Emp", dtData)
                 );
 
                 Microsoft.Reporting.WebForms.Warning[] warnings;

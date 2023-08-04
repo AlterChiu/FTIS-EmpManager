@@ -117,7 +117,7 @@
         $('#btnExportBasic').click(function () {            
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: '/' + 'Emp/ExportBasicWord',
+                url: '/' + 'Emp/ExportBasicExcel',
                 datatype: "json",
                 type: "Get",
 

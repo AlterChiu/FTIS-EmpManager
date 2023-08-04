@@ -281,6 +281,8 @@ namespace DouImp.Report {
             
             private global::System.Data.DataColumn columnName;
             
+            private global::System.Data.DataColumn columnDCode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EmpDataDataTable() {
@@ -324,6 +326,14 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DCodeColumn {
+                get {
+                    return this.columnDCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -359,10 +369,11 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpDataRow AddEmpDataRow(string Name) {
+            public EmpDataRow AddEmpDataRow(string Name, string DCode) {
                 EmpDataRow rowEmpDataRow = ((EmpDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Name};
+                        Name,
+                        DCode};
                 rowEmpDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmpDataRow);
                 return rowEmpDataRow;
@@ -386,6 +397,7 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnName = base.Columns["Name"];
+                this.columnDCode = base.Columns["DCode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -393,6 +405,8 @@ namespace DouImp.Report {
             private void InitClass() {
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnDCode = new global::System.Data.DataColumn("DCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDCode);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -551,6 +565,22 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string DCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.DCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'DCode\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.DCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableEmpData.NameColumn);
             }
@@ -559,6 +589,18 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNameNull() {
                 this[this.tableEmpData.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDCodeNull() {
+                return this.IsNull(this.tableEmpData.DCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDCodeNull() {
+                this[this.tableEmpData.DCodeColumn] = global::System.Convert.DBNull;
             }
         }
         
