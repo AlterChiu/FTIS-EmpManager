@@ -114,8 +114,7 @@
             location.reload();
         });
 
-        $('#btnExportBasic').click(function () {
-            //alert('zzzbtnExportBasic');
+        $('#btnExportBasic').click(function () {            
             helper.misc.showBusyIndicator();
             $.ajax({
                 url: '/' + 'Emp/ExportBasicWord',
@@ -126,7 +125,7 @@
                     if (data.result) {
                         location.href = data.url;
                     } else {
-                        alert("產出統計表失敗：\n" + data.errorMessage);
+                        alert("產出基本資料表失敗：\n" + data.errorMessage);
                     }
                 },
                 complete: function () {
@@ -140,8 +139,29 @@
             });
         });
 
-        $('#btnExportCV').click(function () {
-            alert('zzzbtnExportCV');
+        $('#btnExportCV').click(function () {            
+            helper.misc.showBusyIndicator();
+            $.ajax({
+                url: '/' + 'Emp/ExportCVExcel',
+                datatype: "json",
+                type: "Get",
+
+                success: function (data) {
+                    if (data.result) {
+                        location.href = data.url;
+                    } else {
+                        alert("產出履歷表失敗：\n" + data.errorMessage);
+                    }
+                },
+                complete: function () {
+                    helper.misc.hideBusyIndicator();
+                },
+                error: function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err.Message);
+                    helper.misc.hideBusyIndicator();
+                }
+            });
         });
 
         //加提示字

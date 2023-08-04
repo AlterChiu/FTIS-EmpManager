@@ -186,6 +186,8 @@ namespace DouImp.Controllers
         //匯出基本資料表
         public ActionResult ExportBasicWord()
         {
+            string Fno = "J11149";
+
             string folder = FileHelper.GetFileFolder(Code.TempUploadFile.個人員工基本資料表);
 
             if (!Directory.Exists(folder))
@@ -193,7 +195,7 @@ namespace DouImp.Controllers
                 Directory.CreateDirectory(folder);
             }
 
-            string fileName = "員工基本資料_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
+            string fileName = "員工基本資料_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
             string path = folder + fileName;
 
             //產出檔案
@@ -211,7 +213,7 @@ namespace DouImp.Controllers
                 reportViewer.LocalReport.ReportPath =
                    "Report\\RptEmpBasic.rdlc";
 
-                var datas = GetModelEntity().GetAll().Where(a => a.Fno == "J11149");
+                var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno);
 
                 reportViewer.LocalReport.DataSources.Add(
                     new ReportDataSource("DataSet_Emp", datas)
@@ -224,7 +226,7 @@ namespace DouImp.Controllers
                 string extension;
                 
                 byte[] bytes = reportViewer.LocalReport.Render(
-                   "Word", null, out mimeType, out encoding,
+                   "Excel", null, out mimeType, out encoding,
                     out extension,
                    out streamids, out warnings);
 
@@ -236,6 +238,69 @@ namespace DouImp.Controllers
             catch(Exception ex)
             {
                 string errorMessage = "匯出員工基本資料失敗" + ex.Message + " " + ex.StackTrace;
+                return Json(new { result = false, errorMessage = errorMessage }, JsonRequestBehavior.AllowGet);
+            }
+
+            string url = DouImp.Cm.PhysicalToUrl(path);
+
+            return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+        }
+
+        //匯出履歷表
+        public ActionResult ExportCVExcel()
+        {
+            string Fno = "J11149";
+
+            string folder = FileHelper.GetFileFolder(Code.TempUploadFile.個人員工基本資料表);
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            string fileName = "履歷表_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
+            string path = folder + fileName;
+
+            //產出檔案
+            try
+            {
+                ReportViewer reportViewer = new ReportViewer();
+                reportViewer.ProcessingMode = ProcessingMode.Local;
+
+                // 設定報表 iFrame Full Width
+                reportViewer.SizeToReportContent = true;
+                reportViewer.Width = Unit.Percentage(100);
+                reportViewer.Height = Unit.Percentage(100);
+
+                // Load Report File From Local Path
+                reportViewer.LocalReport.ReportPath =
+                   "Report\\RptEmpCV.rdlc";
+
+                var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno);
+
+                reportViewer.LocalReport.DataSources.Add(
+                    new ReportDataSource("DataSet_Emp", datas)
+                );
+
+                Microsoft.Reporting.WebForms.Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string extension;
+
+                byte[] bytes = reportViewer.LocalReport.Render(
+                   "Word", null, out mimeType, out encoding,
+                    out extension,
+                   out streamids, out warnings);
+
+                FileStream fs = new FileStream(path,
+                   FileMode.Create);
+                fs.Write(bytes, 0, bytes.Length);
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = "匯出履歷表失敗" + ex.Message + " " + ex.StackTrace;
                 return Json(new { result = false, errorMessage = errorMessage }, JsonRequestBehavior.AllowGet);
             }
 
