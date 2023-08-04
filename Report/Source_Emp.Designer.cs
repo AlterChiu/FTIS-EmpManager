@@ -26,7 +26,7 @@ namespace DouImp.Report {
         
         private EmpDataDataTable tableEmpData;
         
-        private EmpData1DataTable tableEmpData1;
+        private Da4sDataTable tableDa4s;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -59,8 +59,8 @@ namespace DouImp.Report {
                 if ((ds.Tables["EmpData"] != null)) {
                     base.Tables.Add(new EmpDataDataTable(ds.Tables["EmpData"]));
                 }
-                if ((ds.Tables["EmpData1"] != null)) {
-                    base.Tables.Add(new EmpData1DataTable(ds.Tables["EmpData1"]));
+                if ((ds.Tables["Da4s"] != null)) {
+                    base.Tables.Add(new Da4sDataTable(ds.Tables["Da4s"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -94,9 +94,9 @@ namespace DouImp.Report {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public EmpData1DataTable EmpData1 {
+        public Da4sDataTable Da4s {
             get {
-                return this.tableEmpData1;
+                return this.tableDa4s;
             }
         }
         
@@ -170,8 +170,8 @@ namespace DouImp.Report {
                 if ((ds.Tables["EmpData"] != null)) {
                     base.Tables.Add(new EmpDataDataTable(ds.Tables["EmpData"]));
                 }
-                if ((ds.Tables["EmpData1"] != null)) {
-                    base.Tables.Add(new EmpData1DataTable(ds.Tables["EmpData1"]));
+                if ((ds.Tables["Da4s"] != null)) {
+                    base.Tables.Add(new Da4sDataTable(ds.Tables["Da4s"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -212,10 +212,10 @@ namespace DouImp.Report {
                     this.tableEmpData.InitVars();
                 }
             }
-            this.tableEmpData1 = ((EmpData1DataTable)(base.Tables["EmpData1"]));
+            this.tableDa4s = ((Da4sDataTable)(base.Tables["Da4s"]));
             if ((initTable == true)) {
-                if ((this.tableEmpData1 != null)) {
-                    this.tableEmpData1.InitVars();
+                if ((this.tableDa4s != null)) {
+                    this.tableDa4s.InitVars();
                 }
             }
         }
@@ -230,8 +230,8 @@ namespace DouImp.Report {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableEmpData = new EmpDataDataTable();
             base.Tables.Add(this.tableEmpData);
-            this.tableEmpData1 = new EmpData1DataTable();
-            base.Tables.Add(this.tableEmpData1);
+            this.tableDa4s = new Da4sDataTable();
+            base.Tables.Add(this.tableDa4s);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,7 +242,7 @@ namespace DouImp.Report {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeEmpData1() {
+        private bool ShouldSerializeDa4s() {
             return false;
         }
         
@@ -305,7 +305,7 @@ namespace DouImp.Report {
         public delegate void EmpDataRowChangeEventHandler(object sender, EmpDataRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void EmpData1RowChangeEventHandler(object sender, EmpData1RowChangeEvent e);
+        public delegate void Da4sRowChangeEventHandler(object sender, Da4sRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -921,62 +921,26 @@ namespace DouImp.Report {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class EmpData1DataTable : global::System.Data.TypedTableBase<EmpData1Row> {
+        public partial class Da4sDataTable : global::System.Data.TypedTableBase<Da4sRow> {
             
-            private global::System.Data.DataColumn column姓名中;
+            private global::System.Data.DataColumn column學校;
             
-            private global::System.Data.DataColumn column姓名英;
+            private global::System.Data.DataColumn column學院;
             
-            private global::System.Data.DataColumn column部門;
+            private global::System.Data.DataColumn column科系;
             
-            private global::System.Data.DataColumn column職稱;
+            private global::System.Data.DataColumn column入學年月;
             
-            private global::System.Data.DataColumn column到職日期;
+            private global::System.Data.DataColumn column畢業年月;
             
-            private global::System.Data.DataColumn column出生日期;
+            private global::System.Data.DataColumn column學位;
             
-            private global::System.Data.DataColumn column性別;
-            
-            private global::System.Data.DataColumn column出生地;
-            
-            private global::System.Data.DataColumn column身分證字號;
-            
-            private global::System.Data.DataColumn column婚姻;
-            
-            private global::System.Data.DataColumn column身高;
-            
-            private global::System.Data.DataColumn column體重;
-            
-            private global::System.Data.DataColumn column血型;
-            
-            private global::System.Data.DataColumn column戶籍地址;
-            
-            private global::System.Data.DataColumn column戶籍電話;
-            
-            private global::System.Data.DataColumn column通訊地址;
-            
-            private global::System.Data.DataColumn column住家電話;
-            
-            private global::System.Data.DataColumn column行動電話;
-            
-            private global::System.Data.DataColumn _columnE_mail;
-            
-            private global::System.Data.DataColumn column緊急聯絡人1姓名;
-            
-            private global::System.Data.DataColumn column緊急聯絡人1關係;
-            
-            private global::System.Data.DataColumn column緊急聯絡人1電話;
-            
-            private global::System.Data.DataColumn column緊急聯絡人2姓名;
-            
-            private global::System.Data.DataColumn column緊急聯絡人2關係;
-            
-            private global::System.Data.DataColumn column緊急聯絡人2電話;
+            private global::System.Data.DataColumn column指導教授;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpData1DataTable() {
-                this.TableName = "EmpData1";
+            public Da4sDataTable() {
+                this.TableName = "Da4s";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -984,7 +948,7 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal EmpData1DataTable(global::System.Data.DataTable table) {
+            internal Da4sDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1001,208 +965,64 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected EmpData1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected Da4sDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 姓名中Column {
+            public global::System.Data.DataColumn 學校Column {
                 get {
-                    return this.column姓名中;
+                    return this.column學校;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 姓名英Column {
+            public global::System.Data.DataColumn 學院Column {
                 get {
-                    return this.column姓名英;
+                    return this.column學院;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 部門Column {
+            public global::System.Data.DataColumn 科系Column {
                 get {
-                    return this.column部門;
+                    return this.column科系;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 職稱Column {
+            public global::System.Data.DataColumn 入學年月Column {
                 get {
-                    return this.column職稱;
+                    return this.column入學年月;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 到職日期Column {
+            public global::System.Data.DataColumn 畢業年月Column {
                 get {
-                    return this.column到職日期;
+                    return this.column畢業年月;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 出生日期Column {
+            public global::System.Data.DataColumn 學位Column {
                 get {
-                    return this.column出生日期;
+                    return this.column學位;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 性別Column {
+            public global::System.Data.DataColumn 指導教授Column {
                 get {
-                    return this.column性別;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 出生地Column {
-                get {
-                    return this.column出生地;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 身分證字號Column {
-                get {
-                    return this.column身分證字號;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 婚姻Column {
-                get {
-                    return this.column婚姻;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 身高Column {
-                get {
-                    return this.column身高;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 體重Column {
-                get {
-                    return this.column體重;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 血型Column {
-                get {
-                    return this.column血型;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 戶籍地址Column {
-                get {
-                    return this.column戶籍地址;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 戶籍電話Column {
-                get {
-                    return this.column戶籍電話;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 通訊地址Column {
-                get {
-                    return this.column通訊地址;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 住家電話Column {
-                get {
-                    return this.column住家電話;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 行動電話Column {
-                get {
-                    return this.column行動電話;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn _E_mailColumn {
-                get {
-                    return this._columnE_mail;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 緊急聯絡人1姓名Column {
-                get {
-                    return this.column緊急聯絡人1姓名;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 緊急聯絡人1關係Column {
-                get {
-                    return this.column緊急聯絡人1關係;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 緊急聯絡人1電話Column {
-                get {
-                    return this.column緊急聯絡人1電話;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 緊急聯絡人2姓名Column {
-                get {
-                    return this.column緊急聯絡人2姓名;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 緊急聯絡人2關係Column {
-                get {
-                    return this.column緊急聯絡人2關係;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn 緊急聯絡人2電話Column {
-                get {
-                    return this.column緊急聯絡人2電話;
+                    return this.column指導教授;
                 }
             }
             
@@ -1217,94 +1037,51 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpData1Row this[int index] {
+            public Da4sRow this[int index] {
                 get {
-                    return ((EmpData1Row)(this.Rows[index]));
+                    return ((Da4sRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EmpData1RowChangeEventHandler EmpData1RowChanging;
+            public event Da4sRowChangeEventHandler Da4sRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EmpData1RowChangeEventHandler EmpData1RowChanged;
+            public event Da4sRowChangeEventHandler Da4sRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EmpData1RowChangeEventHandler EmpData1RowDeleting;
+            public event Da4sRowChangeEventHandler Da4sRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EmpData1RowChangeEventHandler EmpData1RowDeleted;
+            public event Da4sRowChangeEventHandler Da4sRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddEmpData1Row(EmpData1Row row) {
+            public void AddDa4sRow(Da4sRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpData1Row AddEmpData1Row(
-                        string 姓名中, 
-                        string 姓名英, 
-                        string 部門, 
-                        string 職稱, 
-                        string 到職日期, 
-                        string 出生日期, 
-                        string 性別, 
-                        string 出生地, 
-                        string 身分證字號, 
-                        string 婚姻, 
-                        string 身高, 
-                        string 體重, 
-                        string 血型, 
-                        string 戶籍地址, 
-                        string 戶籍電話, 
-                        string 通訊地址, 
-                        string 住家電話, 
-                        string 行動電話, 
-                        string _E_mail, 
-                        string 緊急聯絡人1姓名, 
-                        string 緊急聯絡人1關係, 
-                        string 緊急聯絡人1電話, 
-                        string 緊急聯絡人2姓名, 
-                        string 緊急聯絡人2關係, 
-                        string 緊急聯絡人2電話) {
-                EmpData1Row rowEmpData1Row = ((EmpData1Row)(this.NewRow()));
+            public Da4sRow AddDa4sRow(string 學校, string 學院, string 科系, string 入學年月, string 畢業年月, string 學位, string 指導教授) {
+                Da4sRow rowDa4sRow = ((Da4sRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        姓名中,
-                        姓名英,
-                        部門,
-                        職稱,
-                        到職日期,
-                        出生日期,
-                        性別,
-                        出生地,
-                        身分證字號,
-                        婚姻,
-                        身高,
-                        體重,
-                        血型,
-                        戶籍地址,
-                        戶籍電話,
-                        通訊地址,
-                        住家電話,
-                        行動電話,
-                        _E_mail,
-                        緊急聯絡人1姓名,
-                        緊急聯絡人1關係,
-                        緊急聯絡人1電話,
-                        緊急聯絡人2姓名,
-                        緊急聯絡人2關係,
-                        緊急聯絡人2電話};
-                rowEmpData1Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowEmpData1Row);
-                return rowEmpData1Row;
+                        學校,
+                        學院,
+                        科系,
+                        入學年月,
+                        畢業年月,
+                        學位,
+                        指導教授};
+                rowDa4sRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDa4sRow);
+                return rowDa4sRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                EmpData1DataTable cln = ((EmpData1DataTable)(base.Clone()));
+                Da4sDataTable cln = ((Da4sDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1312,120 +1089,64 @@ namespace DouImp.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new EmpData1DataTable();
+                return new Da4sDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.column姓名中 = base.Columns["姓名中"];
-                this.column姓名英 = base.Columns["姓名英"];
-                this.column部門 = base.Columns["部門"];
-                this.column職稱 = base.Columns["職稱"];
-                this.column到職日期 = base.Columns["到職日期"];
-                this.column出生日期 = base.Columns["出生日期"];
-                this.column性別 = base.Columns["性別"];
-                this.column出生地 = base.Columns["出生地"];
-                this.column身分證字號 = base.Columns["身分證字號"];
-                this.column婚姻 = base.Columns["婚姻"];
-                this.column身高 = base.Columns["身高"];
-                this.column體重 = base.Columns["體重"];
-                this.column血型 = base.Columns["血型"];
-                this.column戶籍地址 = base.Columns["戶籍地址"];
-                this.column戶籍電話 = base.Columns["戶籍電話"];
-                this.column通訊地址 = base.Columns["通訊地址"];
-                this.column住家電話 = base.Columns["住家電話"];
-                this.column行動電話 = base.Columns["行動電話"];
-                this._columnE_mail = base.Columns["E-mail"];
-                this.column緊急聯絡人1姓名 = base.Columns["緊急聯絡人1姓名"];
-                this.column緊急聯絡人1關係 = base.Columns["緊急聯絡人1關係"];
-                this.column緊急聯絡人1電話 = base.Columns["緊急聯絡人1電話"];
-                this.column緊急聯絡人2姓名 = base.Columns["緊急聯絡人2姓名"];
-                this.column緊急聯絡人2關係 = base.Columns["緊急聯絡人2關係"];
-                this.column緊急聯絡人2電話 = base.Columns["緊急聯絡人2電話"];
+                this.column學校 = base.Columns["學校"];
+                this.column學院 = base.Columns["學院"];
+                this.column科系 = base.Columns["科系"];
+                this.column入學年月 = base.Columns["入學年月"];
+                this.column畢業年月 = base.Columns["畢業年月"];
+                this.column學位 = base.Columns["學位"];
+                this.column指導教授 = base.Columns["指導教授"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.column姓名中 = new global::System.Data.DataColumn("姓名中", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column姓名中);
-                this.column姓名英 = new global::System.Data.DataColumn("姓名英", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column姓名英);
-                this.column部門 = new global::System.Data.DataColumn("部門", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column部門);
-                this.column職稱 = new global::System.Data.DataColumn("職稱", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column職稱);
-                this.column到職日期 = new global::System.Data.DataColumn("到職日期", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column到職日期);
-                this.column出生日期 = new global::System.Data.DataColumn("出生日期", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column出生日期);
-                this.column性別 = new global::System.Data.DataColumn("性別", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column性別);
-                this.column出生地 = new global::System.Data.DataColumn("出生地", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column出生地);
-                this.column身分證字號 = new global::System.Data.DataColumn("身分證字號", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column身分證字號);
-                this.column婚姻 = new global::System.Data.DataColumn("婚姻", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column婚姻);
-                this.column身高 = new global::System.Data.DataColumn("身高", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column身高);
-                this.column體重 = new global::System.Data.DataColumn("體重", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column體重);
-                this.column血型 = new global::System.Data.DataColumn("血型", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column血型);
-                this.column戶籍地址 = new global::System.Data.DataColumn("戶籍地址", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column戶籍地址);
-                this.column戶籍電話 = new global::System.Data.DataColumn("戶籍電話", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column戶籍電話);
-                this.column通訊地址 = new global::System.Data.DataColumn("通訊地址", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column通訊地址);
-                this.column住家電話 = new global::System.Data.DataColumn("住家電話", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column住家電話);
-                this.column行動電話 = new global::System.Data.DataColumn("行動電話", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column行動電話);
-                this._columnE_mail = new global::System.Data.DataColumn("E-mail", typeof(string), null, global::System.Data.MappingType.Element);
-                this._columnE_mail.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnE_mail");
-                this._columnE_mail.ExtendedProperties.Add("Generator_UserColumnName", "E-mail");
-                base.Columns.Add(this._columnE_mail);
-                this.column緊急聯絡人1姓名 = new global::System.Data.DataColumn("緊急聯絡人1姓名", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column緊急聯絡人1姓名);
-                this.column緊急聯絡人1關係 = new global::System.Data.DataColumn("緊急聯絡人1關係", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column緊急聯絡人1關係);
-                this.column緊急聯絡人1電話 = new global::System.Data.DataColumn("緊急聯絡人1電話", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column緊急聯絡人1電話);
-                this.column緊急聯絡人2姓名 = new global::System.Data.DataColumn("緊急聯絡人2姓名", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column緊急聯絡人2姓名);
-                this.column緊急聯絡人2關係 = new global::System.Data.DataColumn("緊急聯絡人2關係", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column緊急聯絡人2關係);
-                this.column緊急聯絡人2電話 = new global::System.Data.DataColumn("緊急聯絡人2電話", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column緊急聯絡人2電話);
+                this.column學校 = new global::System.Data.DataColumn("學校", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column學校);
+                this.column學院 = new global::System.Data.DataColumn("學院", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column學院);
+                this.column科系 = new global::System.Data.DataColumn("科系", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column科系);
+                this.column入學年月 = new global::System.Data.DataColumn("入學年月", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column入學年月);
+                this.column畢業年月 = new global::System.Data.DataColumn("畢業年月", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column畢業年月);
+                this.column學位 = new global::System.Data.DataColumn("學位", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column學位);
+                this.column指導教授 = new global::System.Data.DataColumn("指導教授", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column指導教授);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpData1Row NewEmpData1Row() {
-                return ((EmpData1Row)(this.NewRow()));
+            public Da4sRow NewDa4sRow() {
+                return ((Da4sRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new EmpData1Row(builder);
+                return new Da4sRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(EmpData1Row);
+                return typeof(Da4sRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.EmpData1RowChanged != null)) {
-                    this.EmpData1RowChanged(this, new EmpData1RowChangeEvent(((EmpData1Row)(e.Row)), e.Action));
+                if ((this.Da4sRowChanged != null)) {
+                    this.Da4sRowChanged(this, new Da4sRowChangeEvent(((Da4sRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1433,8 +1154,8 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.EmpData1RowChanging != null)) {
-                    this.EmpData1RowChanging(this, new EmpData1RowChangeEvent(((EmpData1Row)(e.Row)), e.Action));
+                if ((this.Da4sRowChanging != null)) {
+                    this.Da4sRowChanging(this, new Da4sRowChangeEvent(((Da4sRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1442,8 +1163,8 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.EmpData1RowDeleted != null)) {
-                    this.EmpData1RowDeleted(this, new EmpData1RowChangeEvent(((EmpData1Row)(e.Row)), e.Action));
+                if ((this.Da4sRowDeleted != null)) {
+                    this.Da4sRowDeleted(this, new Da4sRowChangeEvent(((Da4sRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1451,14 +1172,14 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.EmpData1RowDeleting != null)) {
-                    this.EmpData1RowDeleting(this, new EmpData1RowChangeEvent(((EmpData1Row)(e.Row)), e.Action));
+                if ((this.Da4sRowDeleting != null)) {
+                    this.Da4sRowDeleting(this, new Da4sRowChangeEvent(((Da4sRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveEmpData1Row(EmpData1Row row) {
+            public void RemoveDa4sRow(Da4sRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1485,7 +1206,7 @@ namespace DouImp.Report {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "EmpData1DataTable";
+                attribute2.FixedValue = "Da4sDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2244,715 +1965,211 @@ namespace DouImp.Report {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class EmpData1Row : global::System.Data.DataRow {
+        public partial class Da4sRow : global::System.Data.DataRow {
             
-            private EmpData1DataTable tableEmpData1;
+            private Da4sDataTable tableDa4s;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal EmpData1Row(global::System.Data.DataRowBuilder rb) : 
+            internal Da4sRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableEmpData1 = ((EmpData1DataTable)(this.Table));
+                this.tableDa4s = ((Da4sDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 姓名中 {
+            public string 學校 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.姓名中Column]));
+                        return ((string)(this[this.tableDa4s.學校Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'姓名中\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'學校\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.姓名中Column] = value;
+                    this[this.tableDa4s.學校Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 姓名英 {
+            public string 學院 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.姓名英Column]));
+                        return ((string)(this[this.tableDa4s.學院Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'姓名英\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'學院\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.姓名英Column] = value;
+                    this[this.tableDa4s.學院Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 部門 {
+            public string 科系 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.部門Column]));
+                        return ((string)(this[this.tableDa4s.科系Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'部門\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'科系\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.部門Column] = value;
+                    this[this.tableDa4s.科系Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 職稱 {
+            public string 入學年月 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.職稱Column]));
+                        return ((string)(this[this.tableDa4s.入學年月Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'職稱\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'入學年月\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.職稱Column] = value;
+                    this[this.tableDa4s.入學年月Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 到職日期 {
+            public string 畢業年月 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.到職日期Column]));
+                        return ((string)(this[this.tableDa4s.畢業年月Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'到職日期\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'畢業年月\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.到職日期Column] = value;
+                    this[this.tableDa4s.畢業年月Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 出生日期 {
+            public string 學位 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.出生日期Column]));
+                        return ((string)(this[this.tableDa4s.學位Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'出生日期\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'學位\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.出生日期Column] = value;
+                    this[this.tableDa4s.學位Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 性別 {
+            public string 指導教授 {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpData1.性別Column]));
+                        return ((string)(this[this.tableDa4s.指導教授Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'性別\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da4s\' 中資料行 \'指導教授\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableEmpData1.性別Column] = value;
+                    this[this.tableDa4s.指導教授Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 出生地 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.出生地Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'出生地\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.出生地Column] = value;
-                }
+            public bool Is學校Null() {
+                return this.IsNull(this.tableDa4s.學校Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 身分證字號 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.身分證字號Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'身分證字號\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.身分證字號Column] = value;
-                }
+            public void Set學校Null() {
+                this[this.tableDa4s.學校Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 婚姻 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.婚姻Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'婚姻\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.婚姻Column] = value;
-                }
+            public bool Is學院Null() {
+                return this.IsNull(this.tableDa4s.學院Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 身高 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.身高Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'身高\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.身高Column] = value;
-                }
+            public void Set學院Null() {
+                this[this.tableDa4s.學院Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 體重 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.體重Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'體重\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.體重Column] = value;
-                }
+            public bool Is科系Null() {
+                return this.IsNull(this.tableDa4s.科系Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 血型 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.血型Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'血型\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.血型Column] = value;
-                }
+            public void Set科系Null() {
+                this[this.tableDa4s.科系Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 戶籍地址 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.戶籍地址Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'戶籍地址\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.戶籍地址Column] = value;
-                }
+            public bool Is入學年月Null() {
+                return this.IsNull(this.tableDa4s.入學年月Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 戶籍電話 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.戶籍電話Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'戶籍電話\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.戶籍電話Column] = value;
-                }
+            public void Set入學年月Null() {
+                this[this.tableDa4s.入學年月Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 通訊地址 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.通訊地址Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'通訊地址\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.通訊地址Column] = value;
-                }
+            public bool Is畢業年月Null() {
+                return this.IsNull(this.tableDa4s.畢業年月Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 住家電話 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.住家電話Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'住家電話\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.住家電話Column] = value;
-                }
+            public void Set畢業年月Null() {
+                this[this.tableDa4s.畢業年月Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 行動電話 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.行動電話Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'行動電話\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.行動電話Column] = value;
-                }
+            public bool Is學位Null() {
+                return this.IsNull(this.tableDa4s.學位Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _E_mail {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1._E_mailColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'E-mail\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1._E_mailColumn] = value;
-                }
+            public void Set學位Null() {
+                this[this.tableDa4s.學位Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 緊急聯絡人1姓名 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.緊急聯絡人1姓名Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'緊急聯絡人1姓名\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.緊急聯絡人1姓名Column] = value;
-                }
+            public bool Is指導教授Null() {
+                return this.IsNull(this.tableDa4s.指導教授Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 緊急聯絡人1關係 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.緊急聯絡人1關係Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'緊急聯絡人1關係\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.緊急聯絡人1關係Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 緊急聯絡人1電話 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.緊急聯絡人1電話Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'緊急聯絡人1電話\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.緊急聯絡人1電話Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 緊急聯絡人2姓名 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.緊急聯絡人2姓名Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'緊急聯絡人2姓名\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.緊急聯絡人2姓名Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 緊急聯絡人2關係 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.緊急聯絡人2關係Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'緊急聯絡人2關係\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.緊急聯絡人2關係Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string 緊急聯絡人2電話 {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpData1.緊急聯絡人2電話Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData1\' 中資料行 \'緊急聯絡人2電話\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpData1.緊急聯絡人2電話Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is姓名中Null() {
-                return this.IsNull(this.tableEmpData1.姓名中Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set姓名中Null() {
-                this[this.tableEmpData1.姓名中Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is姓名英Null() {
-                return this.IsNull(this.tableEmpData1.姓名英Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set姓名英Null() {
-                this[this.tableEmpData1.姓名英Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is部門Null() {
-                return this.IsNull(this.tableEmpData1.部門Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set部門Null() {
-                this[this.tableEmpData1.部門Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is職稱Null() {
-                return this.IsNull(this.tableEmpData1.職稱Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set職稱Null() {
-                this[this.tableEmpData1.職稱Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is到職日期Null() {
-                return this.IsNull(this.tableEmpData1.到職日期Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set到職日期Null() {
-                this[this.tableEmpData1.到職日期Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is出生日期Null() {
-                return this.IsNull(this.tableEmpData1.出生日期Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set出生日期Null() {
-                this[this.tableEmpData1.出生日期Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is性別Null() {
-                return this.IsNull(this.tableEmpData1.性別Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set性別Null() {
-                this[this.tableEmpData1.性別Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is出生地Null() {
-                return this.IsNull(this.tableEmpData1.出生地Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set出生地Null() {
-                this[this.tableEmpData1.出生地Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is身分證字號Null() {
-                return this.IsNull(this.tableEmpData1.身分證字號Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set身分證字號Null() {
-                this[this.tableEmpData1.身分證字號Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is婚姻Null() {
-                return this.IsNull(this.tableEmpData1.婚姻Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set婚姻Null() {
-                this[this.tableEmpData1.婚姻Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is身高Null() {
-                return this.IsNull(this.tableEmpData1.身高Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set身高Null() {
-                this[this.tableEmpData1.身高Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is體重Null() {
-                return this.IsNull(this.tableEmpData1.體重Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set體重Null() {
-                this[this.tableEmpData1.體重Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is血型Null() {
-                return this.IsNull(this.tableEmpData1.血型Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set血型Null() {
-                this[this.tableEmpData1.血型Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is戶籍地址Null() {
-                return this.IsNull(this.tableEmpData1.戶籍地址Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set戶籍地址Null() {
-                this[this.tableEmpData1.戶籍地址Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is戶籍電話Null() {
-                return this.IsNull(this.tableEmpData1.戶籍電話Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set戶籍電話Null() {
-                this[this.tableEmpData1.戶籍電話Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is通訊地址Null() {
-                return this.IsNull(this.tableEmpData1.通訊地址Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set通訊地址Null() {
-                this[this.tableEmpData1.通訊地址Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is住家電話Null() {
-                return this.IsNull(this.tableEmpData1.住家電話Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set住家電話Null() {
-                this[this.tableEmpData1.住家電話Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is行動電話Null() {
-                return this.IsNull(this.tableEmpData1.行動電話Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set行動電話Null() {
-                this[this.tableEmpData1.行動電話Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is_E_mailNull() {
-                return this.IsNull(this.tableEmpData1._E_mailColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set_E_mailNull() {
-                this[this.tableEmpData1._E_mailColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is緊急聯絡人1姓名Null() {
-                return this.IsNull(this.tableEmpData1.緊急聯絡人1姓名Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set緊急聯絡人1姓名Null() {
-                this[this.tableEmpData1.緊急聯絡人1姓名Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is緊急聯絡人1關係Null() {
-                return this.IsNull(this.tableEmpData1.緊急聯絡人1關係Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set緊急聯絡人1關係Null() {
-                this[this.tableEmpData1.緊急聯絡人1關係Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is緊急聯絡人1電話Null() {
-                return this.IsNull(this.tableEmpData1.緊急聯絡人1電話Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set緊急聯絡人1電話Null() {
-                this[this.tableEmpData1.緊急聯絡人1電話Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is緊急聯絡人2姓名Null() {
-                return this.IsNull(this.tableEmpData1.緊急聯絡人2姓名Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set緊急聯絡人2姓名Null() {
-                this[this.tableEmpData1.緊急聯絡人2姓名Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is緊急聯絡人2關係Null() {
-                return this.IsNull(this.tableEmpData1.緊急聯絡人2關係Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set緊急聯絡人2關係Null() {
-                this[this.tableEmpData1.緊急聯絡人2關係Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Is緊急聯絡人2電話Null() {
-                return this.IsNull(this.tableEmpData1.緊急聯絡人2電話Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Set緊急聯絡人2電話Null() {
-                this[this.tableEmpData1.緊急聯絡人2電話Column] = global::System.Convert.DBNull;
+            public void Set指導教授Null() {
+                this[this.tableDa4s.指導教授Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -2994,22 +2211,22 @@ namespace DouImp.Report {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class EmpData1RowChangeEvent : global::System.EventArgs {
+        public class Da4sRowChangeEvent : global::System.EventArgs {
             
-            private EmpData1Row eventRow;
+            private Da4sRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpData1RowChangeEvent(EmpData1Row row, global::System.Data.DataRowAction action) {
+            public Da4sRowChangeEvent(Da4sRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmpData1Row Row {
+            public Da4sRow Row {
                 get {
                     return this.eventRow;
                 }

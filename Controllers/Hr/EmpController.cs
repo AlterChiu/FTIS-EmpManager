@@ -216,9 +216,10 @@ namespace DouImp.Controllers
                 reportViewer.LocalReport.ReportPath =
                    "Report\\RptEmpBasic.rdlc";
 
-                var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno).First();
 
                 //主表                
+                var data = GetModelEntity().GetAll().Where(a => a.Fno == Fno).First();
+
                 DataTable dtData = new DataTable();
                 //dtData.Columns.Add(new DataColumn("xxxx"));
                 dtData.Columns.Add(new DataColumn("姓名中"));
@@ -249,11 +250,11 @@ namespace DouImp.Controllers
 
                 DataRow dr = dtData.NewRow();
                 //dr["xxxx"] = "oooooo";
-                dr["姓名中"] = datas.Name;
-                dr["姓名英"] = datas.En_Name;
-                dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(datas.DCode).DName;
-                dr["職稱"] = "ooo職稱"; //FtisHelperV2.DB.Helper.GetEmployeeTitle(datas.TCode).Title;
-                dr["到職日期"] = DateFormat.ToDate4(datas.AD);
+                dr["姓名中"] = data.Name;
+                dr["姓名英"] = data.En_Name;
+                dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
+                dr["職稱"] = "ooo職稱"; //FtisHelperV2.DB.Helper.GetEmployeeTitle(data.TCode).Title;
+                dr["到職日期"] = DateFormat.ToDate4(data.AD);
                 dr["出生日期"] = "ooo出生日期";
                 dr["性別"] = "ooo性別";
                 dr["出生地"] = "ooo出生地";
@@ -276,9 +277,118 @@ namespace DouImp.Controllers
                 dr["緊急聯絡人2電話"] = "ooo緊急聯絡人2電話";
                 dtData.Rows.Add(dr);
 
+                //學歷
+                Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+                var da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno);
+
+                DataTable dt4 = new DataTable();
+                //dt4.Columns.Add(new DataColumn("xxxx"));
+                dt4.Columns.Add(new DataColumn("學校"));
+                dt4.Columns.Add(new DataColumn("學院"));
+                dt4.Columns.Add(new DataColumn("科系"));
+                dt4.Columns.Add(new DataColumn("入學年月"));
+                dt4.Columns.Add(new DataColumn("畢業年月"));
+                dt4.Columns.Add(new DataColumn("學位"));
+                dt4.Columns.Add(new DataColumn("指導教授"));
+
+                foreach (var v in da4s)
+                {
+                    DataRow dr4 = dt4.NewRow();
+                    //dr4["xxxx"] = "oooooo";
+                    dr4["學校"] = "ooo學校"; //v.da401;
+                    dr4["學院"] = "ooo學院"; //v.da402;
+                    dr4["科系"] = "ooo科系"; //v.da403;
+                    dr4["入學年月"] = "ooo入學年月"; //v.da404;
+                    dr4["畢業年月"] = "ooo畢業年月"; //v.da405;
+                    dr4["學位"] = "ooo學位"; //v.da406;
+                    dr4["指導教授"] = "ooo指導教授"; //v.da407;
+                    dt4.Rows.Add(dr4);
+                }
+
                 reportViewer.LocalReport.DataSources.Add(
                     new ReportDataSource("DataSet_Emp", dtData)
                 );
+
+                reportViewer.LocalReport.DataSources.Add(
+                    new Microsoft.Reporting.WebForms.ReportDataSource("Da4s", dt4)
+                );
+
+                //////經歷
+                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+                ////var da5s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
+
+                ////DataTable dt5 = new DataTable();
+                //////dt5.Columns.Add(new DataColumn("xxxx"));
+                ////dt5.Columns.Add(new DataColumn("部門"));
+                ////dt5.Columns.Add(new DataColumn("職務"));
+                ////dt5.Columns.Add(new DataColumn("起始年月"));
+                ////dt5.Columns.Add(new DataColumn("結束年月"));
+                ////dt5.Columns.Add(new DataColumn("年資"));
+                ////dt5.Columns.Add(new DataColumn("其他備註"));
+
+                ////DataRow dr5 = dt5.NewRow();
+                //////dr5["xxxx"] = "oooooo";
+                ////dr5["部門"] = "oooooo";
+                ////dr5["職務"] = "oooooo";
+                ////dr5["起始年月"] = "oooooo";
+                ////dr5["結束年月"] = "oooooo";
+                ////dr5["年資"] = "oooooo";
+                ////dr5["其他備註"] = "oooooo";
+
+                //////家庭狀況
+                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa6> modelDa6s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa6>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+                ////var da6s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
+
+                ////DataTable dt6 = new DataTable();
+                //////dt6.Columns.Add(new DataColumn("xxxx"));
+                ////dt6.Columns.Add(new DataColumn("稱謂"));
+                ////dt6.Columns.Add(new DataColumn("姓名"));
+                ////dt6.Columns.Add(new DataColumn("生日"));
+                ////dt6.Columns.Add(new DataColumn("職務"));
+                ////dt6.Columns.Add(new DataColumn("任職公司或在學學校"));
+
+                ////DataRow dr6 = dt6.NewRow();
+                //////dr6["xxxx"] = "oooooo";
+                ////dr6["稱謂"] = "oooooo";
+                ////dr6["姓名"] = "oooooo";
+                ////dr6["生日"] = "oooooo";
+                ////dr6["職務"] = "oooooo";
+                ////dr6["任職公司或在學學校"] = "oooooo";
+
+                //////外語檢定
+                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa7> modelDa7s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa7>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+                ////var da7s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
+
+                ////DataTable dt7 = new DataTable();
+                //////dt7.Columns.Add(new DataColumn("xxxx"));
+                ////dt7.Columns.Add(new DataColumn("名稱"));
+                ////dt7.Columns.Add(new DataColumn("取得年月"));
+                ////dt7.Columns.Add(new DataColumn("測驗成績"));
+
+                ////DataRow dr7 = dt7.NewRow();
+                //////dr7["xxxx"] = "oooooo";
+                ////dr7["名稱"] = "oooooo";
+                ////dr7["取得年月"] = "oooooo";
+                ////dr7["測驗成績"] = "oooooo";
+
+                //////專業資格
+                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+                ////var da8s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
+
+                ////DataTable dt8 = new DataTable();
+                //////dt8.Columns.Add(new DataColumn("xxxx"));
+                ////dt8.Columns.Add(new DataColumn("名稱"));
+                ////dt8.Columns.Add(new DataColumn("取得年月"));
+                ////dt8.Columns.Add(new DataColumn("證照字號"));
+                ////dt8.Columns.Add(new DataColumn("xxxx"));
+
+                ////DataRow dr8 = dt8.NewRow();
+                //////dr8["xxxx"] = "oooooo";
+                ////dr8["名稱"] = "oooooo";
+                ////dr8["取得年月"] = "oooooo";
+                ////dr8["證照字號"] = "oooooo";
+
+                //-----------------------------
 
                 Microsoft.Reporting.WebForms.Warning[] warnings;
                 string[] streamids;
