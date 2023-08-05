@@ -520,6 +520,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report\EmpBasic\Master.rdlc" />
+    <EmbeddedResource Include="Report\EmpBasic\ooo_1Sub1Data.rdlc" />
+    <EmbeddedResource Include="Report\EmpBasic\Sub1Data.rdlc" />
+    <EmbeddedResource Include="Report\EmpBasic\Sub2Da4s.rdlc" />
     <EmbeddedResource Include="Report\RptEmpBasic.rdlc" />
     <EmbeddedResource Include="Report\RptEmpCV.rdlc" />
   </ItemGroup>
