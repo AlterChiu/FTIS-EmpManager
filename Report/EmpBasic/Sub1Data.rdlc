@@ -202,14 +202,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="部門">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!部門.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -219,7 +219,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>部門</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -270,14 +270,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="職稱">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!職稱.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -288,7 +288,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>職稱</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -344,14 +344,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox15">
+                    <Textbox Name="到職日期">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!到職日期.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -361,7 +361,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <rd:DefaultName>到職日期</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -412,14 +412,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox17">
+                    <Textbox Name="性別">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!性別.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -430,7 +430,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <rd:DefaultName>性別</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -486,14 +486,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox19">
+                    <Textbox Name="出生日期">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!出生日期.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -503,7 +503,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <rd:DefaultName>出生日期</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -554,14 +554,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox21">
+                    <Textbox Name="出生地">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!出生地.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -572,7 +572,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox21</rd:DefaultName>
+                      <rd:DefaultName>出生地</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -583,6 +583,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -643,14 +644,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="身分證字號">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!身分證字號.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -660,7 +661,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <rd:DefaultName>身分證字號</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -711,14 +712,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox25">
+                    <Textbox Name="婚姻">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!婚姻.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -729,7 +730,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox25</rd:DefaultName>
+                      <rd:DefaultName>婚姻</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -785,14 +786,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox27">
+                    <Textbox Name="身高">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!身高.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -802,7 +803,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <rd:DefaultName>身高</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -853,14 +854,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox29">
+                    <Textbox Name="體重">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!體重.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -871,7 +872,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox29</rd:DefaultName>
+                      <rd:DefaultName>體重</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -927,14 +928,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox31">
+                    <Textbox Name="血型">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!血型.Value</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -944,7 +945,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox31</rd:DefaultName>
+                      <rd:DefaultName>血型</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -956,7 +957,6 @@
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
