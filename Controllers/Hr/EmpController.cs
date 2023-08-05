@@ -494,13 +494,13 @@ namespace DouImp.Controllers
             {
                 DataRow dr = dt.NewRow();
                 //dr4["xxxx"] = "oooooo";
-                dr["學校"] = "學校"; //v.da401;
-                dr["學院"] = "學院"; //v.da402;
-                dr["科系"] = "科系"; //v.da403;
-                dr["入學年月"] = "入學年月"; //v.da404;
-                dr["畢業年月"] = "畢業年月"; //v.da405;
-                dr["學位"] = "學位"; //v.da406;
-                dr["指導教授"] = "指導教授"; //v.da407;
+                dr["學校"] = v.da401;
+                dr["學院"] = v.da402;
+                dr["科系"] = v.da403;
+                dr["入學年月"] = v.da404;
+                dr["畢業年月"] = v.da405;
+                dr["學位"] = v.da406;
+                dr["指導教授"] = v.da407;
                 dt.Rows.Add(dr);
             }
 

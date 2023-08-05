@@ -1024,7 +1024,7 @@
         </TablixRowHierarchy>
         <DataSetName>MasterEmpData</DataSetName>
         <Height>4.8cm</Height>
-        <Width>12.56583cm</Width>
+        <Width>12.56584cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1032,7 +1032,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.12598in</Height>
+    <Height>1.88976in</Height>
     <Style />
   </Body>
   <Width>4.94718in</Width>

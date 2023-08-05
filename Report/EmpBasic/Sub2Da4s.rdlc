@@ -12,19 +12,19 @@
               <Width>1.865cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.82972cm</Width>
+              <Width>1.56514cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.21778cm</Width>
+              <Width>2.05903cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.28833cm</Width>
+              <Width>2.07666cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.52986cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.35889cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -525,7 +525,7 @@
         </TablixRowHierarchy>
         <DataSetName>Sub2SourceDa4s</DataSetName>
         <Height>1.2cm</Height>
-        <Width>14.44847cm</Width>
+        <Width>13.67236cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -536,7 +536,7 @@
     <Height>0.47244in</Height>
     <Style />
   </Body>
-  <Width>5.68837in</Width>
+  <Width>5.38282in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
