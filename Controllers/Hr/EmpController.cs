@@ -199,7 +199,7 @@ namespace DouImp.Controllers
                 Directory.CreateDirectory(folder);
             }
 
-            string fileName = "員工基本資料_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
+            string fileName = "員工基本資料_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
             string path = folder + fileName;
 
             //產出檔案
@@ -307,7 +307,7 @@ namespace DouImp.Controllers
                 string extension;
                 
                 byte[] bytes = reportViewer.LocalReport.Render(
-                   "Excel", null, out mimeType, out encoding,
+                   "EXCELOPENXML", null, out mimeType, out encoding,
                     out extension,
                    out streamids, out warnings);
 
