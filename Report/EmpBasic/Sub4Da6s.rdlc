@@ -15,10 +15,10 @@
               <Width>1.77681cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.11736cm</Width>
+              <Width>3.38194cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>8.09153cm</Width>
+              <Width>7.12709cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -439,7 +439,7 @@
         </TablixRowHierarchy>
         <DataSetName>Sub4SourceDa6s</DataSetName>
         <Height>1.8cm</Height>
-        <Width>17.40363cm</Width>
+        <Width>17.10377cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -450,7 +450,7 @@
     <Height>0.70866in</Height>
     <Style />
   </Body>
-  <Width>7.71293in</Width>
+  <Width>6.73377in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
