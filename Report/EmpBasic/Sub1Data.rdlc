@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.8463cm</Width>
+              <Width>2.29949cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.94097cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.51336cm</Width>
+              <Width>2.33697cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.20556cm</Width>
+              <Width>3.92876cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -599,7 +599,22 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>身分證字號</Value>
+                              <Value>身分證</Value>
+                              <Style>
+                                <FontFamily>標楷體</FontFamily>
+                                <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>字號</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>

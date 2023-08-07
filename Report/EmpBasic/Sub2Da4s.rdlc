@@ -6,25 +6,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.30542cm</Width>
+              <Width>2.89973cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.51764cm</Width>
+              <Width>2.72931cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.51764cm</Width>
+              <Width>2.5882cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.23542cm</Width>
+              <Width>1.74153cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.14722cm</Width>
+              <Width>1.72389cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.865cm</Width>
+              <Width>1.21236cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.28833cm</Width>
+              <Width>2.27069cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -142,7 +142,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>入學年月</Value>
+                              <Value>入學起</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -176,7 +176,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>畢業年月</Value>
+                              <Value>畢業迄</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -525,7 +525,7 @@
         </TablixRowHierarchy>
         <DataSetName>Sub2SourceDa4s</DataSetName>
         <Height>1.2cm</Height>
-        <Width>16.87667cm</Width>
+        <Width>15.1657cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -536,7 +536,7 @@
     <Height>0.47244in</Height>
     <Style />
   </Body>
-  <Width>6.64436in</Width>
+  <Width>5.97075in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
