@@ -21,7 +21,7 @@
               <Width>2.32361cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.57598cm</Width>
+              <Width>2.79987cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1040,7 +1040,7 @@
         </TablixRowHierarchy>
         <DataSetName>MasterEmpData</DataSetName>
         <Height>4.80056cm</Height>
-        <Width>15.46223cm</Width>
+        <Width>14.68612cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1054,7 +1054,7 @@
               <Width>2.30009cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>13.16214cm</Width>
+              <Width>12.38603cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1126,7 +1126,7 @@
         </TablixRowHierarchy>
         <Top>4.83584cm</Top>
         <Height>0.6cm</Height>
-        <Width>15.46223cm</Width>
+        <Width>14.68612cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1138,7 +1138,7 @@
     <Height>2.65522in</Height>
     <Style />
   </Body>
-  <Width>6.08749in</Width>
+  <Width>5.78194in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
