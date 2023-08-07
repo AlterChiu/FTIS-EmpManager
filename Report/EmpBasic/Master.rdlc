@@ -21,7 +21,7 @@
               <Width>2.32361cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87042cm</Width>
+              <Width>3.02917cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -125,7 +125,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.2cm</Height>
+              <Height>0.60028cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -204,7 +204,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.2cm</Height>
+              <Height>0.60028cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1009,8 +1009,97 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>MasterEmpData</DataSetName>
-        <Height>6cm</Height>
-        <Width>15.30348cm</Width>
+        <Height>4.80056cm</Height>
+        <Width>15.46223cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>15.46223cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox19">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>學歷</Value>
+                              <Style>
+                                <FontFamily>標楷體</FontFamily>
+                                <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Subreport Name="Sub2Da4s">
+                      <ReportName>Sub2Da4s</ReportName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Subreport>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <Top>4.83584cm</Top>
+        <Height>1.2cm</Height>
+        <Width>15.46223cm</Width>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1018,10 +1107,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.3622in</Height>
+    <Height>2.65522in</Height>
     <Style />
   </Body>
-  <Width>6.02499in</Width>
+  <Width>6.08749in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
