@@ -342,6 +342,18 @@ namespace DouImp.Controllers
                 DataTable dtDa6s = GetDa6s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub4SourceDa6s", dtDa6s));
             }
+            else if (e.ReportPath == "Sub5Da7s")
+            {
+                //外語檢定
+                DataTable dtDa7s = GetDa7s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub5SourceDa7s", dtDa7s));
+            }
+            else if (e.ReportPath == "Sub6Da8s")
+            {
+                //專業資格
+                DataTable dtDa8s = GetDa8s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub6SourceDa8s", dtDa8s));
+            }
         }
 
         //主表
@@ -496,6 +508,52 @@ namespace DouImp.Controllers
                 dr["生日"] = v.da603;
                 dr["職務"] = v.da604;
                 dr["任職公司或在學學校"] = v.da605;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+        //外語檢定
+        private DataTable GetDa7s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa7> modelDa7s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa7>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            var da7s = modelDa7s.GetAll().Where(a => a.Fno == Fno);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("名稱"));
+            dt.Columns.Add(new DataColumn("取得年月"));
+            dt.Columns.Add(new DataColumn("測驗成績"));
+
+            foreach (var v in da7s)
+            {
+                DataRow dr = dt.NewRow();
+                dr["名稱"] = v.da701;
+                dr["取得年月"] = v.da702;
+                dr["測驗成績"] = v.da703;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+        //專業資格
+        private DataTable GetDa8s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa8> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa8>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            var da8s = modelDa8s.GetAll().Where(a => a.Fno == Fno);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("名稱"));
+            dt.Columns.Add(new DataColumn("取得年月"));
+            dt.Columns.Add(new DataColumn("證照字號"));
+
+            foreach (var v in da8s)
+            {
+                DataRow dr = dt.NewRow();
+                dr["名稱"] = v.da801;
+                dr["取得年月"] = v.da802;
+                dr["證照字號"] = v.da803;
                 dt.Rows.Add(dr);
             }
 
