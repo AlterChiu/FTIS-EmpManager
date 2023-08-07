@@ -223,83 +223,6 @@ namespace DouImp.Controllers
                 // 子報表事件
                 reportViewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_Content_SubreportProcessing);
 
-                //////經歷
-                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
-                ////var da5s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
-
-                ////DataTable dt5 = new DataTable();
-                //////dt5.Columns.Add(new DataColumn("xxxx"));
-                ////dt5.Columns.Add(new DataColumn("部門"));
-                ////dt5.Columns.Add(new DataColumn("職務"));
-                ////dt5.Columns.Add(new DataColumn("起始年月"));
-                ////dt5.Columns.Add(new DataColumn("結束年月"));
-                ////dt5.Columns.Add(new DataColumn("年資"));
-                ////dt5.Columns.Add(new DataColumn("其他備註"));
-
-                ////DataRow dr5 = dt5.NewRow();
-                //////dr5["xxxx"] = "oooooo";
-                ////dr5["部門"] = "oooooo";
-                ////dr5["職務"] = "oooooo";
-                ////dr5["起始年月"] = "oooooo";
-                ////dr5["結束年月"] = "oooooo";
-                ////dr5["年資"] = "oooooo";
-                ////dr5["其他備註"] = "oooooo";
-
-                //////家庭狀況
-                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa6> modelDa6s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa6>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
-                ////var da6s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
-
-                ////DataTable dt6 = new DataTable();
-                //////dt6.Columns.Add(new DataColumn("xxxx"));
-                ////dt6.Columns.Add(new DataColumn("稱謂"));
-                ////dt6.Columns.Add(new DataColumn("姓名"));
-                ////dt6.Columns.Add(new DataColumn("生日"));
-                ////dt6.Columns.Add(new DataColumn("職務"));
-                ////dt6.Columns.Add(new DataColumn("任職公司或在學學校"));
-
-                ////DataRow dr6 = dt6.NewRow();
-                //////dr6["xxxx"] = "oooooo";
-                ////dr6["稱謂"] = "oooooo";
-                ////dr6["姓名"] = "oooooo";
-                ////dr6["生日"] = "oooooo";
-                ////dr6["職務"] = "oooooo";
-                ////dr6["任職公司或在學學校"] = "oooooo";
-
-                //////外語檢定
-                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa7> modelDa7s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa7>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
-                ////var da7s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
-
-                ////DataTable dt7 = new DataTable();
-                //////dt7.Columns.Add(new DataColumn("xxxx"));
-                ////dt7.Columns.Add(new DataColumn("名稱"));
-                ////dt7.Columns.Add(new DataColumn("取得年月"));
-                ////dt7.Columns.Add(new DataColumn("測驗成績"));
-
-                ////DataRow dr7 = dt7.NewRow();
-                //////dr7["xxxx"] = "oooooo";
-                ////dr7["名稱"] = "oooooo";
-                ////dr7["取得年月"] = "oooooo";
-                ////dr7["測驗成績"] = "oooooo";
-
-                //////專業資格
-                ////Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
-                ////var da8s = modelDa4s.GetAll().Where(a => a.Fno == Fno).First();
-
-                ////DataTable dt8 = new DataTable();
-                //////dt8.Columns.Add(new DataColumn("xxxx"));
-                ////dt8.Columns.Add(new DataColumn("名稱"));
-                ////dt8.Columns.Add(new DataColumn("取得年月"));
-                ////dt8.Columns.Add(new DataColumn("證照字號"));
-                ////dt8.Columns.Add(new DataColumn("xxxx"));
-
-                ////DataRow dr8 = dt8.NewRow();
-                //////dr8["xxxx"] = "oooooo";
-                ////dr8["名稱"] = "oooooo";
-                ////dr8["取得年月"] = "oooooo";
-                ////dr8["證照字號"] = "oooooo";
-
-                //-----------------------------
-
                 Microsoft.Reporting.WebForms.Warning[] warnings;
                 string[] streamids;
                 string mimeType;
@@ -407,6 +330,12 @@ namespace DouImp.Controllers
                 DataTable dtDa4s = GetDa4s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub2SourceDa4s", dtDa4s));
             }
+            else if (e.ReportPath == "Sub3Da5s")
+            {
+                //經歷
+                DataTable dtDa5s = GetDa5s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s", dtDa5s));
+            }
         }
 
         //主表
@@ -504,6 +433,36 @@ namespace DouImp.Controllers
                 dr["畢業年月"] = v.da405;
                 dr["學位"] = v.da406;
                 dr["指導教授"] = v.da407;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+        //經歷
+        private DataTable GetDa5s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("服務單位"));
+            dt.Columns.Add(new DataColumn("職務"));
+            dt.Columns.Add(new DataColumn("起始年月"));
+            dt.Columns.Add(new DataColumn("結束年月"));
+            dt.Columns.Add(new DataColumn("年資"));
+            dt.Columns.Add(new DataColumn("其他備註"));
+
+            foreach (var v in da5s)
+            {
+                DataRow dr = dt.NewRow();
+                dr["服務單位"] = v.da501;
+                dr["職務"] = v.da502;
+                dr["起始年月"] = v.da504;
+                dr["結束年月"] = v.da505;
+                //dr["年資"] = Math.Round(((double)DbFunctions.DiffMonths(v.da504, v.da505) / 12), 2)"oooooo";
+                dr["年資"] = "ooo";
+                dr["其他備註"] = v.da506;
                 dt.Rows.Add(dr);
             }
 
