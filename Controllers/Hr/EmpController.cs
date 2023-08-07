@@ -336,6 +336,12 @@ namespace DouImp.Controllers
                 DataTable dtDa5s = GetDa5s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s", dtDa5s));
             }
+            else if (e.ReportPath == "Sub4Da6s")
+            {
+                //經歷
+                DataTable dtDa6s = GetDa6s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub4SourceDa6s", dtDa6s));
+            }
         }
 
         //主表
@@ -463,6 +469,33 @@ namespace DouImp.Controllers
                 //dr["年資"] = Math.Round(((double)DbFunctions.DiffMonths(v.da504, v.da505) / 12), 2)"oooooo";
                 dr["年資"] = "ooo";
                 dr["其他備註"] = v.da506;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+        //家庭狀況
+        private DataTable GetDa6s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa6> modelDa6s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa6>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            var da6s = modelDa6s.GetAll().Where(a => a.Fno == Fno);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("稱謂"));
+            dt.Columns.Add(new DataColumn("姓名"));
+            dt.Columns.Add(new DataColumn("生日"));
+            dt.Columns.Add(new DataColumn("職務"));
+            dt.Columns.Add(new DataColumn("任職公司或在學學校"));
+
+            foreach (var v in da6s)
+            {
+                DataRow dr = dt.NewRow();
+                dr["稱謂"] = v.da601;
+                dr["姓名"] = v.da602;
+                dr["生日"] = v.da603;
+                dr["職務"] = v.da604;
+                dr["任職公司或在學學校"] = v.da605;
                 dt.Rows.Add(dr);
             }
 
