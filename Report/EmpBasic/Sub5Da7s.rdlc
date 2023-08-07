@@ -32,6 +32,7 @@
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -75,6 +76,7 @@
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -95,6 +97,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -110,6 +113,7 @@
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -130,6 +134,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -145,6 +150,7 @@
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -165,6 +171,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -294,7 +301,7 @@
         </TablixRowHierarchy>
         <DataSetName>Sub5SourceDa7s</DataSetName>
         <Height>1.8cm</Height>
-        <Width>12.20958cm</Width>
+        <Width>16.69958cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -305,7 +312,7 @@
     <Height>0.70866in</Height>
     <Style />
   </Body>
-  <Width>4.80692in</Width>
+  <Width>6.57464in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
