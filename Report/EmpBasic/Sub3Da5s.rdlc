@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.7764cm</Width>
+              <Width>4.13459cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.41181cm</Width>
+              <Width>3.24084cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.1825cm</Width>
@@ -18,13 +18,60 @@
               <Width>2.16486cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.56514cm</Width>
+              <Width>1.24764cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.19375cm</Width>
+              <Width>3.54653cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>經歷</Value>
+                              <Style>
+                                <FontFamily>標楷體</FontFamily>
+                                <FontSize>13pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>6</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
             <TablixRow>
               <Height>0.6cm</Height>
               <TablixCells>
@@ -449,13 +496,16 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
               <Group Name="詳細資料" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Sub3SourceDa5s</DataSetName>
-        <Height>1.2cm</Height>
-        <Width>14.39446cm</Width>
+        <Height>1.8cm</Height>
+        <Width>16.51696cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -463,10 +513,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.47244in</Height>
+    <Height>0.70866in</Height>
     <Style />
   </Body>
-  <Width>5.66711in</Width>
+  <Width>6.50274in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
