@@ -28,7 +28,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>外語檢定</Value>
+                              <Value>專業資格</Value>
                               <Style>
                                 <FontFamily>標楷體</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -294,7 +294,7 @@
         </TablixRowHierarchy>
         <DataSetName>Sub6SourceDa8s</DataSetName>
         <Height>1.8cm</Height>
-        <Width>13.67361cm</Width>
+        <Width>16.73361cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -305,7 +305,7 @@
     <Height>0.70866in</Height>
     <Style />
   </Body>
-  <Width>5.38331in</Width>
+  <Width>6.58804in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
