@@ -9,19 +9,19 @@
               <Width>2.8469cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.63296cm</Width>
+              <Width>2.89754cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.22954cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.90616cm</Width>
+              <Width>2.13547cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.32361cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.865cm</Width>
+              <Width>2.87042cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -125,7 +125,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>1.2cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -204,7 +204,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>1.2cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -984,65 +984,6 @@
                 </TablixCell>
               </TablixCells>
             </TablixRow>
-            <TablixRow>
-              <Height>0.6cm</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox6">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>學歷</Value>
-                              <Style>
-                                <FontFamily>標楷體</FontFamily>
-                                <FontSize>13pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox6</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Subreport Name="Sub2Da4s">
-                      <ReportName>Sub2Da4s</ReportName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </Subreport>
-                    <ColSpan>5</ColSpan>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell />
-                <TablixCell />
-                <TablixCell />
-                <TablixCell />
-              </TablixCells>
-            </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
@@ -1065,12 +1006,11 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>MasterEmpData</DataSetName>
-        <Height>5.4cm</Height>
-        <Width>13.80417cm</Width>
+        <Height>6cm</Height>
+        <Width>15.30348cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1078,10 +1018,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.12598in</Height>
+    <Height>2.3622in</Height>
     <Style />
   </Body>
-  <Width>5.43471in</Width>
+  <Width>6.02499in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
