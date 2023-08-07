@@ -115,12 +115,15 @@
         });
 
         $('#btnExportBasic').click(function () {            
+
+            var fno = oFno;
+
             helper.misc.showBusyIndicator();
             $.ajax({
                 url: '/' + 'Emp/ExportBasicExcel',
                 datatype: "json",
                 type: "Get",
-
+                data: { fno: fno },
                 success: function (data) {
                     if (data.result) {
                         location.href = data.url;

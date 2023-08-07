@@ -189,10 +189,8 @@ namespace DouImp.Controllers
         }
 
         //匯出基本資料表
-        public ActionResult ExportBasicExcel()
+        public ActionResult ExportBasicExcel(string fno)
         {
-            string Fno = "J11149";
-
             string folder = FileHelper.GetFileFolder(Code.TempUploadFile.個人員工基本資料表);
 
             if (!Directory.Exists(folder))
@@ -218,11 +216,11 @@ namespace DouImp.Controllers
                 reportViewer.LocalReport.ReportPath = "Report\\EmpBasic\\Master.rdlc";
 
                 //參數設定
-                ReportParameter p1 = new ReportParameter("Fno", Fno);
+                ReportParameter p1 = new ReportParameter("Fno", fno);
                 reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1 });
 
                 //主表                
-                DataTable dtData = GetEmpData(Fno);
+                DataTable dtData = GetEmpData(fno);
                 reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
                 // 子報表事件
