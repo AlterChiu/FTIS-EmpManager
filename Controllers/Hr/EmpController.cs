@@ -25,6 +25,7 @@ using System.Dynamic;
 using System.Data;
 using DouImp._core;
 using ZXing;
+using Microsoft.Ajax.Utilities;
 
 namespace DouImp.Controllers
 {   
@@ -216,6 +217,10 @@ namespace DouImp.Controllers
                 // Load Report File From Local Path
                 reportViewer.LocalReport.ReportPath = "Report\\EmpBasic\\Master.rdlc";
 
+                //參數設定
+                ReportParameter p1 = new ReportParameter("Fno", Fno);
+                reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1 });
+
                 //主表                
                 DataTable dtData = GetEmpData(Fno);
                 reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
@@ -316,8 +321,19 @@ namespace DouImp.Controllers
         //繫結子報表
         private void LocalReport_Content_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
         {
-            string Fno = "J11149";
-           
+            //交易編號
+            string Fno = "";
+
+            if (e.Parameters["Fno"] != null && e.Parameters["Fno"].Values.Count != 0)
+            {
+                Fno = e.Parameters["Fno"].Values[0];
+            }
+            else
+            {
+                //Fno無值(參數傳遞失敗)
+                return;
+            }
+
             if (e.ReportPath == "Sub1Data")
             {
                 //主表
