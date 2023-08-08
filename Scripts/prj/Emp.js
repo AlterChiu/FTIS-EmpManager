@@ -127,6 +127,7 @@
                 success: function (data) {
                     if (data.result) {
                         location.href = app.siteRoot + data.url;
+						//window.open(app.siteRoot + data.url, 'Download');
                     } else {
                         alert("產出基本資料表失敗：\n" + data.errorMessage);
                     }
