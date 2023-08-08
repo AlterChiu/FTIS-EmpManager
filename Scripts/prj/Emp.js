@@ -120,7 +120,7 @@
 
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: '/' + 'Emp/ExportBasicExcel',
+                url: app.siteRoot + 'Emp/ExportBasicExcel',
                 datatype: "json",
                 type: "Get",
                 data: { fno: fno },
@@ -145,7 +145,7 @@
         $('#btnExportCV').click(function () {            
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: '/' + 'Emp/ExportCVExcel',
+                url: app.siteRoot + 'Emp/ExportCVExcel',
                 datatype: "json",
                 type: "Get",
 

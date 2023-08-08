@@ -14,6 +14,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/dou/js")
+    <script>
+        window.app = window.app || {};
+        app.siteRoot = "@Url.Content("~/")";
+    </script>
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @*<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>*@
 
