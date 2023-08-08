@@ -126,7 +126,7 @@
                 data: { fno: fno },
                 success: function (data) {
                     if (data.result) {
-                        location.href = data.url;
+                        location.href = app.siteRoot + data.url;
                     } else {
                         alert("產出基本資料表失敗：\n" + data.errorMessage);
                     }
@@ -151,7 +151,7 @@
 
                 success: function (data) {
                     if (data.result) {
-                        location.href = data.url;
+                        location.href = app.siteRoot + data.url;
                     } else {
                         alert("產出履歷表失敗：\n" + data.errorMessage);
                     }
