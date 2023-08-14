@@ -198,7 +198,7 @@ namespace DouImp.Controllers
                 Directory.CreateDirectory(folder);
             }
 
-            string fileName = "員工基本資料_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+            string fileName = "員工基本資料_" + DateFormat.ToDate1(DateTime.Now) + ".xlsx";
             string path = folder + fileName;
 
             //產出檔案
@@ -410,14 +410,14 @@ namespace DouImp.Controllers
             //dr["xxxx"] = "oooooo";
             dr["姓名中"] = data.Name;
             dr["姓名英"] = data.En_Name;
-            dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
-            dr["職稱"] = "無?"; //FtisHelperV2.DB.Helper.GetEmployeeTitle(data.TCode).Title;
+            dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
+            dr["職稱"] = FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title;
             dr["到職日期"] = DateFormat.ToDate4(data.AD);
             dr["出生日期"] = DateFormat.ToDate4((DateTime)da1s.da03);
             dr["性別"] = data.Sex;
             dr["出生地"] = da1s.da04;
             dr["身分證字號"] = da1s.da05;
-            dr["婚姻"] = "無?";
+            dr["婚姻"] = da1s.da06a;
             dr["身高"] = da1s.da06;
             dr["體重"] = da1s.da07;
             dr["血型"] = da1s.da08;
