@@ -15,8 +15,10 @@ namespace DouImp._core
 {
     public class ReportClass
     {
-        public static string _errorMessage = "";
-        public static string ErrorMessage
+        public string _errorMessage = "";        
+        public System.Data.Entity.DbContext _dbContext = FtisHelperV2.DB.Helper.CreateFtisModelContext();
+
+        public string ErrorMessage
         {
             get
             {
@@ -28,7 +30,7 @@ namespace DouImp._core
     public class ReportEmp : ReportClass
     {
         //匯出基本資料表
-        public static string ExportExcel(string fno)
+        public string ExportExcel(string fno)
         {
             string resultUrl = "";
 
@@ -106,7 +108,7 @@ namespace DouImp._core
         }
 
         //繫結子報表
-        private static void LocalReport_Content_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        private void LocalReport_Content_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
         {
             //交易編號
             string Fno = "";
@@ -160,12 +162,12 @@ namespace DouImp._core
         }
 
         //主表
-        private static DataTable GetEmpData(string Fno)
+        private DataTable GetEmpData(string Fno)
         {
-            Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
             var data = modelData.GetAll().Where(a => a.Fno == Fno).First();
 
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa1> modelDa1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(FtisHelperV2.DB.Helper.CreateFtisModelContext());            
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa1> modelDa1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(_dbContext);            
             var da1s = modelDa1s.GetAll().Where(a => a.Fno == Fno).First();
 
             DataTable dt = new DataTable();
@@ -229,9 +231,9 @@ namespace DouImp._core
         }
 
         //學歷
-        private static DataTable GetDa4s(string Fno)
+        private DataTable GetDa4s(string Fno)
         {
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(_dbContext);
             var da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno);
 
             DataTable dt = new DataTable();
@@ -262,9 +264,9 @@ namespace DouImp._core
         }
 
         //經歷
-        private static DataTable GetDa5s(string Fno)
+        private DataTable GetDa5s(string Fno)
         {
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
             var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno);
 
             DataTable dt = new DataTable();
@@ -307,9 +309,9 @@ namespace DouImp._core
         }
 
         //家庭狀況
-        private static DataTable GetDa6s(string Fno)
+        private DataTable GetDa6s(string Fno)
         {
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa6> modelDa6s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa6>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa6> modelDa6s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa6>(_dbContext);
             var da6s = modelDa6s.GetAll().Where(a => a.Fno == Fno);
 
             DataTable dt = new DataTable();
@@ -334,9 +336,9 @@ namespace DouImp._core
         }
 
         //外語檢定
-        private static DataTable GetDa7s(string Fno)
+        private DataTable GetDa7s(string Fno)
         {
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa7> modelDa7s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa7>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa7> modelDa7s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa7>(_dbContext);
             var da7s = modelDa7s.GetAll().Where(a => a.Fno == Fno);
 
             DataTable dt = new DataTable();
@@ -357,9 +359,9 @@ namespace DouImp._core
         }
 
         //專業資格
-        private static DataTable GetDa8s(string Fno)
+        private DataTable GetDa8s(string Fno)
         {
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa8> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa8>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa8> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa8>(_dbContext);
             var da8s = modelDa8s.GetAll().Where(a => a.Fno == Fno);
 
             DataTable dt = new DataTable();

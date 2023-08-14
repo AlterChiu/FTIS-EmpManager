@@ -191,11 +191,12 @@ namespace DouImp.Controllers
         //匯出基本資料表
         public ActionResult ExportBasicExcel(string fno)
         {
-            string url = ReportEmp.ExportExcel(fno);
+            ReportEmp rep = new ReportEmp();
+            string url = rep.ExportExcel(fno);            
 
             if (url == "")
             {
-                return Json(new { result = false, errorMessage = ReportEmp.ErrorMessage }, JsonRequestBehavior.AllowGet);
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
             }
             else
             {
