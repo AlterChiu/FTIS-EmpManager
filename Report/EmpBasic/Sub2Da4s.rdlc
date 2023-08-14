@@ -64,10 +64,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.55417cm</Width>
+                  <Width>4.04806cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.74695cm</Width>
+                  <Width>2.34126cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.17029cm</Width>
@@ -82,7 +82,7 @@
                   <Width>1.21236cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.49639cm</Width>
+                  <Width>2.4082cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -396,7 +396,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>學校</rd:DefaultName>
@@ -428,7 +430,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>學院</rd:DefaultName>
@@ -460,7 +464,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>科系</rd:DefaultName>
@@ -492,7 +498,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>入學年月</rd:DefaultName>
@@ -524,7 +532,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>畢業年月</rd:DefaultName>
@@ -556,7 +566,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>學位</rd:DefaultName>
@@ -588,7 +600,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>指導教授</rd:DefaultName>
@@ -634,7 +648,7 @@
             </TablixRowHierarchy>
             <DataSetName>Sub2SourceDa4s</DataSetName>
             <Height>1.8cm</Height>
-            <Width>16.64558cm</Width>
+            <Width>16.64559cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
