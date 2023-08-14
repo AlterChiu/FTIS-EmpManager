@@ -498,6 +498,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Docs\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Country\" />
     <Folder Include="Views\Data\" />
     <Folder Include="Views\EmpDa1\" />
