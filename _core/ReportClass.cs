@@ -48,7 +48,7 @@ namespace DouImp._core
                 reportViewer.Height = Unit.Percentage(100);
 
                 // Load Report File From Local Path
-                reportViewer.LocalReport.ReportPath = "Report\\EmpBasic\\Master.rdlc";
+                reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpBasic/Master.rdlc");
 
                 //參數設定(Fno)
                 ReportParameter p1 = new ReportParameter("Fno", fno);
@@ -56,7 +56,7 @@ namespace DouImp._core
                 // 欲連結外部圖片必須設定該屬性
                 reportViewer.LocalReport.EnableExternalImages = true;
                 // 參數設定(logoPath)              
-                ReportParameter logo = new ReportParameter("logoPath", "D:\\SourceCode\\FTIS-EmpManager\\Images\\logo.png");
+                ReportParameter logo = new ReportParameter("logoPath", System.Web.HttpContext.Current.Server.MapPath("~/Images/logo.png"));
                 reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1, logo });
 
                 //主表                
