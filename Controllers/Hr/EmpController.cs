@@ -26,6 +26,7 @@ using System.Data;
 using DouImp._core;
 using ZXing;
 using Microsoft.Ajax.Utilities;
+using System.Drawing.Drawing2D;
 
 namespace DouImp.Controllers
 {   
@@ -492,13 +493,28 @@ namespace DouImp.Controllers
 
             foreach (var v in da5s)
             {
+                string strJob = "";
+                DateTime sJob = DateFormat.ToDate10(v.da504);
+                DateTime eJob = DateFormat.ToDate10(v.da505);
+
+                //迄今
+                if (eJob == DateTime.MinValue)
+                {
+                    eJob = DateFormat.ToDate10(DateFormat.ToDate9(DateTime.Now));
+                }
+
+                if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
+                {
+                    TimeSpan ts = (eJob - sJob);
+                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
+                }
+
                 DataRow dr = dt.NewRow();
                 dr["服務單位"] = v.da501;
                 dr["職務"] = v.da502;
                 dr["起始年月"] = v.da504;
-                dr["結束年月"] = v.da505;
-                //dr["年資"] = Math.Round(((double)DbFunctions.DiffMonths(v.da504, v.da505) / 12), 2)"oooooo";
-                dr["年資"] = "ooo";
+                dr["結束年月"] = v.da505;                
+                dr["年資"] = strJob;                
                 dr["其他備註"] = v.da506;
                 dt.Rows.Add(dr);
             }

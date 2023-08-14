@@ -305,6 +305,49 @@ namespace DouImp._core
         }
 
         /// <summary>
+        /// yyyyMM
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns>string</returns>
+        public static string ToDate9(DateTime date)
+        {
+            string result = "";
+
+            //當 datetime 為最小值時，回傳「空字串」。
+            if (date == DateTime.MinValue)
+                result = "";
+            else
+                result = date.ToString("yyyyMM");
+
+            return result;
+        }
+
+        /// <summary>
+        /// yyyyMM 
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns>DateTime</returns>
+        public static DateTime ToDate10(string date)
+        {
+            DateTime result = DateTime.MinValue;
+
+            try
+            {
+                string y = date.Substring(0, 4);
+                string m = date.Substring(4, 2);
+                string d = "01";
+
+                DateTime.TryParse(y + "/" + m + "/" + d, out result);
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 西元轉民國：2004-12-20 00:00:00.000 => 091/01/01
         /// </summary>
         /// <param name="date"></param>
