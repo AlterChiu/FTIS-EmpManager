@@ -168,7 +168,7 @@ namespace DouImp._core
             var data = modelData.GetAll().Where(a => a.Fno == Fno).First();
 
             Dou.Models.DB.IModelEntity<F22cmmEmpDa1> modelDa1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(_dbContext);            
-            var da1s = modelDa1s.GetAll().Where(a => a.Fno == Fno).First();
+            var z_da1s = modelDa1s.GetAll().Where(a => a.Fno == Fno).ToList();
 
             DataTable dt = new DataTable();
             //dt.Columns.Add(new DataColumn("xxxx"));
@@ -204,27 +204,33 @@ namespace DouImp._core
             dr["姓名英"] = data.En_Name;
             dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
             dr["職稱"] = FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title;
-            dr["到職日期"] = DateFormat.ToDate4(data.AD);
-            dr["出生日期"] = DateFormat.ToDate4((DateTime)da1s.da03);
+            dr["到職日期"] = DateFormat.ToDate4(data.AD);            
             dr["性別"] = data.Sex;
-            dr["出生地"] = da1s.da04;
-            dr["身分證字號"] = da1s.da05;
-            dr["婚姻"] = da1s.da06a;
-            dr["身高"] = da1s.da06;
-            dr["體重"] = da1s.da07;
-            dr["血型"] = da1s.da08;
-            dr["戶籍地址"] = da1s.da10;
-            dr["戶籍電話"] = da1s.da11;
-            dr["通訊地址"] = da1s.da13;
-            dr["住家電話"] = da1s.da14;
-            dr["行動電話"] = da1s.da15;
             dr["Email"] = data.EMail;
-            dr["緊急聯絡人1姓名"] = da1s.da17;
-            dr["緊急聯絡人1關係"] = da1s.da18;
-            dr["緊急聯絡人1電話"] = da1s.da19;
-            dr["緊急聯絡人2姓名"] = da1s.da20;
-            dr["緊急聯絡人2關係"] = da1s.da21;
-            dr["緊急聯絡人2電話"] = da1s.da22;
+
+            if (z_da1s.Count() > 0)
+            {
+                var da1s = z_da1s.First();
+                dr["出生日期"] = DateFormat.ToDate4((DateTime)da1s.da03);
+                dr["出生地"] = da1s.da04;
+                dr["身分證字號"] = da1s.da05;
+                dr["婚姻"] = da1s.da06a;
+                dr["身高"] = da1s.da06;
+                dr["體重"] = da1s.da07;
+                dr["血型"] = da1s.da08;
+                dr["戶籍地址"] = da1s.da10;
+                dr["戶籍電話"] = da1s.da11;
+                dr["通訊地址"] = da1s.da13;
+                dr["住家電話"] = da1s.da14;
+                dr["行動電話"] = da1s.da15;                
+                dr["緊急聯絡人1姓名"] = da1s.da17;
+                dr["緊急聯絡人1關係"] = da1s.da18;
+                dr["緊急聯絡人1電話"] = da1s.da19;
+                dr["緊急聯絡人2姓名"] = da1s.da20;
+                dr["緊急聯絡人2關係"] = da1s.da21;
+                dr["緊急聯絡人2電話"] = da1s.da22;
+            }
+
             dt.Rows.Add(dr);
 
             return dt;
