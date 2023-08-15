@@ -421,8 +421,8 @@ namespace DouImp._core
                 DataTable dtData = GetEmpData(fno);
                 reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
-                ////// 子報表事件
-                ////reportViewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_Content_SubreportProcessing);
+                // 子報表事件
+                reportViewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_Content_SubreportProcessing);
 
                 Microsoft.Reporting.WebForms.Warning[] warnings;
                 string[] streamids;
@@ -469,32 +469,32 @@ namespace DouImp._core
         //繫結子報表
         private void LocalReport_Content_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
         {
-            //////交易編號
-            ////string Fno = "";
+            //交易編號
+            string Fno = "";
 
-            ////if (e.Parameters["Fno"] != null && e.Parameters["Fno"].Values.Count != 0)
-            ////{
-            ////    Fno = e.Parameters["Fno"].Values[0];
-            ////}
-            ////else
-            ////{
-            ////    //Fno無值(參數傳遞失敗)
-            ////    return;
-            ////}
+            if (e.Parameters["Fno"] != null && e.Parameters["Fno"].Values.Count != 0)
+            {
+                Fno = e.Parameters["Fno"].Values[0];
+            }
+            else
+            {
+                //Fno無值(參數傳遞失敗)
+                return;
+            }
 
-            ////if (e.ReportPath == "Sub1Data")
-            ////{
-            ////    //主表
-            ////    DataTable dt = GetEmpData(Fno);
-            ////    e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub1SourceData", dt));
-            ////}
+            if (e.ReportPath == "Sub1Data")
+            {
+                //主表
+                DataTable dt = GetEmpData(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub1SourceData", dt));
+            }
             ////else if (e.ReportPath == "Sub2Da4s")
             ////{
             ////    //學歷
             ////    DataTable dtDa4s = GetDa4s(Fno);
             ////    e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub2SourceDa4s", dtDa4s));
             ////}
-            
+
         }
 
         //主表
