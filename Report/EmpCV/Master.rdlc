@@ -24,8 +24,9 @@
                   </Parameter>
                 </Parameters>
                 <Top>0.07056cm</Top>
+                <Left>0.1cm</Left>
                 <Height>1.70861cm</Height>
-                <Width>15.73389cm</Width>
+                <Width>15.47813cm</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -60,11 +61,13 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Left>5.50898cm</Left>
+            <Left>6.46148cm</Left>
             <Height>1.11153cm</Height>
             <Width>4.54611cm</Width>
             <ZIndex>1</ZIndex>
