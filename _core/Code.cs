@@ -10,7 +10,8 @@ namespace DouImp
         public enum TempUploadFile
         {
             none = 0,
-            個人員工基本資料表 = 1
+            個人員工基本資料表 = 1,
+            履歷表 = 2
         }
 
         public enum UploadFile

@@ -120,7 +120,7 @@
 
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: app.siteRoot + 'Emp/ExportBasicExcel',
+                url: app.siteRoot + 'Emp/ExportBasic',
                 datatype: "json",
                 type: "Get",
                 data: { fno: fno },
@@ -143,13 +143,15 @@
             });
         });
 
-        $('#btnExportCV').click(function () {            
+        $('#btnExportCV').click(function () {
+            var fno = oFno;
+
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: app.siteRoot + 'Emp/ExportCVExcel',
+                url: app.siteRoot + 'Emp/ExportCV',
                 datatype: "json",
                 type: "Get",
-
+                data: { fno: fno },
                 success: function (data) {
                     if (data.result) {
                         location.href = app.siteRoot + data.url;

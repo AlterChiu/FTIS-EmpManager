@@ -189,7 +189,7 @@ namespace DouImp.Controllers
         }
 
         //匯出基本資料表
-        public ActionResult ExportBasicExcel(string fno)
+        public ActionResult ExportBasic(string fno)
         {
             ReportEmp rep = new ReportEmp();
             string url = rep.ExportExcel(fno);            
@@ -205,66 +205,78 @@ namespace DouImp.Controllers
         }
 
         //匯出履歷表
-        public ActionResult ExportCVExcel()
+        public ActionResult ExportCV(string fno)
         {
-            string Fno = "J11149";
+            ReportEmpCV rep = new ReportEmpCV();
+            string url = rep.ExportWord(fno);
 
-            string folder = FileHelper.GetFileFolder(Code.TempUploadFile.個人員工基本資料表);
-
-            if (!Directory.Exists(folder))
+            if (url == "")
             {
-                Directory.CreateDirectory(folder);
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
             }
 
-            string fileName = "履歷表_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
-            string path = folder + fileName;
+            ////string Fno = "J11149";
 
-            //產出檔案
-            try
-            {
-                ReportViewer reportViewer = new ReportViewer();
-                reportViewer.ProcessingMode = ProcessingMode.Local;
+            ////string folder = FileHelper.GetFileFolder(Code.TempUploadFile.個人員工基本資料表);
 
-                // 設定報表 iFrame Full Width
-                reportViewer.SizeToReportContent = true;
-                reportViewer.Width = Unit.Percentage(100);
-                reportViewer.Height = Unit.Percentage(100);
+            ////if (!Directory.Exists(folder))
+            ////{
+            ////    Directory.CreateDirectory(folder);
+            ////}
 
-                // Load Report File From Local Path
-                reportViewer.LocalReport.ReportPath =
-                   "Report\\RptEmpCV.rdlc";
+            ////string fileName = "履歷表_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
+            ////string path = folder + fileName;
 
-                var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno);
+            //////產出檔案
+            ////try
+            ////{
+            ////    ReportViewer reportViewer = new ReportViewer();
+            ////    reportViewer.ProcessingMode = ProcessingMode.Local;
 
-                reportViewer.LocalReport.DataSources.Add(
-                    new ReportDataSource("DataSet_Emp", datas)
-                );
+            ////    // 設定報表 iFrame Full Width
+            ////    reportViewer.SizeToReportContent = true;
+            ////    reportViewer.Width = Unit.Percentage(100);
+            ////    reportViewer.Height = Unit.Percentage(100);
 
-                Microsoft.Reporting.WebForms.Warning[] warnings;
-                string[] streamids;
-                string mimeType;
-                string encoding;
-                string extension;
+            ////    // Load Report File From Local Path
+            ////    reportViewer.LocalReport.ReportPath =
+            ////       "Report\\RptEmpCV.rdlc";
 
-                byte[] bytes = reportViewer.LocalReport.Render(
-                   "Word", null, out mimeType, out encoding,
-                    out extension,
-                   out streamids, out warnings);
+            ////    var datas = GetModelEntity().GetAll().Where(a => a.Fno == Fno);
 
-                FileStream fs = new FileStream(path,
-                   FileMode.Create);
-                fs.Write(bytes, 0, bytes.Length);
-                fs.Close();
-            }
-            catch (Exception ex)
-            {
-                string errorMessage = "匯出履歷表失敗" + ex.Message + " " + ex.StackTrace;
-                return Json(new { result = false, errorMessage = errorMessage }, JsonRequestBehavior.AllowGet);
-            }
+            ////    reportViewer.LocalReport.DataSources.Add(
+            ////        new ReportDataSource("DataSet_Emp", datas)
+            ////    );
 
-            string url = DouImp.Cm.PhysicalToUrl(path);
+            ////    Microsoft.Reporting.WebForms.Warning[] warnings;
+            ////    string[] streamids;
+            ////    string mimeType;
+            ////    string encoding;
+            ////    string extension;
 
-            return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+            ////    byte[] bytes = reportViewer.LocalReport.Render(
+            ////       "Word", null, out mimeType, out encoding,
+            ////        out extension,
+            ////       out streamids, out warnings);
+
+            ////    FileStream fs = new FileStream(path,
+            ////       FileMode.Create);
+            ////    fs.Write(bytes, 0, bytes.Length);
+            ////    fs.Close();
+            ////}
+            ////catch (Exception ex)
+            ////{
+            ////    string errorMessage = "匯出履歷表失敗" + ex.Message + " " + ex.StackTrace;
+            ////    return Json(new { result = false, errorMessage = errorMessage }, JsonRequestBehavior.AllowGet);
+            ////}
+
+            ////string url = DouImp.Cm.PhysicalToUrl(path);
+
+            ////return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
         }
 
         

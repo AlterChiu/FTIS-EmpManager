@@ -388,4 +388,186 @@ namespace DouImp._core
         }
     }
 
+    public class ReportEmpCV : ReportClass
+    {
+        //匯出基本資料表
+        public string ExportWord(string fno)
+        {
+            string resultUrl = "";
+
+            string path = "";
+
+            //產出檔案
+            try
+            {
+                ReportViewer reportViewer = new ReportViewer();
+                reportViewer.ProcessingMode = ProcessingMode.Local;
+
+                // 設定報表 iFrame Full Width
+                reportViewer.SizeToReportContent = true;
+                reportViewer.Width = Unit.Percentage(100);
+                reportViewer.Height = Unit.Percentage(100);
+
+                // Load Report File From Local Path
+                reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpCV/Master.rdlc");
+
+                //參數設定(Fno)
+                ReportParameter p1 = new ReportParameter("Fno", fno);
+                reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1});
+
+                //主表                
+                DataTable dtData = GetEmpData(fno);
+                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
+
+                ////// 子報表事件
+                ////reportViewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_Content_SubreportProcessing);
+
+                Microsoft.Reporting.WebForms.Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string extension;
+
+                byte[] bytes = reportViewer.LocalReport.Render(
+                   "WORDOPENXML", null, out mimeType, out encoding,
+                    out extension,
+                   out streamids, out warnings);
+
+                string folder = FileHelper.GetFileFolder(Code.TempUploadFile.履歷表);
+
+
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                string fileName = "履歷表_" + DateFormat.ToDate1(DateTime.Now) + ".docx";
+                path = folder + fileName;
+
+                FileStream fs = new FileStream(path,
+                   FileMode.Create);
+                fs.Write(bytes, 0, bytes.Length);
+                fs.Close();
+            }
+            catch (Exception ex)
+            {
+                _errorMessage = "匯出履歷表失敗" + ex.Message + " " + ex.StackTrace;
+                return "";
+            }
+
+            //回傳檔案網址
+            if (path != "")
+            {
+                resultUrl = DouImp.Cm.PhysicalToUrl(path);
+            }
+
+            return resultUrl;
+        }
+
+        //繫結子報表
+        private void LocalReport_Content_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        {
+            //////交易編號
+            ////string Fno = "";
+
+            ////if (e.Parameters["Fno"] != null && e.Parameters["Fno"].Values.Count != 0)
+            ////{
+            ////    Fno = e.Parameters["Fno"].Values[0];
+            ////}
+            ////else
+            ////{
+            ////    //Fno無值(參數傳遞失敗)
+            ////    return;
+            ////}
+
+            ////if (e.ReportPath == "Sub1Data")
+            ////{
+            ////    //主表
+            ////    DataTable dt = GetEmpData(Fno);
+            ////    e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub1SourceData", dt));
+            ////}
+            ////else if (e.ReportPath == "Sub2Da4s")
+            ////{
+            ////    //學歷
+            ////    DataTable dtDa4s = GetDa4s(Fno);
+            ////    e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub2SourceDa4s", dtDa4s));
+            ////}
+            
+        }
+
+        //主表
+        private DataTable GetEmpData(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
+            var data = modelData.GetAll().Where(a => a.Fno == Fno).First();
+
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa1> modelDa1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(_dbContext);
+            var z_da1s = modelDa1s.GetAll().Where(a => a.Fno == Fno).ToList();
+
+            DataTable dt = new DataTable();
+            //dt.Columns.Add(new DataColumn("xxxx"));
+            dt.Columns.Add(new DataColumn("姓名中"));
+            dt.Columns.Add(new DataColumn("姓名英"));
+            dt.Columns.Add(new DataColumn("部門"));
+            dt.Columns.Add(new DataColumn("職稱"));
+            dt.Columns.Add(new DataColumn("到職日期"));
+            dt.Columns.Add(new DataColumn("出生日期"));
+            dt.Columns.Add(new DataColumn("性別"));
+            dt.Columns.Add(new DataColumn("出生地"));
+            dt.Columns.Add(new DataColumn("身分證字號"));
+            dt.Columns.Add(new DataColumn("婚姻"));
+            dt.Columns.Add(new DataColumn("身高"));
+            dt.Columns.Add(new DataColumn("體重"));
+            dt.Columns.Add(new DataColumn("血型"));
+            dt.Columns.Add(new DataColumn("戶籍地址"));
+            dt.Columns.Add(new DataColumn("戶籍電話"));
+            dt.Columns.Add(new DataColumn("通訊地址"));
+            dt.Columns.Add(new DataColumn("住家電話"));
+            dt.Columns.Add(new DataColumn("行動電話"));
+            dt.Columns.Add(new DataColumn("Email"));
+            dt.Columns.Add(new DataColumn("緊急聯絡人1姓名"));
+            dt.Columns.Add(new DataColumn("緊急聯絡人1關係"));
+            dt.Columns.Add(new DataColumn("緊急聯絡人1電話"));
+            dt.Columns.Add(new DataColumn("緊急聯絡人2姓名"));
+            dt.Columns.Add(new DataColumn("緊急聯絡人2關係"));
+            dt.Columns.Add(new DataColumn("緊急聯絡人2電話"));
+
+            DataRow dr = dt.NewRow();
+            //dr["xxxx"] = "oooooo";
+            dr["姓名中"] = data.Name;
+            dr["姓名英"] = data.En_Name;
+            dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
+            dr["職稱"] = FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title;
+            dr["到職日期"] = DateFormat.ToDate4(data.AD);
+            dr["性別"] = data.Sex;
+            dr["Email"] = data.EMail;
+
+            if (z_da1s.Count() > 0)
+            {
+                var da1s = z_da1s.First();
+                dr["出生日期"] = DateFormat.ToDate4((DateTime)da1s.da03);
+                dr["出生地"] = da1s.da04;
+                dr["身分證字號"] = da1s.da05;
+                dr["婚姻"] = da1s.da06a;
+                dr["身高"] = da1s.da06;
+                dr["體重"] = da1s.da07;
+                dr["血型"] = da1s.da08;
+                dr["戶籍地址"] = da1s.da10;
+                dr["戶籍電話"] = da1s.da11;
+                dr["通訊地址"] = da1s.da13;
+                dr["住家電話"] = da1s.da14;
+                dr["行動電話"] = da1s.da15;
+                dr["緊急聯絡人1姓名"] = da1s.da17;
+                dr["緊急聯絡人1關係"] = da1s.da18;
+                dr["緊急聯絡人1電話"] = da1s.da19;
+                dr["緊急聯絡人2姓名"] = da1s.da20;
+                dr["緊急聯絡人2關係"] = da1s.da21;
+                dr["緊急聯絡人2電話"] = da1s.da22;
+            }
+
+            dt.Rows.Add(dr);
+
+            return dt;
+        }        
+    }
 }
