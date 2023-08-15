@@ -533,13 +533,17 @@ namespace DouImp._core
             dt.Columns.Add(new DataColumn("緊急聯絡人2姓名"));
             dt.Columns.Add(new DataColumn("緊急聯絡人2關係"));
             dt.Columns.Add(new DataColumn("緊急聯絡人2電話"));
+            dt.Columns.Add(new DataColumn("專長"));
 
             DataRow dr = dt.NewRow();
             //dr["xxxx"] = "oooooo";
             dr["姓名中"] = data.Name;
             dr["姓名英"] = data.En_Name;
-            dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
-            dr["職稱"] = FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title;
+            List<string> titles = new List<string>();
+            titles.Add("財團法人台灣產業服務基金會");
+            titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
+            titles.Add(FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title);
+            dr["職稱"] = string.Join(" ", titles);
             dr["到職日期"] = DateFormat.ToDate4(data.AD);
             dr["性別"] = data.Sex;
             dr["Email"] = data.EMail;
@@ -547,7 +551,7 @@ namespace DouImp._core
             if (z_da1s.Count() > 0)
             {
                 var da1s = z_da1s.First();
-                dr["出生日期"] = DateFormat.ToDate4((DateTime)da1s.da03);
+                dr["出生日期"] = DateFormat.ToTwDate2((DateTime)da1s.da03);
                 dr["出生地"] = da1s.da04;
                 dr["身分證字號"] = da1s.da05;
                 dr["婚姻"] = da1s.da06a;
@@ -565,6 +569,7 @@ namespace DouImp._core
                 dr["緊急聯絡人2姓名"] = da1s.da20;
                 dr["緊急聯絡人2關係"] = da1s.da21;
                 dr["緊急聯絡人2電話"] = da1s.da22;
+                dr["專長"] = da1s.da24;
             }
 
             dt.Rows.Add(dr);

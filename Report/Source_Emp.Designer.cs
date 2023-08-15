@@ -504,6 +504,8 @@ namespace DouImp.Report {
             
             private global::System.Data.DataColumn column緊急聯絡人2電話;
             
+            private global::System.Data.DataColumn column專長;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EmpDataDataTable() {
@@ -739,6 +741,14 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 專長Column {
+                get {
+                    return this.column專長;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -799,7 +809,8 @@ namespace DouImp.Report {
                         string 緊急聯絡人1電話, 
                         string 緊急聯絡人2姓名, 
                         string 緊急聯絡人2關係, 
-                        string 緊急聯絡人2電話) {
+                        string 緊急聯絡人2電話, 
+                        string 專長) {
                 EmpDataRow rowEmpDataRow = ((EmpDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         姓名中,
@@ -826,7 +837,8 @@ namespace DouImp.Report {
                         緊急聯絡人1電話,
                         緊急聯絡人2姓名,
                         緊急聯絡人2關係,
-                        緊急聯絡人2電話};
+                        緊急聯絡人2電話,
+                        專長};
                 rowEmpDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmpDataRow);
                 return rowEmpDataRow;
@@ -874,6 +886,7 @@ namespace DouImp.Report {
                 this.column緊急聯絡人2姓名 = base.Columns["緊急聯絡人2姓名"];
                 this.column緊急聯絡人2關係 = base.Columns["緊急聯絡人2關係"];
                 this.column緊急聯絡人2電話 = base.Columns["緊急聯絡人2電話"];
+                this.column專長 = base.Columns["專長"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -929,6 +942,8 @@ namespace DouImp.Report {
                 base.Columns.Add(this.column緊急聯絡人2關係);
                 this.column緊急聯絡人2電話 = new global::System.Data.DataColumn("緊急聯絡人2電話", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column緊急聯絡人2電話);
+                this.column專長 = new global::System.Data.DataColumn("專長", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column專長);
                 this.columnEmail.Caption = "E-mail";
             }
             
@@ -2973,6 +2988,22 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 專長 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.專長Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'專長\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.專長Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Is姓名中Null() {
                 return this.IsNull(this.tableEmpData.姓名中Column);
             }
@@ -3269,6 +3300,18 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Set緊急聯絡人2電話Null() {
                 this[this.tableEmpData.緊急聯絡人2電話Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is專長Null() {
+                return this.IsNull(this.tableEmpData.專長Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set專長Null() {
+                this[this.tableEmpData.專長Column] = global::System.Convert.DBNull;
             }
         }
         

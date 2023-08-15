@@ -386,6 +386,31 @@ namespace DouImp._core
         }
 
         /// <summary>
+        /// 西元轉民國：2004-12-20 00:00:00.000 => 112 或 091
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToTwDate2(DateTime date)
+        {
+            string result = "";
+
+            CultureInfo culture = new CultureInfo("zh-TW");
+            culture.DateTimeFormat.Calendar = new TaiwanCalendar();
+            string str = date.ToString("yyy", culture).PadLeft(3, '0');
+
+            if (str.Substring(0, 1) == "0")
+            {
+                result = str.Substring(1, 2);
+            }
+            else
+            {
+                result = str;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 民國轉西元：091/01/01 => 2004-12-20 00:00:00.000
         /// </summary>
         /// <param name="date"></param>
