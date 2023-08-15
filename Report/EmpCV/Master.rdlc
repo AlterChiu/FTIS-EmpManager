@@ -81,8 +81,62 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Subreport Name="Sub3Da5s">
+            <ReportName>Sub3Da5s</ReportName>
+            <Parameters>
+              <Parameter Name="Fno">
+                <Value>=Parameters!Fno.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Top>4.19598cm</Top>
+            <Left>0.4375cm</Left>
+            <Height>1.90264cm</Height>
+            <Width>15.73389cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>經　歷</Value>
+                    <Style>
+                      <FontFamily>標楷體</FontFamily>
+                      <FontSize>24pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>3.08445cm</Top>
+            <Left>6.46148cm</Left>
+            <Height>1.11153cm</Height>
+            <Width>4.54611cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>3.9249in</Height>
+        <Height>2.40103in</Height>
         <Style />
       </Body>
       <Width>6.5in</Width>

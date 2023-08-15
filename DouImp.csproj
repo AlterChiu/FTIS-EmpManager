@@ -531,6 +531,7 @@
     <EmbeddedResource Include="Report\EmpBasic\Sub6Da8s.rdlc" />
     <EmbeddedResource Include="Report\EmpCV\Master.rdlc" />
     <EmbeddedResource Include="Report\EmpCV\Sub1Data.rdlc" />
+    <EmbeddedResource Include="Report\EmpCV\Sub3Da5s.rdlc" />
     <EmbeddedResource Include="Report\RptEmpBasic.rdlc" />
     <EmbeddedResource Include="Report\RptEmpCV.rdlc" />
   </ItemGroup>

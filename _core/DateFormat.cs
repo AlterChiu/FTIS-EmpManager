@@ -411,6 +411,37 @@ namespace DouImp._core
         }
 
         /// <summary>
+        /// 西元轉民國：200403 => 112.03 或 091.08
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToTwDate3(string date)
+        {
+            string result = date;
+
+            try
+            {
+                string y = date.Substring(0, 4);
+                string m = date.Substring(4, 2);
+                string d = "01";
+
+                DateTime t = DateTime.MinValue;
+                if (DateTime.TryParse(y + "/" + m + "/" + d, out t))
+                {
+                    string a = (t.Year - 1911).ToString().PadLeft(3, '0');
+                    string b = m;
+                    result = a + "." + b;
+                }
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 民國轉西元：091/01/01 => 2004-12-20 00:00:00.000
         /// </summary>
         /// <param name="date"></param>

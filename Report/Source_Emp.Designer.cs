@@ -1451,6 +1451,8 @@ namespace DouImp.Report {
             
             private global::System.Data.DataColumn column其他備註;
             
+            private global::System.Data.DataColumn column工作內容;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Da5sDataTable() {
@@ -1534,6 +1536,14 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 工作內容Column {
+                get {
+                    return this.column工作內容;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1569,7 +1579,7 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Da5sRow AddDa5sRow(string 服務單位, string 職務, string 起始年月, string 結束年月, string 年資, string 其他備註) {
+            public Da5sRow AddDa5sRow(string 服務單位, string 職務, string 起始年月, string 結束年月, string 年資, string 其他備註, string 工作內容) {
                 Da5sRow rowDa5sRow = ((Da5sRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         服務單位,
@@ -1577,7 +1587,8 @@ namespace DouImp.Report {
                         起始年月,
                         結束年月,
                         年資,
-                        其他備註};
+                        其他備註,
+                        工作內容};
                 rowDa5sRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDa5sRow);
                 return rowDa5sRow;
@@ -1606,6 +1617,7 @@ namespace DouImp.Report {
                 this.column結束年月 = base.Columns["結束年月"];
                 this.column年資 = base.Columns["年資"];
                 this.column其他備註 = base.Columns["其他備註"];
+                this.column工作內容 = base.Columns["工作內容"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1623,6 +1635,8 @@ namespace DouImp.Report {
                 base.Columns.Add(this.column年資);
                 this.column其他備註 = new global::System.Data.DataColumn("其他備註", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column其他備註);
+                this.column工作內容 = new global::System.Data.DataColumn("工作內容", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column工作內容);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3724,6 +3738,22 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 工作內容 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDa5s.工作內容Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Da5s\' 中資料行 \'工作內容\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDa5s.工作內容Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Is服務單位Null() {
                 return this.IsNull(this.tableDa5s.服務單位Column);
             }
@@ -3792,6 +3822,18 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Set其他備註Null() {
                 this[this.tableDa5s.其他備註Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is工作內容Null() {
+                return this.IsNull(this.tableDa5s.工作內容Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set工作內容Null() {
+                this[this.tableDa5s.工作內容Column] = global::System.Convert.DBNull;
             }
         }
         

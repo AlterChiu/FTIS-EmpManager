@@ -419,9 +419,9 @@ namespace DouImp._core
                 ReportParameter p1 = new ReportParameter("Fno", fno);
                 reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1});
 
-                //主表                
-                DataTable dtData = GetEmpData(fno);
-                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
+                //////主表                
+                ////DataTable dtData = GetEmpData(fno);
+                ////reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
                 // 子報表事件
                 reportViewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_Content_SubreportProcessing);
@@ -490,12 +490,12 @@ namespace DouImp._core
                 DataTable dt = GetEmpData(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub1SourceData", dt));
             }
-            ////else if (e.ReportPath == "Sub2Da4s")
-            ////{
-            ////    //學歷
-            ////    DataTable dtDa4s = GetDa4s(Fno);
-            ////    e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub2SourceDa4s", dtDa4s));
-            ////}
+            else if (e.ReportPath == "Sub3Da5s")
+            {
+                //經歷
+                DataTable dtDa5s = GetDa5s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s", dtDa5s));
+            }
 
         }
 
@@ -597,6 +597,53 @@ namespace DouImp._core
             dt.Rows.Add(dr);
 
             return dt;
-        }        
+        }
+
+        //經歷
+        private DataTable GetDa5s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
+            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
+                        .OrderByDescending(a => a.da504).ToList();
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("服務單位"));
+            dt.Columns.Add(new DataColumn("職務"));
+            dt.Columns.Add(new DataColumn("起始年月"));
+            dt.Columns.Add(new DataColumn("結束年月"));
+            dt.Columns.Add(new DataColumn("年資"));
+            dt.Columns.Add(new DataColumn("其他備註"));
+            dt.Columns.Add(new DataColumn("工作內容"));
+
+            foreach (var v in da5s)
+            {
+                string strJob = "";
+                DateTime sJob = DateFormat.ToDate10(v.da504);
+                DateTime eJob = DateFormat.ToDate10(v.da505);
+
+                //迄今
+                if (eJob == DateTime.MinValue)
+                {
+                    eJob = DateFormat.ToDate10(DateFormat.ToDate9(DateTime.Now));
+                }
+
+                if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
+                {
+                    TimeSpan ts = (eJob - sJob);
+                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
+                }
+
+                DataRow dr = dt.NewRow();
+                dr["起始年月"] = DateFormat.ToTwDate3(v.da504) + "~" + DateFormat.ToTwDate3(v.da505);                
+                dr["年資"] = strJob;
+                dr["其他備註"] = v.da506;
+                List<string> names = new List<string>() { v.da501, v.da502 };
+                dr["工作內容"] = string.Join(" ", names) + "\n" + v.da507;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
     }
 }
