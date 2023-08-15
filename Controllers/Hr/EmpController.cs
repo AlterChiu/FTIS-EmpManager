@@ -191,7 +191,7 @@ namespace DouImp.Controllers
         //匯出基本資料表
         public ActionResult ExportBasic(string fno)
         {
-            ReportEmp rep = new ReportEmp();
+            ReportEmpBasic rep = new ReportEmpBasic();
             string url = rep.ExportExcel(fno);            
 
             if (url == "")

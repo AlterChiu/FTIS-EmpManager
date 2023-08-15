@@ -16,7 +16,7 @@ namespace DouImp._core
     public class ReportClass
     {
         public string _errorMessage = "";        
-        public System.Data.Entity.DbContext _dbContext = FtisHelperV2.DB.Helper.CreateFtisModelContext();
+        public System.Data.Entity.DbContext _dbContext = null;
 
         public string ErrorMessage
         {
@@ -27,18 +27,19 @@ namespace DouImp._core
         }
     }
 
-    public class ReportEmp : ReportClass
+    public class ReportEmpBasic : ReportClass
     {
         //匯出基本資料表
         public string ExportExcel(string fno)
         {
             string resultUrl = "";
-
             string path = "";
 
             //產出檔案
             try
             {
+                _dbContext = FtisHelperV2.DB.Helper.CreateFtisModelContext();
+
                 ReportViewer reportViewer = new ReportViewer();
                 reportViewer.ProcessingMode = ProcessingMode.Local;
 
@@ -394,12 +395,13 @@ namespace DouImp._core
         public string ExportWord(string fno)
         {
             string resultUrl = "";
-
             string path = "";
 
             //產出檔案
             try
             {
+                _dbContext = FtisHelperV2.DB.Helper.CreateFtisModelContext();
+
                 ReportViewer reportViewer = new ReportViewer();
                 reportViewer.ProcessingMode = ProcessingMode.Local;
 
