@@ -40,7 +40,9 @@
               <xs:element name="緊急聯絡人2姓名" msprop:Generator_ColumnPropNameInTable="緊急聯絡人2姓名Column" msprop:Generator_ColumnPropNameInRow="緊急聯絡人2姓名" msprop:Generator_UserColumnName="緊急聯絡人2姓名" msprop:Generator_ColumnVarNameInTable="column緊急聯絡人2姓名" type="xs:string" minOccurs="0" />
               <xs:element name="緊急聯絡人2關係" msprop:Generator_ColumnPropNameInTable="緊急聯絡人2關係Column" msprop:Generator_ColumnPropNameInRow="緊急聯絡人2關係" msprop:Generator_UserColumnName="緊急聯絡人2關係" msprop:Generator_ColumnVarNameInTable="column緊急聯絡人2關係" type="xs:string" minOccurs="0" />
               <xs:element name="緊急聯絡人2電話" msprop:Generator_ColumnPropNameInTable="緊急聯絡人2電話Column" msprop:Generator_ColumnPropNameInRow="緊急聯絡人2電話" msprop:Generator_UserColumnName="緊急聯絡人2電話" msprop:Generator_ColumnVarNameInTable="column緊急聯絡人2電話" type="xs:string" minOccurs="0" />
-              <xs:element name="專長" msprop:Generator_ColumnPropNameInRow="專長" msprop:Generator_ColumnPropNameInTable="專長Column" msprop:Generator_ColumnVarNameInTable="column專長" msprop:Generator_UserColumnName="專長" type="xs:string" minOccurs="0" />
+              <xs:element name="專長" msprop:Generator_ColumnPropNameInTable="專長Column" msprop:Generator_ColumnPropNameInRow="專長" msprop:Generator_UserColumnName="專長" msprop:Generator_ColumnVarNameInTable="column專長" type="xs:string" minOccurs="0" />
+              <xs:element name="學歷F" msprop:Generator_UserColumnName="學歷F" msprop:Generator_ColumnPropNameInTable="學歷FColumn" msprop:Generator_ColumnPropNameInRow="學歷F" msprop:Generator_ColumnVarNameInTable="column學歷F" type="xs:string" minOccurs="0" />
+              <xs:element name="資格F" msprop:Generator_ColumnPropNameInRow="資格F" msprop:Generator_ColumnPropNameInTable="資格FColumn" msprop:Generator_ColumnVarNameInTable="column資格F" msprop:Generator_UserColumnName="資格F" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

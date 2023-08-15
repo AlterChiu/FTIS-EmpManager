@@ -121,6 +121,14 @@
           <DataField>專長</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="學歷F">
+          <DataField>學歷F</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="資格F">
+          <DataField>資格F</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Source_Emp</rd:DataSetName>
@@ -501,27 +509,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="專長">
+                        <Textbox Name="學歷F">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!學歷F.Value</Value>
                                   <Style>
                                     <FontFamily>標楷體</FontFamily>
                                     <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <ListLevel>1</ListLevel>
                               <Style>
                                 <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>專長</rd:DefaultName>
+                          <rd:DefaultName>學歷F</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -662,27 +669,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox14">
+                        <Textbox Name="資格F">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!資格F.Value</Value>
                                   <Style>
                                     <FontFamily>標楷體</FontFamily>
                                     <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <ListLevel>1</ListLevel>
                               <Style>
                                 <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <rd:DefaultName>資格F</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -695,7 +701,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>5</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />

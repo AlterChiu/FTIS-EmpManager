@@ -506,6 +506,10 @@ namespace DouImp.Report {
             
             private global::System.Data.DataColumn column專長;
             
+            private global::System.Data.DataColumn column學歷F;
+            
+            private global::System.Data.DataColumn column資格F;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EmpDataDataTable() {
@@ -749,6 +753,22 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 學歷FColumn {
+                get {
+                    return this.column學歷F;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 資格FColumn {
+                get {
+                    return this.column資格F;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -810,7 +830,9 @@ namespace DouImp.Report {
                         string 緊急聯絡人2姓名, 
                         string 緊急聯絡人2關係, 
                         string 緊急聯絡人2電話, 
-                        string 專長) {
+                        string 專長, 
+                        string 學歷F, 
+                        string 資格F) {
                 EmpDataRow rowEmpDataRow = ((EmpDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         姓名中,
@@ -838,7 +860,9 @@ namespace DouImp.Report {
                         緊急聯絡人2姓名,
                         緊急聯絡人2關係,
                         緊急聯絡人2電話,
-                        專長};
+                        專長,
+                        學歷F,
+                        資格F};
                 rowEmpDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmpDataRow);
                 return rowEmpDataRow;
@@ -887,6 +911,8 @@ namespace DouImp.Report {
                 this.column緊急聯絡人2關係 = base.Columns["緊急聯絡人2關係"];
                 this.column緊急聯絡人2電話 = base.Columns["緊急聯絡人2電話"];
                 this.column專長 = base.Columns["專長"];
+                this.column學歷F = base.Columns["學歷F"];
+                this.column資格F = base.Columns["資格F"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -944,6 +970,10 @@ namespace DouImp.Report {
                 base.Columns.Add(this.column緊急聯絡人2電話);
                 this.column專長 = new global::System.Data.DataColumn("專長", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column專長);
+                this.column學歷F = new global::System.Data.DataColumn("學歷F", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column學歷F);
+                this.column資格F = new global::System.Data.DataColumn("資格F", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column資格F);
                 this.columnEmail.Caption = "E-mail";
             }
             
@@ -3004,6 +3034,38 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 學歷F {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.學歷FColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'學歷F\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.學歷FColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 資格F {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.資格FColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'資格F\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.資格FColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Is姓名中Null() {
                 return this.IsNull(this.tableEmpData.姓名中Column);
             }
@@ -3312,6 +3374,30 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Set專長Null() {
                 this[this.tableEmpData.專長Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is學歷FNull() {
+                return this.IsNull(this.tableEmpData.學歷FColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set學歷FNull() {
+                this[this.tableEmpData.學歷FColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is資格FNull() {
+                return this.IsNull(this.tableEmpData.資格FColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set資格FNull() {
+                this[this.tableEmpData.資格FColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -1,5 +1,6 @@
 ﻿using FtisHelperV2.DB.Model;
 using Microsoft.Reporting.WebForms;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using static ZXing.QrCode.Internal.Mode;
 
 
 namespace DouImp._core
@@ -534,6 +536,8 @@ namespace DouImp._core
             dt.Columns.Add(new DataColumn("緊急聯絡人2關係"));
             dt.Columns.Add(new DataColumn("緊急聯絡人2電話"));
             dt.Columns.Add(new DataColumn("專長"));
+            dt.Columns.Add(new DataColumn("學歷F"));
+            dt.Columns.Add(new DataColumn("資格F"));
 
             DataRow dr = dt.NewRow();
             //dr["xxxx"] = "oooooo";
@@ -570,6 +574,24 @@ namespace DouImp._core
                 dr["緊急聯絡人2關係"] = da1s.da21;
                 dr["緊急聯絡人2電話"] = da1s.da22;
                 dr["專長"] = da1s.da24;
+            }
+
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(_dbContext);
+            var z_da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno).ToList();
+
+            if (z_da4s.Count > 0)
+            {
+                var da4s = z_da4s.OrderByDescending(a => a.da404).First();
+                List<string> strs = new List<string>() { da4s.da401, da4s.da403, da4s.da406 };                
+                dr["學歷F"] = string.Join(" ", strs);
+            }
+
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa8> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa8>(_dbContext);
+            var z_da8s = modelDa8s.GetAll().Where(a => a.Fno == Fno).ToList();
+
+            if (z_da8s.Count > 0)
+            {                
+                dr["資格F"] = string.Join("\n", z_da8s.Select(a => a.da801));
             }
 
             dt.Rows.Add(dr);
