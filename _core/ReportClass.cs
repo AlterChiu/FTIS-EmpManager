@@ -87,7 +87,8 @@ namespace DouImp._core
                     Directory.CreateDirectory(folder);
                 }
 
-                string fileName = "員工基本資料_" + DateFormat.ToDate1(DateTime.Now) + ".xlsx";
+                string empName = dtData.Rows[0]["姓名中"].ToString();
+                string fileName = "員工基本資料_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ".xlsx";
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,
@@ -445,7 +446,8 @@ namespace DouImp._core
                     Directory.CreateDirectory(folder);
                 }
 
-                string fileName = "履歷表_" + DateFormat.ToDate1(DateTime.Now) + ".docx";
+                string empName = dtData.Rows[0]["姓名中"].ToString();
+                string fileName = "履歷表_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ".docx";
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,
