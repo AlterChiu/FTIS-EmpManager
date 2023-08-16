@@ -545,6 +545,8 @@ namespace DouImp.Report {
             
             private global::System.Data.DataColumn column資格F;
             
+            private global::System.Data.DataColumn column最後更新日期;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EmpDataDataTable() {
@@ -804,6 +806,14 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 最後更新日期Column {
+                get {
+                    return this.column最後更新日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -867,7 +877,8 @@ namespace DouImp.Report {
                         string 緊急聯絡人2電話, 
                         string 專長, 
                         string 學歷F, 
-                        string 資格F) {
+                        string 資格F, 
+                        string 最後更新日期) {
                 EmpDataRow rowEmpDataRow = ((EmpDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         姓名中,
@@ -897,7 +908,8 @@ namespace DouImp.Report {
                         緊急聯絡人2電話,
                         專長,
                         學歷F,
-                        資格F};
+                        資格F,
+                        最後更新日期};
                 rowEmpDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmpDataRow);
                 return rowEmpDataRow;
@@ -948,6 +960,7 @@ namespace DouImp.Report {
                 this.column專長 = base.Columns["專長"];
                 this.column學歷F = base.Columns["學歷F"];
                 this.column資格F = base.Columns["資格F"];
+                this.column最後更新日期 = base.Columns["最後更新日期"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1009,6 +1022,8 @@ namespace DouImp.Report {
                 base.Columns.Add(this.column學歷F);
                 this.column資格F = new global::System.Data.DataColumn("資格F", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column資格F);
+                this.column最後更新日期 = new global::System.Data.DataColumn("最後更新日期", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column最後更新日期);
                 this.columnEmail.Caption = "E-mail";
             }
             
@@ -3376,6 +3391,22 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 最後更新日期 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.最後更新日期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'最後更新日期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.最後更新日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Is姓名中Null() {
                 return this.IsNull(this.tableEmpData.姓名中Column);
             }
@@ -3708,6 +3739,18 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Set資格FNull() {
                 this[this.tableEmpData.資格FColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is最後更新日期Null() {
+                return this.IsNull(this.tableEmpData.最後更新日期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set最後更新日期Null() {
+                this[this.tableEmpData.最後更新日期Column] = global::System.Convert.DBNull;
             }
         }
         

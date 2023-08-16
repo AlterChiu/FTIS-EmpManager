@@ -442,6 +442,55 @@ namespace DouImp._core
         }
 
         /// <summary>
+        /// 西元轉民國：2023-12-20 00:00:00.000 => 112年3月5日
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToTwDate4(string date)
+        {
+            string result = "";
+
+            try
+            {
+                DateTime dd = DateTime.Parse(date);
+                result = ToTwDate4(dd);
+            }
+            catch
+            {
+                return date;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 西元轉民國：2023-12-20 00:00:00.000 => 112年3月5日
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToTwDate4(DateTime date)
+        {
+            string result = "";
+
+            CultureInfo culture = new CultureInfo("zh-TW");
+            culture.DateTimeFormat.Calendar = new TaiwanCalendar();
+            //result = date.ToString("yyy", culture).PadLeft(3, '0') + date.ToString("/MM/dd", culture);
+
+            string str = date.ToString("yyy", culture).PadLeft(3, '0');
+
+            if (str.Substring(0, 1) == "0")
+            {
+                result = string.Format("{0}年{1}月{2}日", str.Substring(1, 2), date.Month, date.Day);
+            }
+            else
+            {                
+                result = string.Format("{0}年{1}月{2}日", str, date.Month, date.Day);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 民國轉西元：091/01/01 => 2004-12-20 00:00:00.000
         /// </summary>
         /// <param name="date"></param>

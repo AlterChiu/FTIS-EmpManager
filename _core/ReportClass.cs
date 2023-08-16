@@ -419,9 +419,9 @@ namespace DouImp._core
                 ReportParameter p1 = new ReportParameter("Fno", fno);
                 reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1});
 
-                //////主表                
-                ////DataTable dtData = GetEmpData(fno);
-                ////reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
+                //主表                
+                DataTable dtData = GetEmpData(fno);
+                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
                 // 子報表事件
                 reportViewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_Content_SubreportProcessing);
@@ -543,6 +543,7 @@ namespace DouImp._core
             dt.Columns.Add(new DataColumn("專長"));
             dt.Columns.Add(new DataColumn("學歷F"));
             dt.Columns.Add(new DataColumn("資格F"));
+            dt.Columns.Add(new DataColumn("最後更新日期"));
 
             DataRow dr = dt.NewRow();
             //dr["xxxx"] = "oooooo";
@@ -556,6 +557,7 @@ namespace DouImp._core
             dr["到職日期"] = DateFormat.ToDate4(data.AD);
             dr["性別"] = data.Sex;
             dr["Email"] = data.EMail;
+            dr["最後更新日期"] = data.UpdateTime != null ? DateFormat.ToTwDate4((DateTime)data.UpdateTime) : "";
 
             if (z_da1s.Count() > 0)
             {
