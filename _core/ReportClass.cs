@@ -496,7 +496,12 @@ namespace DouImp._core
                 DataTable dtDa5s = GetDa5s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s", dtDa5s));
             }
-
+            else if (e.ReportPath == "Sub7Da9s")
+            {
+                //專業資格
+                DataTable dtDa9s = GetDa9s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub7SourceDa9s", dtDa9s));
+            }
         }
 
         //主表
@@ -642,5 +647,25 @@ namespace DouImp._core
             return dt;
         }
 
+        //著作
+        private DataTable GetDa9s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa9> modelDa9s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa9>(_dbContext);
+            var da9s = modelDa9s.GetAll().Where(a => a.Fno == Fno);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("名稱"));
+            dt.Columns.Add(new DataColumn("簡介"));
+
+            foreach (var v in da9s)
+            {
+                DataRow dr = dt.NewRow();
+                dr["名稱"] = v.da901;
+                dr["簡介"] = v.da902;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
     }
 }

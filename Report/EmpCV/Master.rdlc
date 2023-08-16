@@ -135,8 +135,62 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Subreport Name="Sub7Da9s">
+            <ReportName>Sub7Da9s</ReportName>
+            <Parameters>
+              <Parameter Name="Fno">
+                <Value>=Parameters!Fno.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Top>6.68098cm</Top>
+            <Left>0.4375cm</Left>
+            <Height>2.2025cm</Height>
+            <Width>15.73389cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>著　作</Value>
+                    <Style>
+                      <FontFamily>標楷體</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>5.90459cm</Top>
+            <Left>6.46148cm</Left>
+            <Height>0.77639cm</Height>
+            <Width>4.54611cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>2.26909in</Height>
+        <Height>3.49743in</Height>
         <Style />
       </Body>
       <Width>6.5in</Width>
