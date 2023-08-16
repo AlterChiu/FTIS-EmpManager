@@ -47,7 +47,7 @@
                   <Width>3.66417cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>12.05208cm</Width>
+                  <Width>12.07556cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -76,7 +76,7 @@
                           <rd:DefaultName>名稱</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -85,6 +85,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -109,7 +110,7 @@
                           <rd:DefaultName>簡介</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -118,6 +119,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -139,7 +141,7 @@
             </TablixRowHierarchy>
             <DataSetName>Sub7SourceDa9s</DataSetName>
             <Height>0.79403cm</Height>
-            <Width>15.06361cm</Width>
+            <Width>15.73973cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
