@@ -537,7 +537,10 @@
                 $(remind).appendTo($p4);
 
                 var $p5 = $('div[data-field=da507]').find('label');
-                var remind = '<span class="text-danger fw-lighter pull-right">(限1000字)</span>';
+                var remind = '<span class="text-danger fw-lighter pull-right"> \
+                                (限1000字) 備註：請條列式工作內容，如下所示… </br>\
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. oooo... </br> \
+                              </span> ';
                 $(remind).appendTo($p5);
             };
 
