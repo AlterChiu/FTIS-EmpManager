@@ -330,7 +330,7 @@
       <Width>6.5in</Width>
       <Page>
         <PageFooter>
-          <Height>0.6cm</Height>
+          <Height>2.36389cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -341,7 +341,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>最後更新日期:</Value>
+                      <Value>最後更新日期：</Value>
                       <Style>
                         <FontFamily>標楷體</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -361,9 +361,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Left>7.16611cm</Left>
-              <Height>0.6cm</Height>
-              <Width>9.34389cm</Width>
+              <Left>0.4375cm</Left>
+              <Height>2.36389cm</Height>
+              <Width>15.73389cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
