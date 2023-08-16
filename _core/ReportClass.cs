@@ -615,31 +615,26 @@ namespace DouImp._core
             dt.Columns.Add(new DataColumn("其他備註"));
             dt.Columns.Add(new DataColumn("工作內容"));
 
-            foreach (var v in da5s)
+            foreach (var v in da5s.OrderByDescending(a => a.da504))
             {
-                string strJob = "";
-                DateTime sJob = DateFormat.ToDate10(v.da504);
-                DateTime eJob = DateFormat.ToDate10(v.da505);
-
-                //迄今
-                if (eJob == DateTime.MinValue)
-                {
-                    eJob = DateFormat.ToDate10(DateFormat.ToDate9(DateTime.Now));
-                }
-
-                if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
-                {
-                    TimeSpan ts = (eJob - sJob);
-                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
-                }
-
-                DataRow dr = dt.NewRow();
-                dr["起始年月"] = DateFormat.ToTwDate3(v.da504) + "~" + DateFormat.ToTwDate3(v.da505);                
-                dr["年資"] = strJob;
-                dr["其他備註"] = v.da506;
                 List<string> names = new List<string>() { v.da501, v.da502 };
-                dr["工作內容"] = string.Join(" ", names) + "\n" + v.da507;
-                dt.Rows.Add(dr);
+                string strWorkDate = DateFormat.ToTwDate3(v.da504) + "~" + DateFormat.ToTwDate3(v.da505);
+
+                //(1)只有第一筆需要顯示names(服務單位, 職稱)
+                DataRow dr = dt.NewRow();
+                dr["起始年月"] = strWorkDate;
+                dr["工作內容"] = string.Join(" ", names) + "\n";
+
+                //(2)固定行高，須將工作內容拆成row(\r\n)
+                string[] strs = v.da507.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                foreach (string str in strs)
+                {
+                    dr = dt.NewRow();
+                    dr["起始年月"] = strWorkDate;
+                    dr["工作內容"] = str;
+
+                    dt.Rows.Add(dr);
+                }
             }
 
             return dt;
