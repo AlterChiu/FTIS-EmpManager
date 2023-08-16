@@ -226,7 +226,6 @@
     <Compile Include="Controllers\Emp\EmpBasicController.cs" />
     <Compile Include="Controllers\Hr\EmpDa1Controller.cs" />
     <Compile Include="Controllers\Hr\EmpDa4Controller.cs" />
-    <Compile Include="Controllers\Emp\EmpUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Hr\EmpDa5Controller.cs" />
     <Compile Include="Controllers\Hr\EmpDa6Controller.cs" />
@@ -360,7 +359,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\prj\DeptoFno.js" />
-    <Content Include="Scripts\prj\Emp.js" />
+    <Content Include="Scripts\prj\emp.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -490,7 +489,6 @@
     <Content Include="Views\Shared\EditStyleSelectPartial.cshtml" />
     <Content Include="Views\User\DouLoginError.cshtml" />
     <Content Include="Views\Emp\Index.cshtml" />
-    <Content Include="Views\EmpUser\Index.cshtml" />
     <Content Include="Views\Dep\Index.cshtml" />
     <Content Include="Views\Pj\Index.cshtml" />
     <Content Include="Views\EmpBasic\Index.cshtml" />
