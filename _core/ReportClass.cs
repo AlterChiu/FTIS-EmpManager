@@ -623,7 +623,9 @@ namespace DouImp._core
                 //(1)只有第一筆需要顯示names(服務單位, 職稱)
                 DataRow dr = dt.NewRow();
                 dr["起始年月"] = strWorkDate;
-                dr["工作內容"] = string.Join(" ", names) + "\n";
+                dr["工作內容"] = string.Join(" ", names);
+
+                dt.Rows.Add(dr);
 
                 //(2)固定行高，須將工作內容拆成row(\r\n)
                 string[] strs = v.da507.Split(new[] { "\r\n" }, StringSplitOptions.None);
