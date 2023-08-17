@@ -1,4 +1,33 @@
 ﻿$(document).ready(function () {
+    //清單欄位排序(非預設編輯頁)
+    //說明: js, controller不可設Index排序(douoptions.fields已實體，順序不再變動)
+    if (!douoptions.singleDataEdit) {
+        //順序設定
+        var ranks = [];
+        ranks.push({ field: 'UpdateTime', index: '4' });
+        //ranks.push({ field: 'Sex', index: '3' });
+
+        var newFields = [];
+        for (var i = 0; i < douoptions.fields.length; i++) {
+            var rank = ranks.find(obj => obj.index == i);
+            if (rank != null) {
+
+                //指定(rank)欄位Field
+                var f = douoptions.fields.find(obj => obj.field == rank.field);
+                newFields.push(f);
+
+                //原欄位Field
+                newFields.push(douoptions.fields[i]);
+            }
+            else {
+                if (ranks.find(obj => obj.field == douoptions.fields[i].field) == null) {
+                    //原欄位
+                    newFields.push(douoptions.fields[i]);
+                }
+            }
+        }
+        douoptions.fields = newFields;
+    }
 
     douoptions.title = '員工資料';
 
