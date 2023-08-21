@@ -1,4 +1,5 @@
 ﻿using Dou.Help;
+using Dou.Misc;
 using Dou.Models.DB;
 using DouImp.Models;
 using System;
@@ -32,9 +33,18 @@ namespace DouImp.Controllers
         //    User user = FindUser("admin");
         //    user.LastRenewPassword = DateTime.Now.AddHours(- Dou.Context.Config.RenewPasswordInterval- 1);
         //    UpdateDBObject(GetModelEntity(), new User[] { user });
-            
+
         //    return Json(new { ok=true}, JsonRequestBehavior.AllowGet);
         //}
+
+        public override DataManagerOptions GetDataManagerOptions()
+        {
+            var opts = base.GetDataManagerOptions();
+
+            opts.GetFiled("Id").title = "員工編號";
+
+            return opts;
+        }
 
         #region SSO Code
         /*********Sso code start ************/
