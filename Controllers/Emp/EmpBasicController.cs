@@ -1,5 +1,6 @@
 ﻿using Dou.Misc;
 using Dou.Models.DB;
+using DouImp._core;
 using DouImp.Models;
 using FtisHelperV2.DB.Model;
 using System;
@@ -112,6 +113,38 @@ namespace DouImp.Controllers.Emp
         protected override IModelEntity<F22cmmEmpData> GetModelEntity()
         {
             return new Dou.Models.DB.ModelEntity<F22cmmEmpData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
+        }
+
+        //匯出基本資料表
+        public ActionResult ExportBasic(string fno)
+        {
+            ReportEmpBasic rep = new ReportEmpBasic();
+            string url = rep.ExportExcel(fno);
+
+            if (url == "")
+            {
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        //匯出履歷表
+        public ActionResult ExportCV(string fno)
+        {
+            ReportEmpCV rep = new ReportEmpCV();
+            string url = rep.ExportWord(fno);
+
+            if (url == "")
+            {
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

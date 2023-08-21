@@ -149,7 +149,7 @@
 
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: app.siteRoot + 'Emp/ExportBasic',
+                url: app.siteRoot + 'EmpBasic/ExportBasic',
                 datatype: "json",
                 type: "Get",
                 data: { fno: fno },
@@ -177,7 +177,7 @@
 
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: app.siteRoot + 'Emp/ExportCV',
+                url: app.siteRoot + 'EmpBasic/ExportCV',
                 datatype: "json",
                 type: "Get",
                 data: { fno: fno },
