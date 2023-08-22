@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+<<<<<<< Updated upstream:Scripts/prj/emp.js
     //清單欄位排序(非預設編輯頁)
     //說明: js, controller不可設Index排序(douoptions.fields已實體，順序不再變動)
     if (!douoptions.singleDataEdit) {
@@ -29,6 +30,10 @@
         douoptions.fields = newFields;
     }
 
+=======
+    //20230811, add by markhong 分頁筆數設定
+    douoptions.tableOptions.pageList = [10, 25, 50, 100, 'All'];
+>>>>>>> Stashed changes:Scripts/prj/Emp.js
     douoptions.title = '員工資料';
 
     var $_d1EditDataContainer = undefined;      //Da1s編輯的容器
