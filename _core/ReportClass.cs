@@ -48,7 +48,7 @@ namespace DouImp._core
                 // 設定報表 iFrame Full Width
                 reportViewer.SizeToReportContent = true;
                 reportViewer.Width = Unit.Percentage(100);
-                reportViewer.Height = Unit.Percentage(100);
+                reportViewer.Height = Unit.Percentage(100);                
 
                 // Load Report File From Local Path
                 reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpBasic/Master.rdlc");

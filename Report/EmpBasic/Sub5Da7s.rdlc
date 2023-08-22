@@ -48,18 +48,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>12.07cm</Width>
+                  <Width>11.73486cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.12958cm</Width>
+                  <Width>2.46472cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.74111cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -104,7 +104,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.74111cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -198,7 +198,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -220,7 +220,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.74111cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -290,7 +290,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -353,7 +352,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Sub5SourceDa7s</DataSetName>
-            <Height>1.8cm</Height>
+            <Height>2.22333cm</Height>
             <Width>16.69958cm</Width>
             <Style>
               <Border>
@@ -362,7 +361,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.70866in</Height>
+        <Height>0.87533in</Height>
         <Style />
       </Body>
       <Width>6.57464in</Width>

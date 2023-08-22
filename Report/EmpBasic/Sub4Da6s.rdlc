@@ -73,7 +73,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.84106cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -120,7 +120,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.84106cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -310,7 +310,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.84106cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -345,7 +345,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -515,7 +514,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Sub4SourceDa6s</DataSetName>
-            <Height>1.8cm</Height>
+            <Height>2.52319cm</Height>
             <Width>16.71905cm</Width>
             <Style>
               <Border>
@@ -524,7 +523,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.70866in</Height>
+        <Height>0.99338in</Height>
         <Style />
       </Body>
       <Width>6.5823in</Width>
