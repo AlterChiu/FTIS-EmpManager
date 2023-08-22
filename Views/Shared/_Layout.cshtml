@@ -74,6 +74,19 @@
         }
     </style>
 
+    @{
+        string isiframe = Request.Params["isiframe"] == null ? "" : Request.Params["isiframe"];
+
+        if (isiframe == "Y")
+        {
+            <script>
+                $(document).ready(function () {
+                    $("header").remove();
+                });
+            </script>
+        }
+    }
+
 </head>
 <body>
     <header class="fixed-top">
