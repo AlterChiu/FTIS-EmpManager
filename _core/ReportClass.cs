@@ -414,11 +414,22 @@ namespace DouImp._core
 
     public class ReportEmpCV : ReportClass
     {
-        //匯出基本資料表
-        public string ExportWord(string fno)
+        /// <summary>
+        /// 匯出履歷表
+        /// </summary>
+        /// <param name="fno"></param>
+        /// <param name="ext">副檔名(包含.docx)</param>
+        /// <returns></returns>
+        public string Export(string fno, string ext)
         {
             string resultUrl = "";
             string path = "";
+
+            if (!RType.ContainsKey(ext))
+            {
+                _errorMessage = "報表格式尚未設定此附檔名：" + ext;
+                return "";
+            }
 
             //產出檔案
             try
@@ -454,7 +465,7 @@ namespace DouImp._core
                 string extension;
 
                 byte[] bytes = reportViewer.LocalReport.Render(
-                   "WORDOPENXML", null, out mimeType, out encoding,
+                   RType[ext], null, out mimeType, out encoding,
                     out extension,
                    out streamids, out warnings);
 
@@ -467,7 +478,7 @@ namespace DouImp._core
                 }
 
                 string empName = dtData.Rows[0]["姓名中"].ToString();
-                string fileName = "履歷表_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ".docx";
+                string fileName = "履歷表_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,

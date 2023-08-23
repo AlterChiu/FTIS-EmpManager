@@ -134,9 +134,10 @@
         }
 
         if (!isAdd) {
-            var ExportBasic = '<button id="btnExportBasic" class="btn btn-primary ms-2">匯出基本資料表</button>';
-            var ExportCV = '<button id="btnExportCV" class="btn btn-primary ms-2">匯出履歷表</button>';
-            editBtn = editBtn + ExportBasic + ExportCV;
+            var btnExportBasicExcel = '<button id="btnExportBasicExcel" class="btn btn-primary ms-2">基本資料(Excel)</button>';
+            var btnExportBasicWord = '<button id="btnExportBasicWord" class="btn btn-primary ms-2">基本資料(Word)</button>';
+            var btnExportCV = '<button id="btnExportCV" class="btn btn-primary ms-2">履歷表</button>';
+            editBtn = editBtn + btnExportBasicExcel + btnExportBasicWord + btnExportCV;
 
             editBtn = '<li class="ms-auto">' + editBtn  + '</li>';
             $(editBtn).appendTo($('#_tabs').closest('div[class=tab-content]').siblings());
@@ -146,20 +147,28 @@
             location.reload();
         });
 
-        $('#btnExportBasic').click(function () {            
+        $('#btnExportBasicExcel').click(function () {
+            var url = app.siteRoot + 'EmpBasic/ExportBasicExcel';
+            ExportBasic(oFno, url)
+        });
 
-            var fno = oFno;
+        $('#btnExportBasicWord').click(function () {
+            var url = app.siteRoot + 'EmpBasic/ExportBasicWord';
+            ExportBasic(oFno, url)
+        });
+
+        function ExportBasic(fno, url) {            
 
             helper.misc.showBusyIndicator();
             $.ajax({
-                url: app.siteRoot + 'EmpBasic/ExportBasic',
+                url: url,
                 datatype: "json",
                 type: "Get",
                 data: { fno: fno },
                 success: function (data) {
                     if (data.result) {
                         location.href = app.siteRoot + data.url;
-						//window.open(app.siteRoot + data.url, 'Download');
+                        //window.open(app.siteRoot + data.url, 'Download');
                     } else {
                         alert("產出基本資料表失敗：\n" + data.errorMessage);
                     }
@@ -173,7 +182,7 @@
                     helper.misc.hideBusyIndicator();
                 }
             });
-        });
+        }
 
         $('#btnExportCV').click(function () {
             var fno = oFno;

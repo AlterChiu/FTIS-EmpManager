@@ -116,10 +116,26 @@ namespace DouImp.Controllers.Emp
         }
 
         //匯出基本資料表
-        public ActionResult ExportBasic(string fno)
+        public ActionResult ExportBasicExcel(string fno)
         {
             ReportEmpBasic rep = new ReportEmpBasic();
             string url = rep.Export(fno, ".xlsx");
+
+            if (url == "")
+            {
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        //匯出基本資料表
+        public ActionResult ExportBasicWord(string fno)
+        {
+            ReportEmpBasic rep = new ReportEmpBasic();
+            string url = rep.Export(fno, ".docx");
 
             if (url == "")
             {
@@ -135,7 +151,7 @@ namespace DouImp.Controllers.Emp
         public ActionResult ExportCV(string fno)
         {
             ReportEmpCV rep = new ReportEmpCV();
-            string url = rep.ExportWord(fno);
+            string url = rep.Export(fno, ".docx");
 
             if (url == "")
             {
