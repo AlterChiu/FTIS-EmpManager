@@ -38,6 +38,7 @@ namespace DouImp._core
         };
     }
 
+    //基本資料表
     public class ReportEmpBasic : ReportClass
     {
         /// <summary>
@@ -412,6 +413,7 @@ namespace DouImp._core
         }
     }
 
+    //履歷表
     public class ReportEmpCV : ReportClass
     {
         /// <summary>
@@ -668,9 +670,15 @@ namespace DouImp._core
                 dt.Rows.Add(dr);
 
                 //(2)固定行高，須將工作內容拆成row(\r\n)
+                List<string> filters = new List<string>() { "待補" };
+
                 string[] strs = v.da507.Split(new[] { "\r\n" }, StringSplitOptions.None);
                 foreach (string str in strs)
                 {
+                    //排除文字(ex.待補)
+                    if (filters.Contains(str))
+                        continue;
+
                     dr = dt.NewRow();
                     dr["起始年月"] = strWorkDate;
                     dr["工作內容"] = str;
