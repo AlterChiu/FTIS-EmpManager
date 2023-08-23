@@ -76,7 +76,7 @@ namespace DouImp._core
                 string extension;
 
                 byte[] bytes = reportViewer.LocalReport.Render(
-                   "EXCELOPENXML", null, out mimeType, out encoding,
+                   "WORDOPENXML", null, out mimeType, out encoding,
                     out extension,
                    out streamids, out warnings);
 
@@ -88,7 +88,7 @@ namespace DouImp._core
                 }
 
                 string empName = dtData.Rows[0]["姓名中"].ToString();
-                string fileName = "員工基本資料_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ".xlsx";
+                string fileName = "員工基本資料_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ".docx";
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,
@@ -147,7 +147,7 @@ namespace DouImp._core
             }
             else if (e.ReportPath == "Sub4Da6s")
             {
-                //經歷
+                //家庭狀況
                 DataTable dtDa6s = GetDa6s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub4SourceDa6s", dtDa6s));
             }
