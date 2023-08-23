@@ -119,7 +119,7 @@ namespace DouImp.Controllers.Emp
         public ActionResult ExportBasic(string fno)
         {
             ReportEmpBasic rep = new ReportEmpBasic();
-            string url = rep.ExportExcel(fno);
+            string url = rep.Export(fno, ".xlsx");
 
             if (url == "")
             {
