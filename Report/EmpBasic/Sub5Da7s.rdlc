@@ -220,7 +220,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.74111cm</Height>
+                  <Height>0.62945cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -352,7 +352,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Sub5SourceDa7s</DataSetName>
-            <Height>2.22333cm</Height>
+            <Height>2.11167cm</Height>
             <Width>16.69958cm</Width>
             <Style>
               <Border>
@@ -361,7 +361,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.87533in</Height>
+        <Height>0.83137in</Height>
         <Style />
       </Body>
       <Width>6.57464in</Width>
