@@ -547,6 +547,10 @@ namespace DouImp.Report {
             
             private global::System.Data.DataColumn column最後更新日期;
             
+            private global::System.Data.DataColumn column大頭照;
+            
+            private global::System.Data.DataColumn column大頭照mime;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EmpDataDataTable() {
@@ -814,6 +818,22 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 大頭照Column {
+                get {
+                    return this.column大頭照;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn 大頭照mimeColumn {
+                get {
+                    return this.column大頭照mime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -878,7 +898,9 @@ namespace DouImp.Report {
                         string 專長, 
                         string 學歷F, 
                         string 資格F, 
-                        string 最後更新日期) {
+                        string 最後更新日期, 
+                        string 大頭照, 
+                        string 大頭照mime) {
                 EmpDataRow rowEmpDataRow = ((EmpDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         姓名中,
@@ -909,7 +931,9 @@ namespace DouImp.Report {
                         專長,
                         學歷F,
                         資格F,
-                        最後更新日期};
+                        最後更新日期,
+                        大頭照,
+                        大頭照mime};
                 rowEmpDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmpDataRow);
                 return rowEmpDataRow;
@@ -961,6 +985,8 @@ namespace DouImp.Report {
                 this.column學歷F = base.Columns["學歷F"];
                 this.column資格F = base.Columns["資格F"];
                 this.column最後更新日期 = base.Columns["最後更新日期"];
+                this.column大頭照 = base.Columns["大頭照"];
+                this.column大頭照mime = base.Columns["大頭照mime"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1024,6 +1050,10 @@ namespace DouImp.Report {
                 base.Columns.Add(this.column資格F);
                 this.column最後更新日期 = new global::System.Data.DataColumn("最後更新日期", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column最後更新日期);
+                this.column大頭照 = new global::System.Data.DataColumn("大頭照", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column大頭照);
+                this.column大頭照mime = new global::System.Data.DataColumn("大頭照mime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column大頭照mime);
                 this.columnEmail.Caption = "E-mail";
             }
             
@@ -3407,6 +3437,38 @@ namespace DouImp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 大頭照 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.大頭照Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'大頭照\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.大頭照Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string 大頭照mime {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmpData.大頭照mimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'EmpData\' 中資料行 \'大頭照mime\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmpData.大頭照mimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Is姓名中Null() {
                 return this.IsNull(this.tableEmpData.姓名中Column);
             }
@@ -3751,6 +3813,30 @@ namespace DouImp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Set最後更新日期Null() {
                 this[this.tableEmpData.最後更新日期Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is大頭照Null() {
+                return this.IsNull(this.tableEmpData.大頭照Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set大頭照Null() {
+                this[this.tableEmpData.大頭照Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Is大頭照mimeNull() {
+                return this.IsNull(this.tableEmpData.大頭照mimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Set大頭照mimeNull() {
+                this[this.tableEmpData.大頭照mimeColumn] = global::System.Convert.DBNull;
             }
         }
         

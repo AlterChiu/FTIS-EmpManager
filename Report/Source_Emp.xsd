@@ -43,7 +43,9 @@
               <xs:element name="專長" msprop:Generator_ColumnPropNameInTable="專長Column" msprop:Generator_ColumnPropNameInRow="專長" msprop:Generator_UserColumnName="專長" msprop:Generator_ColumnVarNameInTable="column專長" type="xs:string" minOccurs="0" />
               <xs:element name="學歷F" msprop:Generator_ColumnPropNameInTable="學歷FColumn" msprop:Generator_ColumnPropNameInRow="學歷F" msprop:Generator_UserColumnName="學歷F" msprop:Generator_ColumnVarNameInTable="column學歷F" type="xs:string" minOccurs="0" />
               <xs:element name="資格F" msprop:Generator_ColumnPropNameInTable="資格FColumn" msprop:Generator_ColumnPropNameInRow="資格F" msprop:Generator_UserColumnName="資格F" msprop:Generator_ColumnVarNameInTable="column資格F" type="xs:string" minOccurs="0" />
-              <xs:element name="最後更新日期" msprop:Generator_ColumnPropNameInRow="最後更新日期" msprop:Generator_ColumnPropNameInTable="最後更新日期Column" msprop:Generator_ColumnVarNameInTable="column最後更新日期" msprop:Generator_UserColumnName="最後更新日期" type="xs:string" minOccurs="0" />
+              <xs:element name="最後更新日期" msprop:Generator_UserColumnName="最後更新日期" msprop:Generator_ColumnPropNameInTable="最後更新日期Column" msprop:Generator_ColumnPropNameInRow="最後更新日期" msprop:Generator_ColumnVarNameInTable="column最後更新日期" type="xs:string" minOccurs="0" />
+              <xs:element name="大頭照" msprop:Generator_ColumnPropNameInRow="大頭照" msprop:Generator_ColumnPropNameInTable="大頭照Column" msprop:Generator_ColumnVarNameInTable="column大頭照" msprop:Generator_UserColumnName="大頭照" type="xs:string" minOccurs="0" />
+              <xs:element name="大頭照mime" msprop:Generator_ColumnPropNameInRow="大頭照mime" msprop:Generator_ColumnPropNameInTable="大頭照mimeColumn" msprop:Generator_ColumnVarNameInTable="column大頭照mime" msprop:Generator_UserColumnName="大頭照mime" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -102,11 +104,11 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Da9s" msprop:Generator_RowClassName="Da9sRow" msprop:Generator_RowEvHandlerName="Da9sRowChangeEventHandler" msprop:Generator_RowDeletedName="Da9sRowDeleted" msprop:Generator_RowDeletingName="Da9sRowDeleting" msprop:Generator_RowEvArgName="Da9sRowChangeEvent" msprop:Generator_TablePropName="Da9s" msprop:Generator_RowChangedName="Da9sRowChanged" msprop:Generator_UserTableName="Da9s" msprop:Generator_RowChangingName="Da9sRowChanging" msprop:Generator_TableClassName="Da9sDataTable" msprop:Generator_TableVarName="tableDa9s">
+        <xs:element name="Da9s" msprop:Generator_RowEvHandlerName="Da9sRowChangeEventHandler" msprop:Generator_RowDeletedName="Da9sRowDeleted" msprop:Generator_RowDeletingName="Da9sRowDeleting" msprop:Generator_RowEvArgName="Da9sRowChangeEvent" msprop:Generator_TablePropName="Da9s" msprop:Generator_RowChangedName="Da9sRowChanged" msprop:Generator_UserTableName="Da9s" msprop:Generator_RowChangingName="Da9sRowChanging" msprop:Generator_RowClassName="Da9sRow" msprop:Generator_TableClassName="Da9sDataTable" msprop:Generator_TableVarName="tableDa9s">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="名稱" msprop:Generator_UserColumnName="名稱" msprop:Generator_ColumnPropNameInTable="名稱Column" msprop:Generator_ColumnPropNameInRow="名稱" msprop:Generator_ColumnVarNameInTable="column名稱" type="xs:string" minOccurs="0" />
-              <xs:element name="簡介" msprop:Generator_UserColumnName="簡介" msprop:Generator_ColumnPropNameInTable="簡介Column" msprop:Generator_ColumnPropNameInRow="簡介" msprop:Generator_ColumnVarNameInTable="column簡介" type="xs:string" minOccurs="0" />
+              <xs:element name="名稱" msprop:Generator_ColumnPropNameInTable="名稱Column" msprop:Generator_ColumnPropNameInRow="名稱" msprop:Generator_UserColumnName="名稱" msprop:Generator_ColumnVarNameInTable="column名稱" type="xs:string" minOccurs="0" />
+              <xs:element name="簡介" msprop:Generator_ColumnPropNameInTable="簡介Column" msprop:Generator_ColumnPropNameInRow="簡介" msprop:Generator_UserColumnName="簡介" msprop:Generator_ColumnVarNameInTable="column簡介" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -117,6 +117,30 @@
           <DataField>緊急聯絡人2電話</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="專長">
+          <DataField>專長</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="學歷F">
+          <DataField>學歷F</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="資格F">
+          <DataField>資格F</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="最後更新日期">
+          <DataField>最後更新日期</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="大頭照">
+          <DataField>大頭照</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="大頭照mime">
+          <DataField>大頭照mime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Source_Emp</rd:DataSetName>
@@ -1164,6 +1188,22 @@
               </Border>
             </Style>
           </Tablix>
+          <Image Name="Image1">
+            <Source>Database</Source>
+            <Value>=Convert.FromBase64String(First(Fields!大頭照.Value, "Sub1SourceData"))</Value>
+            <MIMEType>=First(Fields!大頭照mime.Value, "Sub1SourceData")</MIMEType>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.25759cm</Top>
+            <Left>12.10591cm</Left>
+            <Height>4.19875cm</Height>
+            <Width>4.19877cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
         </ReportItems>
         <Height>1.86189in</Height>
         <Style>
