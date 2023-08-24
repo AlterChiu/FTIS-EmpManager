@@ -1192,11 +1192,10 @@
             <Source>Database</Source>
             <Value>=Convert.FromBase64String(First(Fields!大頭照.Value, "Sub1SourceData"))</Value>
             <MIMEType>=First(Fields!大頭照mime.Value, "Sub1SourceData")</MIMEType>
-            <Sizing>FitProportional</Sizing>
-            <Top>0.25759cm</Top>
-            <Left>12.10591cm</Left>
-            <Height>4.19875cm</Height>
-            <Width>4.19877cm</Width>
+            <Sizing>Fit</Sizing>
+            <Left>11.92952cm</Left>
+            <Height>4.7292cm</Height>
+            <Width>4.74487cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1212,7 +1211,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>6.53in</Width>
+      <Width>6.56472in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
