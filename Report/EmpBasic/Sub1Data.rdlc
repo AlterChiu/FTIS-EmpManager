@@ -1193,6 +1193,7 @@
             <Value>=Convert.FromBase64String(First(Fields!大頭照.Value, "Sub1SourceData"))</Value>
             <MIMEType>=First(Fields!大頭照mime.Value, "Sub1SourceData")</MIMEType>
             <Sizing>Fit</Sizing>
+			<Top>0.00356cm</Top>
             <Left>11.97952cm</Left>
             <Height>4.7292cm</Height>
             <Width>4.60487cm</Width>
