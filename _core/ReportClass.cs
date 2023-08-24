@@ -234,17 +234,20 @@ namespace DouImp._core
             dr["到職日期"] = DateFormat.ToDate4(data.AD);            
             dr["性別"] = data.Sex;
             dr["Email"] = data.EMail;
-            
+
             //RDLC：image base64 header remove(ex.data:image/png;base64,iVBORw0KGgoAAAA)             
-            String[] substrings = data.ProfilePhoto.Split(',');
-            string header = substrings[0];
-            string imgData = substrings[1];
+            if (!string.IsNullOrEmpty(data.ProfilePhoto))
+            {
+                String[] substrings = data.ProfilePhoto.Split(',');
+                string header = substrings[0];
+                string imgData = substrings[1];
 
-            string[] infos = header.Split(';')[0].Split(':');
-            string mime = infos.Count() > 0 ? infos[1] : infos[0];
+                string[] infos = header.Split(';')[0].Split(':');
+                string mime = infos.Count() > 0 ? infos[1] : infos[0];
 
-            dr["大頭照"] = imgData;
-            dr["大頭照mime"] = mime; //"image/png";
+                dr["大頭照"] = imgData;
+                dr["大頭照mime"] = mime; //"image/png";
+            }
 
             if (z_da1s.Count() > 0)
             {
