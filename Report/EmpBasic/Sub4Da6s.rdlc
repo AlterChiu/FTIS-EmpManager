@@ -68,7 +68,7 @@
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.69806cm</Width>
+                  <Width>6.60112cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -515,7 +515,7 @@
             </TablixRowHierarchy>
             <DataSetName>Sub4SourceDa6s</DataSetName>
             <Height>2.18223cm</Height>
-            <Width>16.69806cm</Width>
+            <Width>16.45112cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
