@@ -1,7 +1,22 @@
 ﻿@using Dou.Misc.Extension
-@Html.MenuMap()
 
 @Html.DataManagerOptionsJavascript(null, "douoptions")
+
+@*iframe嵌入隱藏Header*@
+@{
+    string isiframe = Request.Params["isiframe"] == null ? "" : Request.Params["isiframe"];
+
+    if (isiframe == "Y")
+    {
+        <script>
+            $("header").remove();
+        </script>
+    }
+    else
+    {
+        @Html.MenuMap();
+    }
+}
 
 <script>
     $(document).ready(function () {
@@ -64,11 +79,11 @@
                     url: $.AppConfigOptions.baseurl + 'Pj/importMap',
                     datatype: "json",
                     type: "POST",
-                    data: { "objs": $.isArray(urow) ? urow : [urow]},
+                    data: { "objs": $.isArray(urow) ? urow : [urow] },
                     success: function (data) {
                         if (data.result) {
                             //找不到物件,Model.EditType(input => textarea)
-                            //$('.modal-content').find('div[data-field=PjNameM] textarea').val(data.pjNameM);                            
+                            //$('.modal-content').find('div[data-field=PjNameM] textarea').val(data.pjNameM);
                             $('.modal-content').find('[data-fn=PjNameM]').val(data.pjNameM);
                             alert("對照表更新成功");
                         } else {
