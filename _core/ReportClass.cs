@@ -256,9 +256,13 @@ namespace DouImp._core
                 dr["身高"] = da1s.da06;
                 dr["體重"] = da1s.da07;
                 dr["血型"] = da1s.da08;
-                dr["戶籍地址"] = da1s.da10;
+                var da09 = FtisHelperV2.DB.Helpe.Employee.GetTownByZipCode(da1s.da09);
+                string town10 = da09 == null ? "" : da09.CountyName + da09.TownName;
+                dr["戶籍地址"] = town10 + da1s.da10;
                 dr["戶籍電話"] = da1s.da11;
-                dr["通訊地址"] = da1s.da13;
+                var da12 = FtisHelperV2.DB.Helpe.Employee.GetTownByZipCode(da1s.da12);
+                string town13 = da12 == null ? "" : da12.CountyName + da12.TownName;
+                dr["通訊地址"] = town13 + da1s.da13;
                 dr["住家電話"] = da1s.da14;
                 dr["行動電話"] = da1s.da15;                
                 dr["緊急聯絡人1姓名"] = da1s.da17;
