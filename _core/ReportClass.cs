@@ -119,7 +119,7 @@ namespace DouImp._core
             }
             catch (Exception ex)
             {
-                _errorMessage = "匯出基本資料表失敗" + ex.Message + " " + ex.StackTrace;
+                _errorMessage = "匯出基本資料表失敗" + ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace;
                 return "";
             }
 
@@ -510,7 +510,7 @@ namespace DouImp._core
             }
             catch (Exception ex)
             {
-                _errorMessage = "匯出履歷表失敗" + ex.Message + " " + ex.StackTrace;
+                _errorMessage = "匯出履歷表失敗" + "\n" + ex.InnerException + ex.Message + "\n" + ex.StackTrace;
                 return "";
             }
 
