@@ -476,6 +476,10 @@
                 var $p6 = $('div[data-field=da24]').find('label');
                 var remind = '<span class="text-danger fw-lighter pull-right">限500字(Ex: 空氣污染防制技術、廢棄物資源化、薄膜水處理技術…)</span>';
                 $(remind).appendTo($p6);
+
+                var $p7 = $('div[data-field=ProfilePhoto]').find('label');
+                var remind = '<span class="text-danger fw-lighter ms-1">可修改無法刪除</span>';
+                $(remind).appendTo($p7);
             }
 
             _opt.afterUpdateServerData = _opt.afterAddServerData = function (row, callback) {
