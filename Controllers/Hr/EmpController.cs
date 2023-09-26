@@ -27,6 +27,7 @@ using ZXing;
 using Microsoft.Ajax.Utilities;
 using System.Drawing.Drawing2D;
 using System.Security.Policy;
+using DouImp._report;
 
 namespace DouImp.Controllers
 {   
@@ -193,19 +194,19 @@ namespace DouImp.Controllers
         //匯出履歷表
         public ActionResult ExportPPtPromote()
         {
-            //ReportEmpCV rep = new ReportEmpCV();
-            //string url = rep.Export(fno, ".docx");
+            Rpt_EmpPPtPromote rep = new Rpt_EmpPPtPromote();
+            string url = rep.Export("J00007", ".docx");
 
-            //if (url == "")
-            //{
-            //    return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
-            //}
-            //else
-            //{
-            //    return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
-            //}
+            if (url == "")
+            {
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            ////return Json(new { result = true }, JsonRequestBehavior.AllowGet);
         }
 
     }

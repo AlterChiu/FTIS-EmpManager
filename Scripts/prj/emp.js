@@ -435,8 +435,8 @@
             type: "Get",
             success: function (data) {
                 if (data.result) {
-                    //location.href = app.siteRoot + data.url;
-                    alert("產出晉升簡報成功：");
+                    location.href = app.siteRoot + data.url;
+                    //alert("產出晉升簡報成功：");
                 } else {
                     alert("產出晉升簡報失敗：\n" + data.errorMessage);
                 }
@@ -452,7 +452,7 @@
         });
     };
 
-    douoptions.appendCustomToolbars = [a];
+    ////douoptions.appendCustomToolbars = [a];
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
         
