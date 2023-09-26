@@ -151,7 +151,7 @@ namespace DouImp._report
             dr["姓名中"] = data.Name;
             dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
             List<string> titles = new List<string>();
-            titles.Add("財團法人台灣產業服務基金會");
+            //titles.Add("財團法人台灣產業服務基金會");
             titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
             titles.Add(FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title);
             dr["職稱"] = string.Join(" ", titles);

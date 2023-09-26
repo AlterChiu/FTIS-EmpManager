@@ -12,10 +12,8 @@
                 <Value>=Parameters!Fno.Value</Value>
               </Parameter>
             </Parameters>
-            <Top>0.72884cm</Top>
-            <Left>0.64064cm</Left>
             <Height>2.89042cm</Height>
-            <Width>6.79444cm</Width>
+            <Width>10.99815cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -23,10 +21,10 @@
             </Style>
           </Subreport>
         </ReportItems>
-        <Height>3.27907in</Height>
+        <Height>1.13796in</Height>
         <Style />
       </Body>
-      <Width>4.21887in</Width>
+      <Width>4.32998in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
