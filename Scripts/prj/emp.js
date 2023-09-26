@@ -423,6 +423,37 @@
         //callback();
     }
 
+    //清單匯出晉升
+    var a = {};
+    a.item = '<span class="btn btn-success glyphicon glyphicon-download-alt"> 晉升簡報</span>';
+    a.event = 'click .glyphicon-download-alt';
+    a.callback = function importQdate(evt) {
+        helper.misc.showBusyIndicator();
+        $.ajax({
+            url: app.siteRoot + 'Emp/ExportPPtPromote',
+            datatype: "json",
+            type: "Get",
+            success: function (data) {
+                if (data.result) {
+                    //location.href = app.siteRoot + data.url;
+                    alert("產出晉升簡報成功：");
+                } else {
+                    alert("產出晉升簡報失敗：\n" + data.errorMessage);
+                }
+            },
+            complete: function () {
+                helper.misc.hideBusyIndicator();
+            },
+            error: function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+                helper.misc.hideBusyIndicator();
+            }
+        });
+    };
+
+    douoptions.appendCustomToolbars = [a];
+
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
         
         //錨點
