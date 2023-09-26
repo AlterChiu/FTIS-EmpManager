@@ -1,6 +1,7 @@
 ﻿using DouImp._core;
 using FtisHelperV2.DB.Model;
 using Microsoft.Reporting.WebForms;
+using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,8 +49,11 @@ namespace DouImp._report
 
                 //主表
                 Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
-                var dtData = modelData.GetAll().Where(a => a.Fno == "J00007" || a.Fno == "J00007").ToList();
-                //DataTable dtData = GetEmpData();
+                var dtData = modelData.GetAll().Where(a => a.Fno == "J00006" || a.Fno == "J00007").ToList();
+
+                if (dtData.Count == 0)
+                    return "晉升員工-無資料匯出";
+
                 reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
                 // 子報表事件

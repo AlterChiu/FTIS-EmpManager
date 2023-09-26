@@ -160,23 +160,60 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Subreport Name="Sub1Data">
-            <ReportName>Sub1Data</ReportName>
-            <Parameters>
-              <Parameter Name="Fno">
-                <Value>=First(Fields!Fno.Value, "MasterEmpData")</Value>
-              </Parameter>
-            </Parameters>
-            <Height>2.89042cm</Height>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>10.99815cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>1.71125cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Subreport Name="Sub1Data">
+                          <ReportName>Sub1Data</ReportName>
+                          <Parameters>
+                            <Parameter Name="Fno">
+                              <Value>=First(Fields!Fno.Value, "MasterEmpData")</Value>
+                            </Parameter>
+                          </Parameters>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Subreport>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="詳細資料" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <Height>1.71125cm</Height>
             <Width>10.99815cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
-          </Subreport>
+          </Tablix>
         </ReportItems>
-        <Height>1.13796in</Height>
+        <Height>0.67372in</Height>
         <Style />
       </Body>
       <Width>4.32998in</Width>
