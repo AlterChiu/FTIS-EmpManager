@@ -44,7 +44,7 @@ namespace DouImp._report
                 reportViewer.Height = Unit.Percentage(100);
 
                 // Load Report File From Local Path
-                reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpCV/Master.rdlc");
+                reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpPPtPromote/Master.rdlc");
 
                 //參數設定(Fno)
                 ReportParameter p1 = new ReportParameter("Fno", fno);
@@ -68,7 +68,7 @@ namespace DouImp._report
                     out extension,
                    out streamids, out warnings);
 
-                string folder = FileHelper.GetFileFolder(Code.TempUploadFile.履歷表);
+                string folder = FileHelper.GetFileFolder(Code.TempUploadFile.員工晉升);
 
 
                 if (!Directory.Exists(folder))
@@ -77,7 +77,7 @@ namespace DouImp._report
                 }
 
                 string empName = dtData.Rows[0]["姓名中"].ToString();
-                string fileName = "履歷表_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
+                string fileName = "員工晉升_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,
@@ -87,7 +87,7 @@ namespace DouImp._report
             }
             catch (Exception ex)
             {
-                _errorMessage = "匯出履歷表失敗" + "\n" + ex.InnerException + ex.Message + "\n" + ex.StackTrace;
+                _errorMessage = "匯出員工晉升失敗" + "\n" + ex.InnerException + ex.Message + "\n" + ex.StackTrace;
                 return "";
             }
 
@@ -121,18 +121,15 @@ namespace DouImp._report
                 //主表
                 DataTable dt = GetEmpData(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub1SourceData", dt));
-            }
-            else if (e.ReportPath == "Sub3Da5s")
-            {
+
+                //學歷
+                DataTable dtDa4s = GetDa4s(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub2SourceDa4s", dtDa4s));
+
                 //經歷
                 DataTable dtDa5s = GetDa5s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s", dtDa5s));
-            }
-            else if (e.ReportPath == "Sub7Da9s")
-            {
-                //專業資格
-                DataTable dtDa9s = GetDa9s(Fno);
-                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub7SourceDa9s", dtDa9s));
+
             }
         }
 
@@ -142,98 +139,54 @@ namespace DouImp._report
             Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
             var data = modelData.GetAll().Where(a => a.Fno == Fno).First();
 
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa1> modelDa1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(_dbContext);
-            var z_da1s = modelDa1s.GetAll().Where(a => a.Fno == Fno).ToList();
-
             DataTable dt = new DataTable();
             //dt.Columns.Add(new DataColumn("xxxx"));
             dt.Columns.Add(new DataColumn("姓名中"));
-            dt.Columns.Add(new DataColumn("姓名英"));
             dt.Columns.Add(new DataColumn("部門"));
             dt.Columns.Add(new DataColumn("職稱"));
-            dt.Columns.Add(new DataColumn("到職日期"));
-            dt.Columns.Add(new DataColumn("出生日期"));
-            dt.Columns.Add(new DataColumn("性別"));
-            dt.Columns.Add(new DataColumn("出生地"));
-            dt.Columns.Add(new DataColumn("身分證字號"));
-            dt.Columns.Add(new DataColumn("婚姻"));
-            dt.Columns.Add(new DataColumn("身高"));
-            dt.Columns.Add(new DataColumn("體重"));
-            dt.Columns.Add(new DataColumn("血型"));
-            dt.Columns.Add(new DataColumn("戶籍地址"));
-            dt.Columns.Add(new DataColumn("戶籍電話"));
-            dt.Columns.Add(new DataColumn("通訊地址"));
-            dt.Columns.Add(new DataColumn("住家電話"));
-            dt.Columns.Add(new DataColumn("行動電話"));
-            dt.Columns.Add(new DataColumn("Email"));
-            dt.Columns.Add(new DataColumn("緊急聯絡人1姓名"));
-            dt.Columns.Add(new DataColumn("緊急聯絡人1關係"));
-            dt.Columns.Add(new DataColumn("緊急聯絡人1電話"));
-            dt.Columns.Add(new DataColumn("緊急聯絡人2姓名"));
-            dt.Columns.Add(new DataColumn("緊急聯絡人2關係"));
-            dt.Columns.Add(new DataColumn("緊急聯絡人2電話"));
-            dt.Columns.Add(new DataColumn("專長"));
-            dt.Columns.Add(new DataColumn("學歷F"));
-            dt.Columns.Add(new DataColumn("資格F"));
-            dt.Columns.Add(new DataColumn("最後更新日期"));
+            dt.Columns.Add(new DataColumn("到職日期"));            
 
             DataRow dr = dt.NewRow();
             //dr["xxxx"] = "oooooo";
             dr["姓名中"] = data.Name;
-            dr["姓名英"] = data.En_Name;
+            dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
             List<string> titles = new List<string>();
             titles.Add("財團法人台灣產業服務基金會");
             titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
             titles.Add(FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title);
             dr["職稱"] = string.Join(" ", titles);
-            dr["到職日期"] = DateFormat.ToDate4(data.AD);
-            dr["性別"] = data.Sex;
-            dr["Email"] = data.EMail;
-            dr["最後更新日期"] = data.UpdateTime != null ? DateFormat.ToTwDate4((DateTime)data.UpdateTime) : "";
-
-            if (z_da1s.Count() > 0)
-            {
-                var da1s = z_da1s.First();
-                dr["出生日期"] = DateFormat.ToTwDate2((DateTime)da1s.da03);
-                dr["出生地"] = da1s.da04;
-                dr["身分證字號"] = da1s.da05;
-                dr["婚姻"] = da1s.da06a;
-                dr["身高"] = da1s.da06;
-                dr["體重"] = da1s.da07;
-                dr["血型"] = da1s.da08;
-                dr["戶籍地址"] = da1s.da10;
-                dr["戶籍電話"] = da1s.da11;
-                dr["通訊地址"] = da1s.da13;
-                dr["住家電話"] = da1s.da14;
-                dr["行動電話"] = da1s.da15;
-                dr["緊急聯絡人1姓名"] = da1s.da17;
-                dr["緊急聯絡人1關係"] = da1s.da18;
-                dr["緊急聯絡人1電話"] = da1s.da19;
-                dr["緊急聯絡人2姓名"] = da1s.da20;
-                dr["緊急聯絡人2關係"] = da1s.da21;
-                dr["緊急聯絡人2電話"] = da1s.da22;
-                dr["專長"] = da1s.da24;
-            }
-
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(_dbContext);
-            var z_da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno).ToList();
-
-            if (z_da4s.Count > 0)
-            {
-                var da4s = z_da4s.OrderByDescending(a => a.da404).First();
-                List<string> strs = new List<string>() { da4s.da401, da4s.da403, da4s.da406 };
-                dr["學歷F"] = string.Join(" ", strs);
-            }
-
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa8> modelDa8s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa8>(_dbContext);
-            var z_da8s = modelDa8s.GetAll().Where(a => a.Fno == Fno).ToList();
-
-            if (z_da8s.Count > 0)
-            {
-                dr["資格F"] = string.Join("\n", z_da8s.Select(a => a.da801));
-            }
+            dr["到職日期"] = DateFormat.ToDate4(data.AD);                                   
 
             dt.Rows.Add(dr);
+
+            return dt;
+        }
+
+        //學歷
+        private DataTable GetDa4s(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(_dbContext);
+            var da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno);
+
+            DataTable dt = new DataTable();
+            //dt4.Columns.Add(new DataColumn("xxxx"));
+            dt.Columns.Add(new DataColumn("學校"));
+            dt.Columns.Add(new DataColumn("科系"));
+            dt.Columns.Add(new DataColumn("入學年月"));
+            dt.Columns.Add(new DataColumn("畢業年月"));
+            dt.Columns.Add(new DataColumn("學位"));
+
+            foreach (var v in da4s)
+            {
+                DataRow dr = dt.NewRow();
+                //dr4["xxxx"] = "oooooo";
+                dr["學校"] = v.da401;
+                dr["科系"] = v.da403;
+                dr["入學年月"] = v.da404;
+                dr["畢業年月"] = v.da405;
+                dr["學位"] = v.da406;
+                dt.Rows.Add(dr);
+            }
 
             return dt;
         }
@@ -242,8 +195,7 @@ namespace DouImp._report
         private DataTable GetDa5s(string Fno)
         {
             Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
-            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
-                        .OrderByDescending(a => a.da504).ToList();
+            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno);
 
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("服務單位"));
@@ -251,57 +203,31 @@ namespace DouImp._report
             dt.Columns.Add(new DataColumn("起始年月"));
             dt.Columns.Add(new DataColumn("結束年月"));
             dt.Columns.Add(new DataColumn("年資"));
-            dt.Columns.Add(new DataColumn("其他備註"));
-            dt.Columns.Add(new DataColumn("工作內容"));
 
-            foreach (var v in da5s.OrderByDescending(a => a.da504))
+            foreach (var v in da5s)
             {
-                List<string> names = new List<string>() { v.da501, v.da502 };
-                string strWorkDate = DateFormat.ToTwDate3(v.da504) + "~" + DateFormat.ToTwDate3(v.da505);
+                string strJob = "";
+                DateTime sJob = DateFormat.ToDate10(v.da504);
+                DateTime eJob = DateFormat.ToDate10(v.da505);
 
-                //(1)只有第一筆需要顯示names(服務單位, 職稱)
-                DataRow dr = dt.NewRow();
-                dr["起始年月"] = strWorkDate;
-                dr["工作內容"] = string.Join(" ", names);
-
-                dt.Rows.Add(dr);
-
-                //(2)固定行高，須將工作內容拆成row(\r\n)
-                List<string> filters = new List<string>() { "待補" };
-
-                string[] strs = v.da507.Split(new[] { "\r\n" }, StringSplitOptions.None);
-                foreach (string str in strs)
+                //迄今
+                if (eJob == DateTime.MinValue)
                 {
-                    //排除文字(ex.待補)
-                    if (filters.Contains(str))
-                        continue;
-
-                    dr = dt.NewRow();
-                    dr["起始年月"] = strWorkDate;
-                    dr["工作內容"] = str;
-
-                    dt.Rows.Add(dr);
+                    eJob = DateFormat.ToDate10(DateFormat.ToDate9(DateTime.Now));
                 }
-            }
 
-            return dt;
-        }
+                if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
+                {
+                    TimeSpan ts = (eJob - sJob);
+                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
+                }
 
-        //著作
-        private DataTable GetDa9s(string Fno)
-        {
-            Dou.Models.DB.IModelEntity<F22cmmEmpDa9> modelDa9s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa9>(_dbContext);
-            var da9s = modelDa9s.GetAll().Where(a => a.Fno == Fno);
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add(new DataColumn("名稱"));
-            dt.Columns.Add(new DataColumn("簡介"));
-
-            foreach (var v in da9s)
-            {
                 DataRow dr = dt.NewRow();
-                dr["名稱"] = v.da901;
-                dr["簡介"] = v.da902;
+                dr["服務單位"] = v.da501;
+                dr["職務"] = v.da502;
+                dr["起始年月"] = v.da504;
+                dr["結束年月"] = v.da505;
+                dr["年資"] = strJob;
                 dt.Rows.Add(dr);
             }
 

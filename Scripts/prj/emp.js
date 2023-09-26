@@ -452,7 +452,7 @@
         });
     };
 
-    ////douoptions.appendCustomToolbars = [a];
+    douoptions.appendCustomToolbars = [a];
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
         
