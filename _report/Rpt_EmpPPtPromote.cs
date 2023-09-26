@@ -19,7 +19,7 @@ namespace DouImp._report
         /// <param name="fno"></param>
         /// <param name="ext">副檔名(包含.docx)</param>
         /// <returns></returns>
-        public string Export(string fno, string ext)
+        public string Export(string ext)
         {
             string resultUrl = "";
             string path = "";
@@ -46,12 +46,10 @@ namespace DouImp._report
                 // Load Report File From Local Path
                 reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpPPtPromote/Master.rdlc");
 
-                //參數設定(Fno)
-                ReportParameter p1 = new ReportParameter("Fno", fno);
-                reportViewer.LocalReport.SetParameters(new ReportParameter[] { p1 });
-
-                //主表                
-                DataTable dtData = GetEmpData(fno);
+                //主表
+                Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
+                var dtData = modelData.GetAll().Where(a => a.Fno == "J00007" || a.Fno == "J00007").ToList();
+                //DataTable dtData = GetEmpData();
                 reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
                 // 子報表事件
@@ -76,8 +74,7 @@ namespace DouImp._report
                     Directory.CreateDirectory(folder);
                 }
 
-                string empName = dtData.Rows[0]["姓名中"].ToString();
-                string fileName = "員工晉升_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
+                string fileName = "員工晉升_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,

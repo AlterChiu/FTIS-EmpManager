@@ -195,7 +195,7 @@ namespace DouImp.Controllers
         public ActionResult ExportPPtPromote()
         {
             Rpt_EmpPPtPromote rep = new Rpt_EmpPPtPromote();
-            string url = rep.Export("J00007", ".docx");
+            string url = rep.Export(".docx");
 
             if (url == "")
             {

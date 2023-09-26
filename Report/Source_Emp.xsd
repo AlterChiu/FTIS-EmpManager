@@ -43,9 +43,10 @@
               <xs:element name="專長" msprop:Generator_ColumnPropNameInTable="專長Column" msprop:Generator_ColumnPropNameInRow="專長" msprop:Generator_UserColumnName="專長" msprop:Generator_ColumnVarNameInTable="column專長" type="xs:string" minOccurs="0" />
               <xs:element name="學歷F" msprop:Generator_ColumnPropNameInTable="學歷FColumn" msprop:Generator_ColumnPropNameInRow="學歷F" msprop:Generator_UserColumnName="學歷F" msprop:Generator_ColumnVarNameInTable="column學歷F" type="xs:string" minOccurs="0" />
               <xs:element name="資格F" msprop:Generator_ColumnPropNameInTable="資格FColumn" msprop:Generator_ColumnPropNameInRow="資格F" msprop:Generator_UserColumnName="資格F" msprop:Generator_ColumnVarNameInTable="column資格F" type="xs:string" minOccurs="0" />
-              <xs:element name="最後更新日期" msprop:Generator_UserColumnName="最後更新日期" msprop:Generator_ColumnPropNameInTable="最後更新日期Column" msprop:Generator_ColumnPropNameInRow="最後更新日期" msprop:Generator_ColumnVarNameInTable="column最後更新日期" type="xs:string" minOccurs="0" />
-              <xs:element name="大頭照" msprop:Generator_ColumnPropNameInRow="大頭照" msprop:Generator_ColumnPropNameInTable="大頭照Column" msprop:Generator_ColumnVarNameInTable="column大頭照" msprop:Generator_UserColumnName="大頭照" type="xs:string" minOccurs="0" />
-              <xs:element name="大頭照mime" msprop:Generator_ColumnPropNameInRow="大頭照mime" msprop:Generator_ColumnPropNameInTable="大頭照mimeColumn" msprop:Generator_ColumnVarNameInTable="column大頭照mime" msprop:Generator_UserColumnName="大頭照mime" type="xs:string" minOccurs="0" />
+              <xs:element name="最後更新日期" msprop:Generator_ColumnPropNameInTable="最後更新日期Column" msprop:Generator_ColumnPropNameInRow="最後更新日期" msprop:Generator_UserColumnName="最後更新日期" msprop:Generator_ColumnVarNameInTable="column最後更新日期" type="xs:string" minOccurs="0" />
+              <xs:element name="大頭照" msprop:Generator_UserColumnName="大頭照" msprop:Generator_ColumnPropNameInTable="大頭照Column" msprop:Generator_ColumnPropNameInRow="大頭照" msprop:Generator_ColumnVarNameInTable="column大頭照" type="xs:string" minOccurs="0" />
+              <xs:element name="大頭照mime" msprop:Generator_UserColumnName="大頭照mime" msprop:Generator_ColumnPropNameInTable="大頭照mimeColumn" msprop:Generator_ColumnPropNameInRow="大頭照mime" msprop:Generator_ColumnVarNameInTable="column大頭照mime" type="xs:string" minOccurs="0" />
+              <xs:element name="Fno" msprop:Generator_ColumnPropNameInRow="Fno" msprop:Generator_ColumnPropNameInTable="FnoColumn" msprop:Generator_ColumnVarNameInTable="columnFno" msprop:Generator_UserColumnName="Fno" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
