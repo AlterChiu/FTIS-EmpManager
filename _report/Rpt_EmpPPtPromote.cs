@@ -49,7 +49,8 @@ namespace DouImp._report
 
                 //主表
                 Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
-                var dtData = modelData.GetAll().Where(a => a.Fno == "J00006" || a.Fno == "J00007").ToList();
+                //var dtData = modelData.GetAll().Where(a => a.Fno == "J00006" || a.Fno == "J00007").ToList();
+                var dtData = modelData.GetAll().Take(30).ToList();
 
                 if (dtData.Count == 0)
                     return "晉升員工-無資料匯出";

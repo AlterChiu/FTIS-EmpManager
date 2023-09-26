@@ -177,7 +177,7 @@
                           <ReportName>Sub1Data</ReportName>
                           <Parameters>
                             <Parameter Name="Fno">
-                              <Value>=First(Fields!Fno.Value, "MasterEmpData")</Value>
+                              <Value>=First(Fields!Fno.Value)</Value>
                             </Parameter>
                           </Parameters>
                           <Style>
@@ -186,6 +186,7 @@
                             </Border>
                           </Style>
                         </Subreport>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
