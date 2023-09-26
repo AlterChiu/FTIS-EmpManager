@@ -423,16 +423,28 @@
         //callback();
     }
 
-    //清單匯出晉升
+    //清單匯出晉升員工
     var a = {};
     a.item = '<span class="btn btn-success glyphicon glyphicon-download-alt"> 晉升簡報</span>';
     a.event = 'click .glyphicon-download-alt';
     a.callback = function importQdate(evt) {
+        
+        //勾選員編
+        var $chks = $('.bs-checkbox :checked').closest("tr").find('.dou-field-Fno');
+        var ary = $chks.map(function () {
+            return $(this).text();
+        }).get();
+
+        if (ary.length == 0) {
+            alert('尚未勾選員工');
+        }
+
         helper.misc.showBusyIndicator();
         $.ajax({
             url: app.siteRoot + 'Emp/ExportPPtPromote',
             datatype: "json",
-            type: "Get",
+            type: "Post",
+            data: { "Fnos": ary },
             success: function (data) {
                 if (data.result) {
                     location.href = app.siteRoot + data.url;
@@ -451,7 +463,8 @@
             }
         });
     };
-
+    
+    douoptions.useMutiSelect = true;
     douoptions.appendCustomToolbars = [a];
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {

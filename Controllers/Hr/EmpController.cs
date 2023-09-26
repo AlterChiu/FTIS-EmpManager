@@ -191,11 +191,11 @@ namespace DouImp.Controllers
         }
 
 
-        //匯出履歷表
-        public ActionResult ExportPPtPromote()
+        //匯出晉升員工
+        public ActionResult ExportPPtPromote(List<string> Fnos)
         {
             Rpt_EmpPPtPromote rep = new Rpt_EmpPPtPromote();
-            string url = rep.Export(".docx");
+            string url = rep.Export(Fnos, ".docx");
 
             if (url == "")
             {

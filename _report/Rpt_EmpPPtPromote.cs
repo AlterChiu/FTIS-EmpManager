@@ -17,10 +17,10 @@ namespace DouImp._report
         /// <summary>
         /// 匯出晉升員工
         /// </summary>
-        /// <param name="fno"></param>
+        /// <param name="fnos"></param>
         /// <param name="ext">副檔名(包含.docx)</param>
         /// <returns></returns>
-        public string Export(string ext)
+        public string Export(List<string> fnos, string ext)
         {
             string resultUrl = "";
             string path = "";
@@ -48,9 +48,8 @@ namespace DouImp._report
                 reportViewer.LocalReport.ReportPath = System.Web.HttpContext.Current.Server.MapPath("~/Report/EmpPPtPromote/Master.rdlc");
 
                 //主表
-                Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
-                //var dtData = modelData.GetAll().Where(a => a.Fno == "J00006" || a.Fno == "J00007").ToList();
-                var dtData = modelData.GetAll().Take(30).ToList();
+                Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);                
+                var dtData = modelData.GetAll().Where(a => fnos.Contains(a.Fno)).ToList();
 
                 if (dtData.Count == 0)
                     return "晉升員工-無資料匯出";
