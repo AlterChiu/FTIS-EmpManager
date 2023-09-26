@@ -66,8 +66,8 @@ namespace DouImp.Controllers
 
         [AllowAnonymous]
         //如需Sso請將以下method DouLoginNonSso註解掉改以 override DouLogin
-        public override ActionResult DouLogin(User user, string returnUrl, bool redirectLogin = false)
-        //public ActionResult DouLoginNonSso(User user, string returnUrl, bool redirectLogin = false)
+        //public override ActionResult DouLogin(User user, string returnUrl, bool redirectLogin = false)
+        public ActionResult DouLoginNonSso(User user, string returnUrl, bool redirectLogin = false)
         {
             if (DouUnobtrusiveSession.Session[SkipSsoKey] ==null)
             {

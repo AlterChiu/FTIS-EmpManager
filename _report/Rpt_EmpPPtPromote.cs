@@ -190,6 +190,17 @@ namespace DouImp._report
                 dt.Rows.Add(dr);
             }
 
+            //沒資料顯示
+            if (dt.Rows.Count == 0)
+            {
+                DataRow dr = dt.NewRow();
+                foreach (DataColumn col in dt.Columns)
+                {
+                    dr[col] = "";
+                }
+                dt.Rows.Add(dr);
+            }
+
             return dt;
         }
 
@@ -230,6 +241,17 @@ namespace DouImp._report
                 dr["起始年月"] = v.da504;
                 dr["結束年月"] = v.da505;
                 dr["年資"] = strJob;
+                dt.Rows.Add(dr);
+            }
+
+            //沒資料顯示
+            if (dt.Rows.Count == 0)
+            {
+                DataRow dr = dt.NewRow();
+                foreach (DataColumn col in dt.Columns)
+                {
+                    dr[col] = "";
+                }
                 dt.Rows.Add(dr);
             }
 
