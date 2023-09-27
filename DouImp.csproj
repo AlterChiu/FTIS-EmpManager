@@ -269,6 +269,7 @@
     <Compile Include="_core\DateFormat.cs" />
     <Compile Include="_core\FileHelper.cs" />
     <Compile Include="_core\ReportClass.cs" />
+    <Compile Include="_report\Rpt_EmpPPtNew.cs" />
     <Compile Include="_report\Rpt_EmpPPtPromote.cs" />
   </ItemGroup>
   <ItemGroup>

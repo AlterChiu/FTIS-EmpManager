@@ -474,11 +474,48 @@
         return false;
     };
 
-    //清單匯出晉升員工
+    //清單匯出新人簡報
     var a = {};
-    a.item = '<span class="btn btn-success glyphicon glyphicon-download-alt"> 晉升簡報</span>';
+    a.item = '<span class="btn btn-success glyphicon glyphicon-download-alt"> 新人簡報</span>';
     a.event = 'click .glyphicon-download-alt';
     a.callback = function importQdate(evt) {
+
+        //aryCheck(勾選員編)
+        if (aryCheck.length == 0) {
+            alert('尚未勾選員工');
+            return false;
+        }
+
+        helper.misc.showBusyIndicator();
+        $.ajax({
+            url: app.siteRoot + 'Emp/ExportPPtNew',
+            datatype: "json",
+            type: "Post",
+            data: { "Fnos": aryCheck },
+            success: function (data) {
+                if (data.result) {
+                    location.href = app.siteRoot + data.url;
+                    //alert("產出新人簡報成功：");
+                } else {
+                    alert("產出新人簡報失敗：\n" + data.errorMessage);
+                }
+            },
+            complete: function () {
+                helper.misc.hideBusyIndicator();
+            },
+            error: function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+                helper.misc.hideBusyIndicator();
+            }
+        });
+    };
+
+    //清單匯出晉升員工
+    var b = {};
+    b.item = '<span class="btn btn-success glyphicon glyphicon-download-alt"> 晉升簡報</span>';
+    b.event = 'click .glyphicon-download-alt';
+    b.callback = function importQdate(evt) {
 
         //aryCheck(勾選員編)
         if (aryCheck.length == 0) {
@@ -510,9 +547,9 @@
             }
         });
     };
-    
+
     douoptions.useMutiSelect = true;
-    douoptions.appendCustomToolbars = [a];
+    douoptions.appendCustomToolbars = [a, b];
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
         

@@ -191,6 +191,24 @@ namespace DouImp.Controllers
         }
 
 
+        //匯出新人簡報
+        public ActionResult ExportPPtNew(List<string> Fnos)
+        {
+            Rpt_EmpPPtNew rep = new Rpt_EmpPPtNew();
+            string url = rep.Export(Fnos, ".docx");
+
+            if (url == "")
+            {
+                return Json(new { result = false, errorMessage = rep.ErrorMessage }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = true, url = url }, JsonRequestBehavior.AllowGet);
+            }
+
+            ////return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+        }
+
         //匯出晉升員工
         public ActionResult ExportPPtPromote(List<string> Fnos)
         {
