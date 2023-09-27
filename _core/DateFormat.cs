@@ -442,6 +442,59 @@ namespace DouImp._core
         }
 
         /// <summary>
+        /// 西元轉民國：200403 => 112/03 或 091/08
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToTwDate3_2(string date)
+        {
+            string result = date;
+
+            try
+            {
+                string y = date.Substring(0, 4);
+                string m = date.Substring(4, 2);
+                string d = "01";
+
+                DateTime t = DateTime.MinValue;
+                if (DateTime.TryParse(y + "/" + m + "/" + d, out t))
+                {
+                    string a = (t.Year - 1911).ToString().PadLeft(3, '0');
+                    string b = m;
+                    result = a + "/" + b;
+                }
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 西元轉民國：200403 => 112/03 或 091/08
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToTwDate3_2(DateTime date)
+        {
+            string result = date.ToString();
+
+            try
+            {
+                string str = date.ToString("yyyyMM");
+                result = ToTwDate3_2(str);
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 西元轉民國：2023-12-20 00:00:00.000 => 112年3月5日
         /// </summary>
         /// <param name="date"></param>

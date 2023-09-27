@@ -156,7 +156,7 @@ namespace DouImp._report
             titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
             titles.Add(FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title);
             dr["職稱"] = string.Join(" ", titles);
-            dr["到職日期"] = DateFormat.ToDate4(data.AD);                                   
+            dr["到職日期"] = DateFormat.ToTwDate3_2(data.AD);                                   
 
             dt.Rows.Add(dr);
 
@@ -183,8 +183,8 @@ namespace DouImp._report
                 //dr4["xxxx"] = "oooooo";
                 dr["學校"] = v.da401;
                 dr["科系"] = v.da403;
-                dr["入學年月"] = v.da404;
-                dr["畢業年月"] = v.da405;
+                dr["入學年月"] = DateFormat.ToTwDate3_2(v.da404);
+                dr["畢業年月"] = DateFormat.ToTwDate3_2(v.da405);
                 dr["學位"] = v.da406;
                 dt.Rows.Add(dr);
             }
@@ -237,8 +237,8 @@ namespace DouImp._report
                 DataRow dr = dt.NewRow();
                 dr["服務單位"] = v.da501;
                 dr["職務"] = v.da502;
-                dr["起始年月"] = v.da504;
-                dr["結束年月"] = v.da505;
+                dr["起始年月"] = DateFormat.ToTwDate3_2(v.da504);
+                dr["結束年月"] = DateFormat.ToTwDate3_2(v.da505);
                 dr["年資"] = strJob;
                 dt.Rows.Add(dr);
             }

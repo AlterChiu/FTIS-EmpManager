@@ -52,7 +52,7 @@ namespace DouImp
                 var dtData = modelData.GetAll().Where(a => fnos.Contains(a.Fno)).ToList();
 
                 if (dtData.Count == 0)
-                    return "晉升員工-無資料匯出";
+                    return "新人簡報-無資料匯出";
 
                 reportViewer.LocalReport.DataSources.Add(new ReportDataSource("MasterEmpData", dtData));
 
@@ -70,7 +70,7 @@ namespace DouImp
                     out extension,
                    out streamids, out warnings);
 
-                string folder = FileHelper.GetFileFolder(Code.TempUploadFile.員工晉升);
+                string folder = FileHelper.GetFileFolder(Code.TempUploadFile.新人簡報);
 
 
                 if (!Directory.Exists(folder))
@@ -78,7 +78,7 @@ namespace DouImp
                     Directory.CreateDirectory(folder);
                 }
 
-                string fileName = "員工晉升_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
+                string fileName = "新人簡報_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,
@@ -88,7 +88,7 @@ namespace DouImp
             }
             catch (Exception ex)
             {
-                _errorMessage = "匯出員工晉升失敗" + "\n" + ex.InnerException + ex.Message + "\n" + ex.StackTrace;
+                _errorMessage = "匯出新人簡報失敗" + "\n" + ex.InnerException + ex.Message + "\n" + ex.StackTrace;
                 return "";
             }
 
@@ -156,7 +156,7 @@ namespace DouImp
             titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
             titles.Add(FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title);
             dr["職稱"] = string.Join(" ", titles);
-            dr["到職日期"] = DateFormat.ToDate4(data.AD);
+            dr["到職日期"] = DateFormat.ToTwDate3_2(data.AD);
 
             dt.Rows.Add(dr);
 
@@ -183,8 +183,8 @@ namespace DouImp
                 //dr4["xxxx"] = "oooooo";
                 dr["學校"] = v.da401;
                 dr["科系"] = v.da403;
-                dr["入學年月"] = v.da404;
-                dr["畢業年月"] = v.da405;
+                dr["入學年月"] = DateFormat.ToTwDate3_2(v.da404);
+                dr["畢業年月"] = DateFormat.ToTwDate3_2(v.da405);
                 dr["學位"] = v.da406;
                 dt.Rows.Add(dr);
             }
@@ -237,8 +237,8 @@ namespace DouImp
                 DataRow dr = dt.NewRow();
                 dr["服務單位"] = v.da501;
                 dr["職務"] = v.da502;
-                dr["起始年月"] = v.da504;
-                dr["結束年月"] = v.da505;
+                dr["起始年月"] = DateFormat.ToTwDate3_2(v.da504);
+                dr["結束年月"] = DateFormat.ToTwDate3_2(v.da505);
                 dr["年資"] = strJob;
                 dt.Rows.Add(dr);
             }
