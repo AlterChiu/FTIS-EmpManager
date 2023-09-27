@@ -127,10 +127,13 @@ namespace DouImp._report
                 DataTable dtDa4s = GetDa4s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub2SourceDa4s", dtDa4s));
 
-                //經歷
+                //經歷(會外)
                 DataTable dtDa5s = GetDa5s(Fno);
                 e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s", dtDa5s));
 
+                //經歷(會內)
+                DataTable dtDa5s_in = GetDa5s_in(Fno);
+                e.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Sub3SourceDa5s_in", dtDa5s_in));
             }
         }
 
@@ -203,11 +206,67 @@ namespace DouImp._report
             return dt;
         }
 
-        //經歷
+        //經歷(會外)
         private DataTable GetDa5s(string Fno)
         {
             Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
-            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno);
+            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
+                            .Where(a => a.da501 != "財團法人台灣產業服務基金會");  //會外
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("服務單位"));
+            dt.Columns.Add(new DataColumn("職務"));
+            dt.Columns.Add(new DataColumn("起始年月"));
+            dt.Columns.Add(new DataColumn("結束年月"));
+            dt.Columns.Add(new DataColumn("年資"));
+
+            foreach (var v in da5s)
+            {
+                string strJob = "";
+                DateTime sJob = DateFormat.ToDate10(v.da504);
+                DateTime eJob = DateFormat.ToDate10(v.da505);
+
+                //迄今
+                if (eJob == DateTime.MinValue)
+                {
+                    eJob = DateFormat.ToDate10(DateFormat.ToDate9(DateTime.Now));
+                }
+
+                if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
+                {
+                    TimeSpan ts = (eJob - sJob);
+                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
+                }
+
+                DataRow dr = dt.NewRow();
+                dr["服務單位"] = v.da501;
+                dr["職務"] = v.da502;
+                dr["起始年月"] = DateFormat.ToTwDate3_2(v.da504);
+                dr["結束年月"] = DateFormat.ToTwDate3_2(v.da505);
+                dr["年資"] = strJob;
+                dt.Rows.Add(dr);
+            }
+
+            //沒資料顯示
+            if (dt.Rows.Count == 0)
+            {
+                DataRow dr = dt.NewRow();
+                foreach (DataColumn col in dt.Columns)
+                {
+                    dr[col] = "";
+                }
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+        //經歷(會內)
+        private DataTable GetDa5s_in(string Fno)
+        {
+            Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
+            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
+                            .Where(a => a.da501 == "財團法人台灣產業服務基金會");  //會外
 
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("服務單位"));

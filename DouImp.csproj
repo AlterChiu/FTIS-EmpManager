@@ -533,6 +533,8 @@
     <EmbeddedResource Include="Report\EmpCV\Sub1Data.rdlc" />
     <EmbeddedResource Include="Report\EmpCV\Sub3Da5s.rdlc" />
     <EmbeddedResource Include="Report\EmpCV\Sub7Da9s.rdlc" />
+    <EmbeddedResource Include="Report\EmpPPtNew\Master.rdlc" />
+    <EmbeddedResource Include="Report\EmpPPtNew\Sub1Data.rdlc" />
     <EmbeddedResource Include="Report\EmpPPtPromote\Master.rdlc" />
     <EmbeddedResource Include="Report\EmpPPtPromote\Sub1Data.rdlc" />
     <EmbeddedResource Include="Report\RptEmpBasic.rdlc" />
