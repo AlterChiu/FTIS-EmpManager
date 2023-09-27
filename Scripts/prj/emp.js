@@ -471,7 +471,8 @@
                 n_sels++;
 
                 var a = $(this).closest('tr').find('.bs-checkbox');                
-                $(this).closest('tr').find('input[name=btSelectItem]').attr('checked', true);
+                //用trigger，不使用jquery保持資料正確性
+                $('#_table').bootstrapTable('check', index);
             }
         });
 
