@@ -616,6 +616,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Sub1SourceData</DataSetName>
+            <Left>0.01036cm</Left>
             <Height>1.90556cm</Height>
             <Width>16.89301cm</Width>
             <Style>
@@ -1099,6 +1100,7 @@
             </TablixRowHierarchy>
             <DataSetName>Sub2SourceDa4s</DataSetName>
             <Top>1.90556cm</Top>
+            <Left>0.01036cm</Left>
             <Height>1.88792cm</Height>
             <Width>16.89301cm</Width>
             <ZIndex>1</ZIndex>
@@ -1542,7 +1544,8 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>經歷</Value>
+                                <Value>經歷
+(會外)</Value>
                                 <Style>
                                   <FontFamily>標楷體</FontFamily>
                                   <FontSize>14pt</FontSize>
@@ -1582,7 +1585,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Sub3SourceDa5s</DataSetName>
-            <Top>3.79347cm</Top>
+            <Top>5.3639cm</Top>
             <Height>1.53514cm</Height>
             <Width>16.89301cm</Width>
             <ZIndex>2</ZIndex>
@@ -1624,7 +1627,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>服務單位</Value>
+                                  <Value>部門</Value>
                                   <Style>
                                     <FontFamily>標楷體</FontFamily>
                                     <FontSize>14pt</FontSize>
@@ -2011,7 +2014,8 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>經歷</Value>
+                                <Value>經歷
+(會內)</Value>
                                 <Style>
                                   <FontFamily>標楷體</FontFamily>
                                   <FontSize>14pt</FontSize>
@@ -2048,7 +2052,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Sub3SourceDa5s_in</DataSetName>
-            <Top>5.32861cm</Top>
+            <Top>3.79348cm</Top>
+            <Left>0.01036cm</Left>
             <Height>1.57042cm</Height>
             <Width>16.88265cm</Width>
             <ZIndex>3</ZIndex>
@@ -2059,10 +2064,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.71615in</Height>
+        <Height>2.71616in</Height>
         <Style />
       </Body>
-      <Width>6.65079in</Width>
+      <Width>6.65487in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

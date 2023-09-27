@@ -5,6 +5,7 @@ using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -209,9 +210,15 @@ namespace DouImp._report
         //經歷(會外)
         private DataTable GetDa5s(string Fno)
         {
+            List<string> outs = new List<string>() {
+                "%台灣產業服務基金會%", "%台基寰宇%"
+            };
+
             Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
             var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
-                            .Where(a => a.da501 != "財團法人台灣產業服務基金會");  //會外
+                            .Where(a => !outs.Any(b => DbFunctions.Like(a.da501, b)));  //會外
+
+            var zz = da5s.ToList();
 
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("服務單位"));
@@ -264,9 +271,13 @@ namespace DouImp._report
         //經歷(會內)
         private DataTable GetDa5s_in(string Fno)
         {
+            List<string> outs = new List<string>() {
+                "%台灣產業服務基金會%", "%台基寰宇%"
+            };
+
             Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
             var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
-                            .Where(a => a.da501 == "財團法人台灣產業服務基金會");  //會外
+                            .Where(a => outs.Any(b => DbFunctions.Like(a.da501, b))); //會內
 
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("服務單位"));
