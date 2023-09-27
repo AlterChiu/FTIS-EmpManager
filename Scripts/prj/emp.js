@@ -462,15 +462,27 @@
     };
 
     douoptions.tableOptions.onLoadSuccess = function (datas) {
+
+        //選取數量
+        var n_sels = 0;
         $('.bootstrap-table #_table tbody').find('.dou-field-Fno').each(function (index) {
             var fno = $(this).text();
             if (aryCheck.indexOf(fno) > -1) {
+                n_sels++;
+
                 var a = $(this).closest('tr').find('.bs-checkbox');                
                 $(this).closest('tr').find('input[name=btSelectItem]').attr('checked', true);
             }
         });
 
-        var aa = aryCheck;
+        //若清單選取數量都勾,全選也勾
+        if (n_sels > 0) {
+            if (n_sels == datas.rows.length) {
+                //$('input[name="btSelectAll"]').prop('checked', true);
+                $('#_table').bootstrapTable('checkAll');
+            }
+        }
+
         return false;
     };
 
