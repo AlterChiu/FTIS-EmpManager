@@ -29,6 +29,8 @@
         douoptions.fields = newFields;
     }
 
+    var aryCheck = [];
+
     //20230811, add by markhong 分頁筆數設定
     douoptions.tableOptions.pageList = [10, 25, 50, 100, 'All'];
 
@@ -422,21 +424,55 @@
 
         //callback();
     }
+   
+    douoptions.tableOptions.onCheck = function (row, e) {
 
-    ////douoptions.tableOptions.onRefresh = function (s, e) {
-    ////    alert('ccc');
-    ////    return false;
-    ////};
+        var fno = row.Fno;
+        if (aryCheck.indexOf(fno) == -1) {
+            aryCheck.push(fno);
+        }
+
+        return false;
+    };
+
+    douoptions.tableOptions.onUncheck = function (row, e) {
+
+        var fno = row.Fno;
+        aryCheck = aryCheck.filter(a => a != fno);
+
+        return false;
+    };
     
-    ////douoptions.tableOptions.onPageChange = function (s, e) {
-    ////    alert('bbb');
-    ////    return false;
-    ////};
+    douoptions.tableOptions.onCheckAll = function (rows, b) {
+        var aryDatas = rows.map(function (data) {
+            return data.Fno;
+        });
 
-    //////douoptions.tableOptions.onLoadSuccess = function (datas) {
-    //////    alert('aaa');
-    //////    return false;
-    //////};
+        //全選(merge 不重複)        
+        aryCheck = aryCheck.concat(aryDatas.filter(ele => !aryCheck.includes(ele)));
+    };
+
+    douoptions.tableOptions.onUncheckAll = function (a, rows) {
+        var aryDatas = rows.map(function (data) {
+            return data.Fno;
+        });
+
+        //全不勾
+        aryCheck = aryCheck.filter(item => !aryDatas.includes(item));
+    };
+
+    douoptions.tableOptions.onLoadSuccess = function (datas) {
+        $('.bootstrap-table #_table tbody').find('.dou-field-Fno').each(function (index) {
+            var fno = $(this).text();
+            if (aryCheck.indexOf(fno) > -1) {
+                var a = $(this).closest('tr').find('.bs-checkbox');                
+                $(this).closest('tr').find('input[name=btSelectItem]').attr('checked', true);
+            }
+        });
+
+        var aa = aryCheck;
+        return false;
+    };
 
     //清單匯出晉升員工
     var a = {};
@@ -444,18 +480,8 @@
     a.event = 'click .glyphicon-download-alt';
     a.callback = function importQdate(evt) {
 
-        //勾選員編
-        //var $chks = $('.bs-checkbox :checked').closest("tr").find('.dou-field-Fno');
-        //var ary = $chks.map(function () {
-        //    return $(this).text();
-        //}).get();
-
-        var sel = $("#_table").bootstrapTable('getSelections');
-        var ary = sel.map(function (data) {
-            return data.Fno;
-        });       
-
-        if (ary.length == 0) {
+        //aryCheck(勾選員編)
+        if (aryCheck.length == 0) {
             alert('尚未勾選員工');
             return false;
         }
@@ -465,7 +491,7 @@
             url: app.siteRoot + 'Emp/ExportPPtPromote',
             datatype: "json",
             type: "Post",
-            data: { "Fnos": ary },
+            data: { "Fnos": aryCheck },
             success: function (data) {
                 if (data.result) {
                     location.href = app.siteRoot + data.url;
