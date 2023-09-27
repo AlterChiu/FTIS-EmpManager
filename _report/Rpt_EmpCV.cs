@@ -78,7 +78,7 @@ namespace DouImp
                 }
 
                 string empName = dtData.Rows[0]["姓名中"].ToString();
-                string fileName = "履歷表_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
+                string fileName = "履歷表_" + empName + "_" + DateFormat.ToDate1(DateTime.Now) + "_" + Guid.NewGuid().ToString().Substring(0, 5) + ext;  //"ext=.docx"
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,

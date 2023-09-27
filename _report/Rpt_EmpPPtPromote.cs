@@ -79,7 +79,7 @@ namespace DouImp._report
                     Directory.CreateDirectory(folder);
                 }
 
-                string fileName = "員工晉升_" + DateFormat.ToDate1(DateTime.Now) + ext;  //"ext=.docx"
+                string fileName = "員工晉升_" + DateFormat.ToDate1(DateTime.Now) + "_" + Guid.NewGuid().ToString().Substring(0, 5) + ext;  //"ext=.docx"
                 path = folder + fileName;
 
                 FileStream fs = new FileStream(path,
