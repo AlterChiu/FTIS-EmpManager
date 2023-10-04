@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace DouImp.Controllers
 {    
-    [Dou.Misc.Attr.MenuDef(Id = "Title", Name = "職等", MenuPath = "人資專區", Action = "Index", Index = 4, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
+    [Dou.Misc.Attr.MenuDef(Id = "Title", Name = "職稱", MenuPath = "人資專區", Action = "Index", Index = 4, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     public class TitleController : Dou.Controllers.AGenericModelController<F22cmmTitle>
     {
         // GET: Country
