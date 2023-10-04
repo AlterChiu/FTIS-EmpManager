@@ -1586,6 +1586,7 @@
             </TablixRowHierarchy>
             <DataSetName>Sub3SourceDa5s</DataSetName>
             <Top>5.3639cm</Top>
+            <Left>0.01036cm</Left>
             <Height>1.53514cm</Height>
             <Width>16.89301cm</Width>
             <ZIndex>2</ZIndex>
@@ -1871,7 +1872,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
