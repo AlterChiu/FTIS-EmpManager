@@ -83,6 +83,11 @@ namespace DouImp.Controllers
             options.GetFiled("Da1s").visible = false;
             options.GetFiled("Da1s").visibleEdit = false;
 
+            //職等沒再使用 
+            options.GetFiled("EMail").colsize = 6;
+            options.GetFiled("GCode").visible = false;
+            options.GetFiled("GCode").visibleEdit = false;
+
             //正祥
             options.GetFiled("IsOT2V").defaultvalue = "";  //資料轉入(null)，預設'N',視為有異動
 
