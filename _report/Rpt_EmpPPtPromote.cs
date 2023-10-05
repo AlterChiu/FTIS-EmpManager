@@ -243,8 +243,7 @@ namespace DouImp._report
 
                 if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
                 {
-                    TimeSpan ts = (eJob - sJob);
-                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
+                    strJob = Transform.Seniority(sJob, eJob);
                 }
 
                 DataRow dr = dt.NewRow();
@@ -303,8 +302,7 @@ namespace DouImp._report
 
                 if (sJob != DateTime.MinValue && eJob != DateTime.MinValue)
                 {
-                    TimeSpan ts = (eJob - sJob);
-                    strJob = Math.Round(ts.TotalDays / 365, 2).ToString();
+                    strJob = Transform.Seniority(sJob, eJob);
                 }
 
                 DataRow dr = dt.NewRow();
