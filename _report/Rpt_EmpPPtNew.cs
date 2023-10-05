@@ -167,7 +167,8 @@ namespace DouImp
         private DataTable GetDa4s(string Fno)
         {
             Dou.Models.DB.IModelEntity<F22cmmEmpDa4> modelDa4s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa4>(_dbContext);
-            var da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno);
+            var da4s = modelDa4s.GetAll().Where(a => a.Fno == Fno)
+                        .OrderByDescending(a => a.da404);
 
             DataTable dt = new DataTable();
             //dt4.Columns.Add(new DataColumn("xxxx"));
@@ -207,7 +208,8 @@ namespace DouImp
         private DataTable GetDa5s(string Fno)
         {
             Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
-            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno);
+            var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
+                        .OrderByDescending(a => a.da504);
 
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("服務單位"));
