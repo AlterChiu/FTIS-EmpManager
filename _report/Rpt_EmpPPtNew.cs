@@ -153,7 +153,9 @@ namespace DouImp
             dr["部門"] = FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName;
             List<string> titles = new List<string>();
             //titles.Add("財團法人台灣產業服務基金會");
-            titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
+            //部門(綠色技術發展中心)
+            //titles.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
+            //職稱(高級工程師)
             titles.Add(FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno) == null ? "" : FtisHelperV2.DB.Helper.GetEmployeeTitle(Fno).Title);
             dr["職稱"] = string.Join(" ", titles);
             dr["到職日期"] = DateFormat.ToTwDate3_2(data.AD);
