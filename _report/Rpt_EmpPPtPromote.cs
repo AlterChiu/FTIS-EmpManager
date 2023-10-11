@@ -307,9 +307,16 @@ namespace DouImp._report
                     strJob = Transform.Seniority(sJob, eJob);
                 }
 
+                Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
+                var data = modelData.GetAll().Where(a => a.Fno == Fno).First();
+
+                List<string> deps = new List<string>();
+                deps.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
+                string dep = string.Join(" ", deps);
+
                 DataRow dr = dt.NewRow();
-                dr["服務單位"] = v.da501;
-                dr["職務"] = v.da502;
+                dr["服務單位"] = dep; //v.da501;
+                dr["職務"] = v.da502.Replace(dep, "");
                 dr["起始年月"] = DateFormat.ToTwDate3_2(v.da504);
                 dr["結束年月"] = DateFormat.ToTwDate3_2(v.da505);
                 dr["年資"] = strJob;
