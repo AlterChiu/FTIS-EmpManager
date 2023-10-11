@@ -561,8 +561,18 @@
         });
     };
 
+    //取消所有勾選
+    var c = {};
+    c.item = '<span class="btn btn-success check-cancel"> 取消所有勾選</span>';
+    c.event = 'click .check-cancel';
+    c.callback = function importQdate(evt) {
+        //alert('aaa11');
+        aryCheck = [];
+        $('#_table').bootstrapTable('uncheckAll');        
+    };
+
     douoptions.useMutiSelect = true;
-    douoptions.appendCustomToolbars = [a, b];
+    douoptions.appendCustomToolbars = [a, b, c];
 
     var $_masterTable = $("#_table").DouEditableTable(douoptions).on($.dou.events.add, function (e, row) {
         
