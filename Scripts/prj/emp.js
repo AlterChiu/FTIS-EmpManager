@@ -563,12 +563,13 @@
 
     //取消所有勾選
     var c = {};
-    c.item = '<span class="btn btn-success check-cancel"> 取消所有勾選</span>';
+    c.item = '<span class="btn btn-secondary check-cancel"> 取消所有勾選</span>';
     c.event = 'click .check-cancel';
     c.callback = function importQdate(evt) {
         //alert('aaa11');
         aryCheck = [];
-        $('#_table').bootstrapTable('uncheckAll');        
+        $('#_table').bootstrapTable('uncheckAll');
+        alert('已取消勾選');
     };
 
     douoptions.useMutiSelect = true;
