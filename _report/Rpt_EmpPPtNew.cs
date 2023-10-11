@@ -5,6 +5,7 @@ using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -209,6 +210,10 @@ namespace DouImp
         //經歷
         private DataTable GetDa5s(string Fno)
         {
+            List<string> outs = new List<string>() {
+                "台灣產業服務基金會", "台基寰宇"
+            };
+
             Dou.Models.DB.IModelEntity<F22cmmEmpDa5> modelDa5s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa5>(_dbContext);
             var da5s = modelDa5s.GetAll().Where(a => a.Fno == Fno)
                         .OrderByDescending(a => a.da504);
@@ -237,9 +242,24 @@ namespace DouImp
                     strJob = Transform.Seniority(sJob, eJob);
                 }
 
+                Dou.Models.DB.IModelEntity<F22cmmEmpData> modelData = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(_dbContext);
+                var data = modelData.GetAll().Where(a => a.Fno == Fno).First();
+
+                string dep = "";
+                if (outs.Any(a => v.da501.IndexOf(a) > -1))
+                {
+                    List<string> deps = new List<string>();
+                    deps.Add(FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode) == null ? "" : FtisHelperV2.DB.Helpe.Department.GetDepartment(data.DCode).DName);
+                    dep = string.Join(" ", deps);
+                }
+                else
+                {
+                    dep = v.da501;
+                }
+
                 DataRow dr = dt.NewRow();
-                dr["服務單位"] = v.da501;
-                dr["職務"] = v.da502;
+                dr["服務單位"] = dep;
+                dr["職務"] = v.da502.Replace(dep, "");
                 dr["起始年月"] = DateFormat.ToTwDate3_2(v.da504);
                 dr["結束年月"] = DateFormat.ToTwDate3_2(v.da505);
                 dr["年資"] = strJob;
