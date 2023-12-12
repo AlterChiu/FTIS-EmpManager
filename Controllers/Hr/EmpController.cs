@@ -51,6 +51,24 @@ namespace DouImp.Controllers
 
         protected override IQueryable<F22cmmEmpData> BeforeIQueryToPagedList(IQueryable<F22cmmEmpData> iquery, params KeyValueParams[] paras)
         {
+            //編輯或權限功能
+            var cusPowerRole = Dou.Context.CurrentUser<User>().CusPowerRole();
+            var cusPowerKPIFnos = Dou.Context.CurrentUser<User>().CusPowerKPIFnos();
+
+
+            if (cusPowerRole.Key == "admin" || cusPowerRole.Key == "hr")
+            {
+                //查詢所有人
+            }
+            else
+            {
+                string Fno = Dou.Context.CurrentUser<User>().Id;
+
+                //查詢自己或屬下員工
+                iquery = iquery.Where(a => Fno == a.Fno
+                                || cusPowerKPIFnos.Any(b => b == a.Fno));
+            }
+
             ////////Test Left Join
             ////Dou.Models.DB.IModelEntity<F22cmmEmpData> data = new Dou.Models.DB.ModelEntity<F22cmmEmpData>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
             ////Dou.Models.DB.IModelEntity<F22cmmEmpDa1> da1s = new Dou.Models.DB.ModelEntity<F22cmmEmpDa1>(FtisHelperV2.DB.Helper.CreateFtisModelContext());
@@ -73,6 +91,19 @@ namespace DouImp.Controllers
             //編輯或權限功能
             var cusPowerRole = Dou.Context.CurrentUser<User>().CusPowerRole();
             var cusPowerKPIFnos = Dou.Context.CurrentUser<User>().CusPowerKPIFnos();
+
+            if (cusPowerRole.Key == "admin" || cusPowerRole.Key == "hr")
+            {
+                options.addable = true;
+                options.editable = true;
+                options.deleteable = true;
+            }
+            else
+            {
+                options.addable = false;
+                options.editable = false;
+                options.deleteable = false;
+            }
 
             options.ctrlFieldAlign = "left";
             options.editformWindowStyle = "modal";
