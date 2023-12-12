@@ -9,7 +9,44 @@ using System.Web;
 namespace DouImp.Models
 {
     [Table("User")]
-    public class User : Dou.Models.UserBase { }
+    public class User : Dou.Models.UserBase 
+    {
+        //客製化權限:(uRoleId, A,U,D,V)
+        public KeyValuePair<string, List<string>>  CusPowerRole()
+        {
+            KeyValuePair<string, List<string>> result = new KeyValuePair<string, List<string>>();
+            string uRoleId = "";
+            
+            //(1)admin(角色全開)
+            uRoleId = "admin";
+            var s1 = Role.GetAllDatas().Where(a => a.RoleUsers.Any(b => b.RoleId.ToUpper() == uRoleId.ToUpper()));
+            if (s1.Where(a => a.RoleUsers.Any(b => b.UserId == Id)).Count() > 0)
+            {
+                result = new KeyValuePair<string, List<string>>(uRoleId, new List<string>() { "A", "U", "D", "V" });
+                return result;
+            }
+
+            //(2)hr
+            uRoleId = "hr";
+            var s2 = Role.GetAllDatas().Where(a => a.RoleUsers.Any(b => b.RoleId.ToUpper() == uRoleId.ToUpper()));
+            if (s2.Where(a => a.RoleUsers.Any(b => b.UserId == Id)).Count() > 0)
+            {
+                result = new KeyValuePair<string, List<string>>(uRoleId, new List<string>() { "A", "U", "D", "V" });
+                return result;
+            }
+
+            return result;
+        }
+
+        //客製化:(KPI 1-5審人)下屬員工編號
+        public List<string> CusPowerKPIFnos()
+        {            
+            var directors = FtisHelperV2.DB.Helpe.Employee.GetAllEmployee()
+                    .Where(a => a.CkNo1 == Id || a.CkNo2 == Id || a.CkNo3 == Id || a.CkNo4 == Id || a.CkNo5 == Id);
+
+            return directors.Select(a => a.Fno).ToList();
+        }
+    }
 }
 //    {
 //        string SortedSet = typeof(FtisHelper.DB.Model.Department).AssemblyQualifiedName;

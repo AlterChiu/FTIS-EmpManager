@@ -69,6 +69,11 @@ namespace DouImp.Controllers
         public override DataManagerOptions GetDataManagerOptions()
         {
             var options = base.GetDataManagerOptions();
+
+            //編輯或權限功能
+            var cusPowerRole = Dou.Context.CurrentUser<User>().CusPowerRole();
+            var cusPowerKPIFnos = Dou.Context.CurrentUser<User>().CusPowerKPIFnos();
+
             options.ctrlFieldAlign = "left";
             options.editformWindowStyle = "modal";
             options.editformWindowClasses = "modal-xl";
@@ -109,7 +114,9 @@ namespace DouImp.Controllers
                 obj.UpdateMan = Dou.Context.CurrentUser<User>().Id;
                 obj.UpdateTime = DateTime.Now;
             }
+            
             dbEntity.Add(objs);
+            FtisHelperV2.DB.Helper.ResetGetAllEmployee();
         }
 
         /// <summary>
@@ -124,7 +131,9 @@ namespace DouImp.Controllers
                 obj.UpdateMan = Dou.Context.CurrentUser<User>().Id;
                 obj.UpdateTime = DateTime.Now;
             }
+            
             dbEntity.Update(objs);
+            FtisHelperV2.DB.Helper.ResetGetAllEmployee();
         }
 
         protected override void DeleteDBObject(IModelEntity<F22cmmEmpData> dbEntity, IEnumerable<F22cmmEmpData> objs)
@@ -185,8 +194,9 @@ namespace DouImp.Controllers
                 da9.Delete(obj.Da9s);
                 Employee.ResetGetAllF22cmmEmpDa9();
             }
-
+            
             base.DeleteDBObject(dbEntity, objs);
+            FtisHelperV2.DB.Helper.ResetGetAllEmployee();
         }
 
         protected override IModelEntity<F22cmmEmpData> GetModelEntity()

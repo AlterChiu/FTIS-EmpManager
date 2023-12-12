@@ -37,6 +37,24 @@ namespace DouImp.Controllers
         //    return Json(new { ok=true}, JsonRequestBehavior.AllowGet);
         //}
 
+        protected override void AddDBObject(IModelEntity<User> dbEntity, IEnumerable<User> objs)
+        {            
+            base.AddDBObject(dbEntity, objs);
+            Role.ResetGetAllDatas();
+        }
+
+        protected override void UpdateDBObject(IModelEntity<User> dbEntity, IEnumerable<User> objs)
+        {            
+            base.UpdateDBObject(dbEntity, objs);
+            Role.ResetGetAllDatas();
+        }
+
+        protected override void DeleteDBObject(IModelEntity<User> dbEntity, IEnumerable<User> objs)
+        {            
+            base.DeleteDBObject(dbEntity, objs);
+            Role.ResetGetAllDatas();
+        }
+
         public override DataManagerOptions GetDataManagerOptions()
         {
             var opts = base.GetDataManagerOptions();
